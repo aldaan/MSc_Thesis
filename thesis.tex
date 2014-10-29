@@ -1,4 +1,4 @@
-\documentclass[12pt, a4paper]{article}
+\documentclass[12pt, a4paper]{report}
 \usepackage{polyglossia}
 \setdefaultlanguage{magyar}
 \usepackage{fontspec}
@@ -7,12 +7,18 @@
 \setmainfont{Gentium Basic}
 \setmathfont{texgyrepagella-math.otf}
 \defaultfontfeatures{Ligatures=TeX}
+\usepackage[paper=a4paper,left=3.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{graphicx}
 \usepackage{setspace}
 \usepackage{indentfirst}
+\usepackage[backend=biber,style=numeric,sortlocale=hu]{biblatex}
+\addbibresource{bibliography.bib}
+\usepackage[bookmarks,unicode,hyperfootnotes=false,pdfborder={0 0 0 0}]{hyperref}
+\urlstyle{same}
 
 \pagestyle{plain}
 \onehalfspacing
-%\frenchspacing
+\frenchspacing
 
 \author{Vadas Norbert}
 \title{Az 1,2,3-sejtés}
@@ -22,5 +28,8 @@
 \maketitle
 
 
+
+\nocite{*}
+\printbibliography
 
 \end{document}
