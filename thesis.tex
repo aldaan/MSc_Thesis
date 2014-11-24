@@ -3,8 +3,9 @@
 \setdefaultlanguage{magyar}
 \usepackage{fontspec}
 \usepackage{mathtools}
+\usepackage{amsthm}
 \usepackage{unicode-math}
-\setmainfont{Gentium Basic}
+\setmainfont{Gentium Plus}
 \setmathfont{texgyrepagella-math.otf}
 \defaultfontfeatures{Ligatures=TeX}
 \usepackage[paper=a4paper,left=3.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
@@ -16,16 +17,40 @@
 \usepackage[bookmarks,unicode,hyperfootnotes=false,pdfborder={0 0 0 0}]{hyperref}
 \urlstyle{same}
 
+\hypersetup{pdfauthor={Vadas Norbert},pdftitle={Élszínezések}}
+
 \pagestyle{plain}
 \onehalfspacing
 \frenchspacing
 
-\author{Vadas Norbert}
-\title{Az 1,2,3-sejtés}
-\date{}
+\newtheorem{tét}{Tétel}[section]
+\newtheorem{lem}[tét]{Lemma}
+\newtheorem{áll}[tét]{Állítás}
+\newtheorem*{köv}{Következmény}
+\theoremstyle{remark}
+\newtheorem*{megj}{Megjegyzés}
+\theoremstyle{definition}
+\newtheorem{defi}{Definíció}[section]
+\newtheorem{pl}{Példa}[section]
 
 \begin{document}
-\maketitle
+
+\begin{titlepage}
+\begin{center}
+{\LARGE \textsc{Eötvös Loránd Tudományegyetem \\ Természettudományi Kar \\}}
+\hrulefill \\[2.5cm]
+{\huge Vadas Norbert} \\[0.7cm]
+{\Huge \textsc{Élszínezések}} \\[0.7cm]
+alkalmazott matematikus MSc szakdolgozat \\[0.1cm]
+operációkutatás szakirány \\[2.2cm]
+{\large Témavezetõ:} \\[0.4cm]
+{\Large Bérczi Kristóf} \\[0.3cm] 
+{\Large Operációkutatási Tanszék}
+\vfill
+\includegraphics[width=0.3\textwidth]{./images/elte_cimer_ff}~\\[0.5cm]
+{\large Budapest, 2014}
+\end{center}
+\end{titlepage}
 
 
 
