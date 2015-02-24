@@ -1,21 +1,22 @@
 \documentclass[12pt, a4paper]{report}
 \usepackage{polyglossia}
 \setdefaultlanguage{magyar}
-\usepackage{fontspec}
 \usepackage{mathtools}
 \usepackage{amsthm}
+\usepackage{fontspec}
 \usepackage{unicode-math}
-\setmainfont{Gentium Plus}
+\setmainfont{GentiumPlus-R.ttf}[BoldFont=GenBasB.ttf,ItalicFont=GentiumPlus-I.ttf,BoldItalicFont=GenBasBI.ttf]
 \setmathfont{TeX Gyre Pagella Math}
 \defaultfontfeatures{Ligatures=TeX}
 \usepackage[paper=a4paper,left=3.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
 \usepackage{graphicx}
 \usepackage{setspace}
 \usepackage{indentfirst}
-\usepackage[backend=biber,style=numeric,sortlocale=hu]{biblatex}
+\usepackage[backend=biber,style=numeric,sortlocale=hu,block=space,isbn=false,doi=false,url=false]{biblatex}
 \addbibresource{bibliography.bib}
 \usepackage[bookmarks,unicode,hyperfootnotes=false,pdfborder={0 0 0 0}]{hyperref}
 \urlstyle{same}
+\usepackage{titlesec}
 
 \hypersetup{pdfauthor={Vadas Norbert},pdftitle={Élszínezések}}
 
@@ -23,9 +24,11 @@
 \onehalfspacing
 \frenchspacing
 
+\swapnumbers
 \newtheorem{tét}{Tétel}[section]
 \newtheorem{lem}[tét]{Lemma}
 \newtheorem{áll}[tét]{Állítás}
+\newtheorem{sej}[tét]{Sejtés}
 \newtheorem*{köv}{Következmény}
 \theoremstyle{remark}
 \newtheorem*{megj}{Megjegyzés}
@@ -33,11 +36,17 @@
 \newtheorem{defi}{Definíció}[section]
 \newtheorem{pl}{Példa}[section]
 
+\DefineBibliographyStrings{english}{%
+  and              = {és},
+}
+
 \begin{document}
+\titleformat{\chapter}[hang]
+    {\normalfont\LARGE\bfseries}{\thechapter.}{1em}{}
 
 \begin{titlepage}
 \begin{center}
-{\LARGE \textsc{Eötvös Loránd Tudományegyetem \\ Természettudományi Kar \\}}
+{\huge \textsc{Eötvös Loránd Tudományegyetem \\ Természettudományi Kar \\}}
 \hrulefill \\[2.5cm]
 {\huge Vadas Norbert} \\[0.7cm]
 {\Huge \textsc{Élszínezések}} \\[0.7cm]
@@ -47,12 +56,40 @@ operációkutatás szakirány \\[2.2cm]
 {\Large Bérczi Kristóf} \\[0.3cm] 
 {\Large Operációkutatási Tanszék}
 \vfill
-\includegraphics[width=0.3\textwidth]{./images/elte_cimer_ff}~\\[0.5cm]
+\includegraphics[width=0.3\textwidth]{./images/elte_cimer_ff} \\[0.5cm]
 {\large Budapest, 2015}
 \end{center}
 \end{titlepage}
 
+\pagenumbering{roman}
+\tableofcontents
 
+\chapter{Bevezetés} 
+\pagenumbering{arabic}
+
+\section{Fogalmak és jelölések}
+A továbbiakban, hacsak nincs másképp jelezve, minden gráf egyszerű, véges és irányítatlan. Egy $G = (V, E)$ gráfon értelmezett $w: E \rightarrow [k] = \lbrace 1, \ldots, k \rbrace$ függvényt $k$-élsúlyozásnak nevezünk. Amennyiben a csúcsokhoz is rendelünk súlyokat, azaz $w: V \cup E \rightarrow [k]$, akkor $k$-teljes-súlyozásról beszélünk. Egy csúcs értékén a rá illeszkedő élek súlyainak, és amennyiben van, a saját súlyának összegét értjük. Azt mondjuk, hogy egy súlyozás csúcs-megkülönböztető, ha bármely két csúcsnak különböző az értéke. Abban az esetben, ha ezt csak szomszédos csúcspárokra követeljük meg, akkor a csúcsok értékei egy színezését adják a gráfnak. Az ilyen súlyozást csúcs-színezőnek hívjuk. Adott $G$ gráfra a legkisebb olyan $k$ számot, melyre létezik $G$-nek csúcs-színező $k$-élsúlyozása $\chi_e^{\Sigma}(G)$-vel jelöljük. Végezetül egy gráfra azt mondjuk, hogy rendes, ha egyetlen komponense sem izomorf $K_2$-vel.
+
+\section{Az 1, 2, 3 - sejtés}
+Az 1, 2, 3 - sejtés vizsgálatát a gráfok irregularitásának vizsgálata motiválta. Egy gráf éleinek súlyozását irregulárisnak nevezzük, ha bármely két csúcsra a rájuk illeszkedő éleken vett összeg különböző. Egy gráf irregularitásának erősségén azt a legkisebb $k$ számot értjük, amelyre létezik irreguláris súlyozás az $\lbrace 1, \ldots, k \rbrace$ halmazból vett súlyokkal. Ennek a feladatnak egy természetesen adódó egyszerűsítése, ha csak szomszédos csúcsokra követeljük meg azt, hogy különböző legyen az értékük. 
+
+A sejtést először \citeauthor{Karonski2004} \cite{Karonski2004} fogalmazta meg 2004-ben, és a következőképpen hangzik: 
+
+\begin{sej}[Az 1, 2, 3 - sejtés]
+Minden rendes gráf élei megcímkézhetőek az 1, 2, 3 számokkal oly módon, hogy tetszőleges két szomszédos csúcsra a rájuk illeszkedő éleken lévő számok összege különböző legyen.
+\end{sej}
+
+A sejtést megfogalmazása óta sokat vizsgálták. Az eddigi legjobb korlátot \citeauthor{Kalkowski2010} \cite{Kalkowski2010} bizonyította be 2010-ben, mely szerint a helyes színezéshez 5 élsúly elegendő. Könnyen látható, hogy léteznek olyan rendes gráfok, amelyekre nem elég 2 élsúly. Azonban egy aszimptotikus eredmény szerint egy $G(p, n)$ véletlen gráf majdnem biztosan megszínezhető csak az 1, 2 élsúlyok segítségével \cite{AddarioBerry2008}. Bizonyos gráfosztályokra már sikerült igazolni a sejtést. Eszerint 3-színezhető \cite{Karonski2004}, illetve teljes gráfok \cite{Alaeiyan2012} esetén $\chi_e^{\Sigma}(G) = 3$. Az előbbi eredmény nyomán feltehető az a kérdés, hogy mely páros gráfok esetében elegendő csak az 1, 2 súlyok közül választani. \citeauthor{Lu2011} \cite{Lu2011} cikke szerint a 3-összefüggő, valamint bizonyos fokszám-megkötéseknek eleget tevő páros gráfok ilyenek.
+
+A csúcs-színező élsúlyozásoknak számos változatát vizsgálták már az elmúlt évtizedben. Az irányított esetben egy digráf éleit súlyozzuk, a csúcsok értékét pedig csak a kifelé vezető éleken vett összeg határozza meg. Ez a probléma lényegesen egyszerűbb, mint az irányítatlan változat, ugyanis itt könnyedén belátható az 1, 2, 3 - sejtéssel analóg állítás \cite{Baudon2014}.
+
+\begin{áll}
+Minden $D$ digráfra $\chi_e^{\Sigma}(D) = 3$.
+\end{áll}
+
+Más változatokban az élsúlyok összege helyett azok szorzata, halmaza, multihalmaza vagy sorozata határozza meg a csúcsok színeit. Emellett élsúlyozás helyett tekinthetünk csúcs-, illetve teljes-súlyozást is. Érdekes kérdés az is, hogy mit mondhatunk abban az esetben, ha a súlyokat nem az $\lbrace 1, \ldots, k \rbrace$ halmazból, hanem tetszőleges $k$-elemű listából választhatjuk ki. A különféle változatok eddigi eredményeiről \citeauthor{Seamone2012} \cite{Seamone2012} cikkében olvashatunk bővebben.
+
+Természetesen adódik az a kérdés is, hogy vajon NP-nehéz-e annak eldöntése, hogy egy gráf színezéséhez 2 élsúly elegendő. Irányított gráfokra a válasz igen, egyéb esetben ez egy nyitott probléma.
 
 \nocite{*}
 \printbibliography
