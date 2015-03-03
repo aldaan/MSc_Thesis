@@ -68,7 +68,7 @@ operációkutatás szakirány \\[2.2cm]
 \pagenumbering{arabic}
 
 \section{Fogalmak és jelölések}
-A továbbiakban, hacsak nincs másképp jelezve, minden gráf egyszerű, véges és irányítatlan. Egy $G = (V, E)$ gráfon értelmezett $w: E \rightarrow [k] = \lbrace 1, \ldots, k \rbrace$ függvényt $k$-élsúlyozásnak nevezünk. Amennyiben a csúcsokhoz is rendelünk súlyokat, azaz $w: V \cup E \rightarrow [k]$, akkor $k$-teljes-súlyozásról beszélünk. Egy csúcs értékén a rá illeszkedő élek súlyainak, és amennyiben van, a saját súlyának összegét értjük. Azt mondjuk, hogy egy súlyozás csúcs-megkülönböztető, ha bármely két csúcsnak különböző az értéke. Abban az esetben, ha ezt csak szomszédos csúcspárokra követeljük meg, akkor a csúcsok értékei egy színezését adják a gráfnak. Az ilyen súlyozást csúcs-színezőnek hívjuk. Adott $G$ gráfra a legkisebb olyan $k$ számot, melyre létezik $G$-nek csúcs-színező $k$-élsúlyozása $\chi_e^{\Sigma}(G)$-vel jelöljük. Végezetül egy gráfra azt mondjuk, hogy rendes, ha egyetlen komponense sem izomorf $K_2$-vel.
+A továbbiakban, hacsak nincs másképp jelezve, minden gráf egyszerű, véges és irányítatlan. Egy $G = (V, E)$ gráfon értelmezett $w: E \rightarrow [k] = \lbrace 1, \ldots, k \rbrace$ függvényt \textbf{$k$-élsúlyozás}nak nevezünk. Amennyiben a csúcsokhoz is rendelünk súlyokat, azaz $w: V \cup E \rightarrow [k]$, akkor \textbf{$k$-teljes-súlyozás}ról beszélünk. Egy csúcs \textbf{érték}én a rá illeszkedő élek súlyainak, és amennyiben van, a saját súlyának összegét értjük. Azt mondjuk, hogy egy súlyozás \textbf{csúcs-megkülönböztető}, ha bármely két csúcsnak különböző az értéke. Abban az esetben, ha ezt csak szomszédos csúcspárokra követeljük meg, akkor a csúcsok értékei egy színezését adják a gráfnak. Az ilyen súlyozást \textbf{csúcs-színező}nek hívjuk. Adott $G$ gráfra a legkisebb olyan $k$ számot, melyre létezik $G$-nek csúcs-színező $k$-élsúlyozása $\chi_e(G)$-vel jelöljük. Végezetül egy gráfra azt mondjuk, hogy \textbf{rendes}, ha egyetlen komponense sem izomorf $K_2$-vel.
 
 \section{Az 1, 2, 3 - sejtés}
 Az 1, 2, 3 - sejtés vizsgálatát a gráfok irregularitásának vizsgálata motiválta. Egy gráf éleinek súlyozását irregulárisnak nevezzük, ha bármely két csúcsra a rájuk illeszkedő éleken vett összeg különböző. Egy gráf irregularitásának erősségén azt a legkisebb $k$ számot értjük, amelyre létezik irreguláris súlyozás az $\lbrace 1, \ldots, k \rbrace$ halmazból vett súlyokkal. Ennek a feladatnak egy természetesen adódó egyszerűsítése, ha csak szomszédos csúcsokra követeljük meg azt, hogy különböző legyen az értékük. 
@@ -79,17 +79,76 @@ A sejtést először \citeauthor{Karonski2004} \cite{Karonski2004} fogalmazta me
 Minden rendes gráf élei megcímkézhetőek az 1, 2, 3 számokkal oly módon, hogy tetszőleges két szomszédos csúcsra a rájuk illeszkedő éleken lévő számok összege különböző legyen.
 \end{sej}
 
-A sejtést megfogalmazása óta sokat vizsgálták. Az eddigi legjobb korlátot \citeauthor{Kalkowski2010} \cite{Kalkowski2010} bizonyította be 2010-ben, mely szerint a helyes színezéshez 5 élsúly elegendő. Könnyen látható, hogy léteznek olyan rendes gráfok, amelyekre nem elég 2 élsúly. Azonban egy aszimptotikus eredmény szerint egy $G(p, n)$ véletlen gráf majdnem biztosan megszínezhető csak az 1, 2 élsúlyok segítségével \cite{AddarioBerry2008}. Bizonyos gráfosztályokra már sikerült igazolni a sejtést. Eszerint 3-színezhető \cite{Karonski2004}, illetve teljes gráfok \cite{Alaeiyan2012} esetén $\chi_e^{\Sigma}(G) = 3$. Az előbbi eredmény nyomán feltehető az a kérdés, hogy mely páros gráfok esetében elegendő csak az 1, 2 súlyok közül választani. \citeauthor{Lu2011} \cite{Lu2011} cikke szerint a 3-összefüggő, valamint bizonyos fokszám-megkötéseknek eleget tevő páros gráfok ilyenek.
+A sejtést megfogalmazása óta sokat vizsgálták. Az eddigi legjobb korlátot \citeauthor{Kalkowski2010} \cite{Kalkowski2010} bizonyította be 2010-ben, mely szerint a helyes színezéshez 5 élsúly elegendő. Könnyen látható, hogy léteznek olyan rendes gráfok, amelyekre nem elég 2 élsúly. Azonban egy aszimptotikus eredmény szerint egy $G(p, n)$ véletlen gráf majdnem biztosan megszínezhető csak az 1, 2 élsúlyok segítségével \cite{AddarioBerry2008}. Bizonyos gráfosztályokra már sikerült igazolni a sejtést. Eszerint 3-színezhető \cite{Karonski2004}, illetve teljes gráfok \cite{Alaeiyan2012} esetén $\chi_e(G) = 3$. Az előbbi eredmény nyomán feltehető az a kérdés, hogy mely páros gráfok esetében elegendő csak az 1, 2 súlyok közül választani. \citeauthor{Lu2011} \cite{Lu2011} cikke szerint a 3-összefüggő, valamint bizonyos fokszám-megkötéseknek eleget tevő páros gráfok ilyenek.
 
 A csúcs-színező élsúlyozásoknak számos változatát vizsgálták már az elmúlt évtizedben. Az irányított esetben egy digráf éleit súlyozzuk, a csúcsok értékét pedig csak a kifelé vezető éleken vett összeg határozza meg. Ez a probléma lényegesen egyszerűbb, mint az irányítatlan változat, ugyanis itt könnyedén belátható az 1, 2, 3 - sejtéssel analóg állítás \cite{Baudon2014}.
 
 \begin{áll}
-Minden $D$ digráfra $\chi_e^{\Sigma}(D) = 3$.
+Minden $D$ digráfra $\chi_e(D) = 3$.
 \end{áll}
 
 Más változatokban az élsúlyok összege helyett azok szorzata, halmaza, multihalmaza vagy sorozata határozza meg a csúcsok színeit. Emellett élsúlyozás helyett tekinthetünk csúcs-, illetve teljes-súlyozást is. Érdekes kérdés az is, hogy mit mondhatunk abban az esetben, ha a súlyokat nem az $\lbrace 1, \ldots, k \rbrace$ halmazból, hanem tetszőleges $k$-elemű listából választhatjuk ki. A különféle változatok eddigi eredményeiről \citeauthor{Seamone2012} \cite{Seamone2012} cikkében olvashatunk bővebben.
 
 Természetesen adódik az a kérdés is, hogy vajon NP-nehéz-e annak eldöntése, hogy egy gráf színezéséhez 2 élsúly elegendő. Irányított gráfokra a válasz igen, egyéb esetben ez egy nyitott probléma.
+
+\chapter{A sejtés bizonyítása felé}
+
+\section{Csúcs-színező 5-élsúlyozás}
+\begin{tét}[\citeauthor{Kalkowski2010} \cite{Kalkowski2010}]
+Minden $G$ rendes gráfra $\chi_e(G) \leq 5$.
+\end{tét}
+
+\begin{proof}
+Feltehető, hogy $G$ összefüggő, különben komponensenként érvelhetünk. Feltehető még továbbá az is, hogy $|V| \geq 3$, és létezik olyan $v$ csúcs, melyre $d(v) \geq 2$. Legyen $v_1, v_2, \ldots, v_n$ a csúcsoknak egy olyan sorrendje, melyre $d(v_n) \geq 2$, és minden $1 \leq i \leq n-1$-re $v_i$-nek van szomszédja $\lbrace v_{i+1}, v_{i+2}, \ldots, v_n \rbrace$-ben.
+
+Kezdetben minden $e$ élhez az $f(e) = 3$ élsúlyt rendeljük, majd legfeljebb kétszer módosítjuk, miközben sorban végighaladunk a csúcsokon. Minden $i < n$-re a $v_i$ csúcshoz hozzárendelünk két színt, $W_(v_i) = \lbrace w(v_i), w(v_i) +2 \rbrace$, ahol $w(v_i) \in \lbrace 0, 1 \rbrace$ mod $4$, oly módon, hogy minden $v_j v_i \in E$ élre, ahol $1 \leq j < i$, $W(v_j) \cap W(v_i) = \emptyset$, és biztosítani fogjuk, hogy $f(v_i) = \sum\limits_{u \in N(v_i)} f(uv_i) \in W(v_i)$. Végül beállítjuk a $v_n$-re illeszkedő élek súlyát úgy, hogy $f(v_n)$ különbözzön $f(v_i)$-től minden $v_i \in N(v_n)$-re.
+
+Ezt szem előtt tartva legyen $f(v_1) = 3d(v_1)$, és válasszuk meg a $W(v_1)$ halmazt úgy, hogy $f(v_1) \in W(v_1)$, valamint $w(v_1) \in \lbrace 0, 1 \rbrace$ mod $4$ teljesüljön. Legyen $2 \leq k \leq n - 1$, és tegyük fel, hogy már minden $i < k$-ra meghatároztuk $W(v_i)$-t, valamint
+\begin{itemize}
+\item $f(v_i) \in W(v_i)$, ahol $i < k$
+\item $f(v_k v_j) = 3$ minden élre, ahol $j > k$
+\item ha $f(v_i v_k) \neq 3$ valamely élre $i < k$ esetén, akkor vagy $f(v_i v_k) = 2$ és $f(v_i) = w(v_i)$, vagy $f(v_i v_k) = 4$ és $f(v_i) = w(v_i) + 2$.
+\end{itemize}
+
+Ha $v_i v_k \in E$ valamely $i < k$-ra, akkor $f(v_i v_k)$-t $2$-vel növelhetjük vagy csökkenthetjük úgy, hogy $f(v_i) \in W(v_i)$ maradjon. Amennyiben $v_k$-nak $d$ ilyen szomszédja van, úgy ez $d + 1$ lehetséges értéket jelent $f(v_k)$ számára, melyek mind azonos paritásúak. Ezen felül megengedjük még, hogy az $f(v_k v_j)$ súlyt $1$-gyel módosítsuk, ahol $j > k$ a legkisebb index, melyre $v_k v_j \in E$. Ezáltal $f(v_k)$ egy $\lbrack a, a + 2d + 2 \rbrack$ intervallum minden értékét felveheti. Úgy szeretnénk módosítani a súlyokat és meghatározni $w(v_k)$-t, hogy
+\begin{enumerate}
+\item $f(v_i) \in W(v_i)$, ahol $1 \leq i \leq k$
+\item $v_i v_k \in E$ esetén $w(v_i) \neq w(v_k)$, ahol $i < k$
+\item vagy $f(v_k) = w(v_k)$ és $f(v_k v_j) \in \lbrace 2, 3 \rbrace$ vagy $f(v_k) = w(v_k) + 2$ és $f(v_k v_j) \in \lbrace 3, 4 \rbrace$
+\end{enumerate}
+teljesüljön. A második feltétel legfeljebb $2d$ értéket zárhat ki az $\lbrack a, a + 2d + 2 \rbrack$ intervallumból, míg a harmadik feltétel csak az $a$ és $a + 2d + 2$ értékeket, hiszen minden más $f(v_k)$ értékre $f(v_k v_j) \neq 3$ esetén lehetőségünk van választani $f(v_k v_j) = 2$ és $f(v_k v_j) = 4$ között. Így legalább egy érték szabadon marad $f(v_k)$ számára.
+
+Ilyen módon lépésről lépésre, konfliktus nélkül meghatározhatjuk a $W(v_k)$ halmazokat minden $k \leq n - 1$-re. Vegyük észre, hogy amikor az $f(v_k)$ érték először változik meg egy $v_k v_i$, $i > k$ él módosítása miatt, akkor $i = j$, vagyis nem okoznak problémát a $2$ vagy $4$ súlyú élek.
+
+Utolsó lépésként találnunk kell egy szabad értéket $v_n$-nek. Ez alkalommal nem áll rendelkezésünkre egy $v_n v_j$ segédél, de nem is kell későbbi csúcsok miatt aggódnunk. Az előzőekhez hasonlóan, ha $v_i v_n \in E$ valamely $i < n$-re, akkor $f(v_i v_n)$-t $2$-vel növelhetjük vagy csökkenthetjük úgy, hogy $f(v_i) \in W(v_i)$ maradjon. Ezek a módosítások összesen $d(v_n) +1 \geq 3$, azonos paritású lehetőséget jelentenek $f(v_n)$ értékének. Így, ha a legkisebb ilyen lehetséges $a$ értékre $a \in \lbrace 2, 3 \rbrace$ mod $4$, akkor minden $v_n$-re illeszkedő élen a kisebb értéket választva a csúcsok egy helyes színezését kapjuk. Ha $a \in \lbrace 0, 1 \rbrace$ mod $4$, és létezik olyan $v_i \in N(v_n)$ csúcs, melyre $w(v_i) \neq a$, akkor a $v_i v_n$ élen a nagyobb, minden más élen pedig a kisebb súlyt választva $f(v_n) = a + 2$, ami szintén helyes színezéshez vezet. Végezetül, amennyiben $a \in \lbrace 0, 1 \rbrace$ mod $4$ és $w(v_i) = a$ minden $v_i \in N(v_n)$-re, akkor legalább két élen a nagyobb súlyt választva kapunk helyes színezést. Ezzel a tétel állítását beláttuk.
+\end{proof}
+
+\section{Csúcs-színező 6-élsúlyozás}
+\begin{lem}
+Minden összefüggő, rendes $G$ gráfra létezik olyan $f:E(G) \rightarrow \lbrace 1, 2, 3 \rbrace$ élsúlyozás és $f':V(G) \rightarrow \lbrace 0, 1 \rbrace$ csúcs-súlyozás, melyre a csúcsok $w(v) = f'(v) + \sum\limits_{w \in N(v)} f(vw)$ értéke egy helyes színezés.
+\end{lem}
+
+\begin{lem}
+Legyen $\alpha \in \mathbb{R}$ és $\beta \in \mathbb{R} \smallsetminus \lbrace 0 \rbrace$. Ekkor minden összefüggő, rendes $G$ gráfra, és tetszőleges $T$ feszítőfájára létezik olyan $f:E(G) \rightarrow \lbrace \alpha - \beta, \alpha, \alpha + \beta \rbrace$ élsúlyozás és $f':V(G) \rightarrow \lbrace 0, \beta \rbrace$ csúcs-súlyozás, melyre a csúcsok $w(v) = f'(v) + \sum\limits_{w \in N(v)} f(vw)$ értéke egy helyes színezés. Továbbá $f$ megválasztható úgy, hogy $f(e) = \alpha$ minden $e \in E(T)$-re.
+\end{lem}
+
+\begin{proof}
+Legyen $v_1, v_2, \ldots, v_n$ a csúcsoknak egy olyan sorrendje, melyre minden $k \geq 2$-re $v_k$-ból pontosan egy $T$-beli él vezet $\lbrace v_1, v_2, \ldots, v_{k - 1} \rbrace$-be. Kezdetben minden élhez az $\alpha$ súlyt rendeljük, amelyet legfeljebb egyszer módosítunk, hogy sorban minden $v_k$ csúcs értékét véglegesítsük.
+
+Legyen $w(v_1) = \alpha d(v_1)$, és tegyük fel, hogy valamely $k \geq 2$-re már meghatároztuk az $f$ élsúlyokat az $E(G\lbrack \lbrace v_1, v_2, \ldots, v_{k - 1} \rbrace \rbrack) \smallsetminus E(T)$ halmazon és az $f'$ csúcs-súlyokat $\lbrace v_1, v_2, \ldots, v_{k - 1} \rbrace$-en úgy, hogy az első $k - 1$ csúcs $w(v_i)$ értéke már végleges.
+
+A $v_k$ csúcs esetén minden $E(v_k, \lbrace v_1, v_2, \ldots, v_{k - 1} \rbrace) \smallsetminus E(T)$-beli él súlyát módosíthatjuk $\beta$-val. Amennyiben $v_k v_i \in E(G) \smallsetminus E(T)$ és $f'(v_i) = 0$, akkor választhatunk $(f(v_k v_i) = \alpha, f'(v_i) = 0)$ és $(f(v_k v_i) = \alpha - \beta, f'(v_i) = \beta)$ között anélkül, hogy megváltoztatnánk $w(v_i)$-t. Hasonlóan, ha $v_k v_i \in E(G) \smallsetminus E(T)$ és $f'(v_i) = \beta$, akkor választhatunk $(f(v_k v_i) = \alpha, f'(v_i) = \beta)$ és $(f(v_k v_i) = \alpha + \beta, f'(v_i) = 0)$ között anélkül, hogy megváltoztatnánk $w(v_i)$-t. Végezetül megválaszthatjuk $f'(v_k)$ értékét is. Ez összesen $|E(v_k, \lbrace v_1, v_2, \ldots, v_{k - 1} \rbrace) \smallsetminus E(T)| + 2 = |E(v_k, \lbrace v_1, v_2, \ldots, v_{k - 1} \rbrace)| + 1$ különböző lehetőség $w(v_k)$ értékének, melyek közül kiválaszthatjuk azt, amely minden $N(v_k) \cap \lbrace v_1, v_2, \ldots, v_{k - 1} \rbrace$-beli csúcs értékétől különbözik.
+
+Ezt az eljárást folytatva megkaphatjuk a kívánt súlyozást.
+\end{proof}
+
+\begin{tét}[\citeauthor{Kalkowski2009} \cite{Kalkowski2009}]
+Minden $G$ rendes gráfra $\chi_e(G) \leq 6$.
+\end{tét}
+
+\begin{proof}
+
+\end{proof}
 
 \nocite{*}
 \printbibliography
