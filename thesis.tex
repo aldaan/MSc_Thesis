@@ -73,7 +73,7 @@ A továbbiakban, hacsak nincs másképp jelezve, minden gráf egyszerű, véges 
 \section{Az 1, 2, 3 - sejtés}
 Az 1, 2, 3 - sejtés vizsgálatát a gráfok irregularitásának vizsgálata motiválta. Egy gráf éleinek súlyozását irregulárisnak nevezzük, ha bármely két csúcsra a rájuk illeszkedő éleken vett összeg különböző. Egy gráf irregularitásának erősségén azt a legkisebb $k$ számot értjük, amelyre létezik irreguláris súlyozás az $\lbrace 1, \ldots, k \rbrace$ halmazból vett súlyokkal. Ennek a feladatnak egy természetesen adódó egyszerűsítése, ha csak szomszédos csúcsokra követeljük meg azt, hogy különböző legyen az értékük. 
 
-A sejtést először \citeauthor{Karonski2004} \cite{Karonski2004} fogalmazta meg 2004-ben, és a következőképpen hangzik: 
+A sejtést először \citeauthor{Karonski2004} \cite{Karonski2004} fogalmazta meg 2002-ben, és a következőképpen hangzik: 
 
 \begin{sej}[Az 1, 2, 3 - sejtés]
 Minden rendes gráf élei megcímkézhetőek az 1, 2, 3 számokkal oly módon, hogy tetszőleges két szomszédos csúcsra a rájuk illeszkedő éleken lévő számok összege különböző legyen.
@@ -91,7 +91,54 @@ Más változatokban az élsúlyok összege helyett azok szorzata, halmaza, multi
 
 Természetesen adódik az a kérdés is, hogy vajon NP-nehéz-e annak eldöntése, hogy egy gráf színezéséhez 2 élsúly elegendő. Irányított gráfokra a válasz igen, egyéb esetben ez egy nyitott probléma.
 
-\chapter{A sejtés bizonyítása felé}
+\chapter{A fontosabb eredmények}
+
+A sejtéssel kapcsolatban a legfontosabb előrehaladást a $\chi_e(G)$-re vonatkozó konstans korlátok bevezetése és javítása jelenti. A sejtést először felvető cikkben még csak azt bizonyították, hogy véges sok valós élsúly elegendő, később viszont egész számokra vonatkozó korlátokat is adtak. A jelenleg ismert legjobb eredmény \citeauthor{Kalkowski2010} nevéhez fűződik, akik a $\chi_e(G) \leq 6$ \cite{Kalkowski2009}, kicsivel később pedig a $\chi_e(G) \leq 5$ \cite{Kalkowski2010} korlátot adták a problémára. A két bizonyítás merőben más eszközöket használ, amelyek önmagukban is említésre érdemesek, ezért a következőkben mindkettőre kitérünk.
+
+\section{Csúcs-színező 6-élsúlyozás}
+Először vizsgáljuk a gyengébb korlátot. Az erre vonatkozó tétel bizonyítása előtt tekintsük a következő lemmát, mely az \cite{Kalkowski2009} cikk első szerzőjének egy korábbi eredménye:
+
+\begin{lem}
+Minden összefüggő, rendes $G$ gráfra létezik olyan $f:E(G) \rightarrow \lbrace 1, 2, 3 \rbrace$ élsúlyozás és $f':V(G) \rightarrow \lbrace 0, 1 \rbrace$ csúcs-súlyozás, melyre a csúcsok $w(v) = f'(v) + \sum\limits_{w \in N(v)} f(vw)$ értéke egy helyes színezés.
+\end{lem}
+
+Ennek segítségével egy $\chi_e(G) \leq 10$ korlát adható az élsúlyok megháromszorozásával, majd bizonyos élek $1$-gyel történő módosításával. Jelen esetben is egy hasonló eljárást követünk majd, amelyhez szükségünk lesz a lemma egy általánosabb alakjára. Előtte azonban érdemes megjegyezni egy egyszerű következményt. A sejtés vizsgálatánál érdekes kérdés lehet, hogy mit tudunk mondani a rossz élek részgráfjáról, vagyis azon élekről, melyek végpontjai azonos értékűek. A fenti lemma erre is ad egyfajta választ, ugyanis az általa biztosított teljes súlyozásban minden csúcsra $0$-t írva olyan élsúlyozást kapunk, ahol a rossz élek egy páros gráfot alkotnak. Ez a megfigyelés segíthet abban, hogy közelebb jussunk a sejtés bizonyításához vagy cáfolatához. Visszatérve a tételünkhöz, a lemma általánosítása a következőképpen hangzik:
+
+\begin{lem}
+Legyen $\alpha \in \mathbb{R}$ és $\beta \in \mathbb{R} \smallsetminus \lbrace 0 \rbrace$. Ekkor minden összefüggő, rendes $G$ gráfra, és tetszőleges $T$ feszítőfájára létezik olyan $f:E(G) \rightarrow \lbrace \alpha - \beta, \alpha, \alpha + \beta \rbrace$ élsúlyozás és $f':V(G) \rightarrow \lbrace 0, \beta \rbrace$ csúcs-súlyozás, melyre a csúcsok $w(v) = f'(v) + \sum\limits_{w \in N(v)} f(vw)$ értéke egy helyes színezés. Továbbá $f$ megválasztható úgy, hogy $f(e) = \alpha$ minden $e \in E(T)$-re.
+\end{lem}
+
+\begin{proof}
+Legyen $v_1, v_2, \ldots, v_n$ a csúcsoknak egy olyan sorrendje, melyre minden $k \geq 2$-re $v_k$-ból pontosan egy $T$-beli él vezet $\lbrace v_1, v_2, \ldots, v_{k - 1} \rbrace$-be. Kezdetben minden élhez az $\alpha$ súlyt rendeljük, amelyet legfeljebb egyszer módosítunk, hogy sorban minden $v_k$ csúcs értékét véglegesítsük.
+
+Legyen $w(v_1) = \alpha d(v_1)$, és tegyük fel, hogy valamely $k \geq 2$-re már meghatároztuk az $f$ élsúlyokat az $E(G\lbrack \lbrace v_1, v_2, \ldots, v_{k - 1} \rbrace \rbrack) \smallsetminus E(T)$ halmazon és az $f'$ csúcs-súlyokat $\lbrace v_1, v_2, \ldots, v_{k - 1} \rbrace$-en úgy, hogy az első $k - 1$ csúcs $w(v_i)$ értéke már végleges.
+
+A $v_k$ csúcs esetén minden $E(v_k, \lbrace v_1, v_2, \ldots, v_{k - 1} \rbrace) \smallsetminus E(T)$-beli él súlyát módosíthatjuk $\beta$-val. Amennyiben $v_k v_i \in E(G) \smallsetminus E(T)$ és $f'(v_i) = 0$, akkor választhatunk $(f(v_k v_i) = \alpha, f'(v_i) = 0)$ és $(f(v_k v_i) = \alpha - \beta, f'(v_i) = \beta)$ között anélkül, hogy megváltoztatnánk $w(v_i)$-t. Hasonlóan, ha $v_k v_i \in E(G) \smallsetminus E(T)$ és $f'(v_i) = \beta$, akkor választhatunk $(f(v_k v_i) = \alpha, f'(v_i) = \beta)$ és $(f(v_k v_i) = \alpha + \beta, f'(v_i) = 0)$ között anélkül, hogy megváltoztatnánk $w(v_i)$-t. Végezetül megválaszthatjuk $f'(v_k)$ értékét is. Ez összesen $|E(v_k, \lbrace v_1, v_2, \ldots, v_{k - 1} \rbrace) \smallsetminus E(T)| + 2 = |E(v_k, \lbrace v_1, v_2, \ldots, v_{k - 1} \rbrace)| + 1$ különböző lehetőség $w(v_k)$ értékének, melyek közül kiválaszthatjuk azt, amely minden $N(v_k) \cap \lbrace v_1, v_2, \ldots, v_{k - 1} \rbrace$-beli csúcs értékétől különbözik.
+
+Ezt az eljárást folytatva megkaphatjuk a kívánt súlyozást.
+\end{proof}
+
+Ezen lemma birtokában most már készen állunk a tétel bizonyítására.
+
+\begin{tét}[\citeauthor{Kalkowski2009} \cite{Kalkowski2009}]
+Minden $G$ rendes gráfra $\chi_e(G) \leq 6$.
+\end{tét}
+
+\begin{proof}
+Feltehető, hogy $G$ összefüggő, különben a komponenseket külön-külön vizsgálhatjuk. Induljunk ki egy tetszőleges $T$ feszítőfából, és vegyünk egy $(f, f', w)$ súlyozást a lemma alapján, $\alpha = 4$ és $\beta = -2$ paraméterekkel. Ekkor minden csúcs és él súlya páros. A bizonyítás hátralévő részében módosítani fogjuk $f$-et és $f'$-t, de $w(v)$ változatlan marad minden $v \in V(G)$ csúcsra.
+
+Legyen $H = G\lbrack \lbrace v \in v(G)\ |\ f'(v) = -2 \rbrace \rbrack$, és ebben $H_1$ egy maximális feszítő részgráf, melyben a legnagyobb fokszám legfeljebb $2$. Adjunk hozzá $-1$-et $f(e)$-hez a $H_1$ minden $e$ élére, és módosítsuk $V(H_1)$ minden $v$ csúcsán az $f'(v)$ értéket ennek megfelelően, hogy $w(v)$ változatlan maradjon. Így minden $v \in V(G)$ csúcsra $f'(V) \in \lbrace 0, -1, -2 \rbrace$, minden $e \in E(G)$ élre $f(e) \in \lbrace 1, 2, \ldots, 6 \rbrace$, továbbá minden $e \in E(T)$ élre $f(e) \in \lbrace 3, 4 \rbrace$.
+
+Legyen $i \in \lbrace 0, 1, 2 \rbrace$ esetén $S_i = \lbrace v \in v(G)\ |\ f'(v) = -i \rbrace$ és $s_i = |S_i|$. Figyeljük meg, hogy minden $v \in S_0 \cup S_2$ csúcs $w(v) - f'(v)$ súlya páros, az $S_1$-beli csúcsoké pedig páratlan. $H_1$ maximalitása miatt minden $uv$ élre, ahol $u, v \in S_1 \cup S_2$, teljesül, hogy $u, v \in S_1$ és $uv \in E(H_1)$, hiszen ha nem így lenne, akkor az előző lépésben a $H_1$ részgráfot tudtuk volna még bővíteni. Részletesebben, ezen élek végpontjaira $w(u) - f'(u) \neq w(v) - f'(v)$. Az ilyen élek halmazát jelölje $E^*$.
+
+Ha $s_2 = 0$, akkor készen vagyunk, hiszen $f$ jó színezést ad. Amennyiben $s_2 = 1$ és $s_1 = 0$, legyen $u \in S_2$. Figyeljük meg, hogy minden $u$-ra illeszkedő $e$ él súlya $f(e) \in \lbrace 2, 4, 6 \rbrace$. Ha $u$-nak van egy olyan $v$ szomszédja, melyre $w(u) + 2 \neq w(v)$, akkor az $uv$ és súlyát $1$-gyel csökkentve szintén helyes színezéshez jutunk. (Figyeljük meg, hogy csak $u$ és $v$ súlya páratlan.) Ha $u$ minden $v \in N(u)$ szomszédjára $w(u) + 2 = w(v)$ és $|N(u)| \geq 2$, akkor két különböző, $u$-ra illeszkedő élen is csökkentsük a súlyt $1$-gyel. Ez ismét a kívánt súlyozáshoz vezet. Végül, ha az $u$ csúcs egyetlen $v$ szomszédjára $w(u) + 2 = w(v)$, akkor vegyünk egy $x \in N_T(v) \smallsetminus \lbrace u \rbrace$ csúcsot, csökkentsük $f(uv)$-t $1$-gyel, $f(vx)$-et pedig növeljük $1$-gyel. Így ismét megfelelő súlyozást kapunk.
+
+Ha $s_2 = 1$ és $s_1 \geq 1$, akkor vegyünk egy $T$-beli utat $u \in S_2$ és egy $v \in S_1$ között, majd felváltva csökkentsük és növeljük az élek súlyát $1$-gyel, ügyelve arra, hogy a $v$-re illeszkedő él súlyát csökkentsük. Ezzel a keresett súlyozáshoz jutunk.
+
+Ha $s_2 \geq 2$, akkor indukcióval beláthatjuk, hogy tudunk találni $\lceil \frac{s_2}{2} \rceil$ olyan $T$-beli utat, melyek végpontjai pontosan az $S_2$-beli csúcsok, és amelyek $T$ minden élét legfeljebb kétszer használják. Ilyen utakat $2 \leq s_2 \leq 3$ esetén könnyen találhatunk. Amennyiben $s_2 \geq 4$, úgy keressünk egy olyan $e \in E(T)$ élt, melyre $T-e$ mindkét komponense legalább $2$ $S_2$-beli csúcsot tartalmaz, és legalább az egyikben páros számú ilyen csúcs van. A két komponensre indukciót alkalmazva megtalálhatjuk a keresett utakat.
+
+Felváltva csökkentsük és növeljük ezen utak mentén az élek súlyait úgy, hogy csak a végpontok súlya változzon, és módosítsuk ennek megfelelően az $f'$ értékeket ezeken a csúcsokon. Ha egy $u \in S_2$ csúcs két útnak is végpontja (például, ha $s_2$ páratlan), akkor ügyeljünk arra, hogy az $u$-ra illeszkedő mindkét élen csökkentsük a súlyt, hogy $f'(u) = 0$ adódjon. Figyeljük meg, hogy csak $E(T)$-beli éleket használunk, így nem kapunk $1$-nél kisebb vagy $6$-nál nagyobb élsúlyokat. Ezek után minden csúcsra, amely korábban $S_2$-ben volt, $f'(v) \in \lbrace -3, -1, 0 \rbrace$. Könnyen látható, hogy így az $f$ súlyozást tekintve minden $v$ csúcs értéke $w(v)$, amennyiben $w(v)$ páros. A páratlan értékű csúcsok között futó élek mind $E^*$-ban vannak, tehát a végpontjaik $w$ súlya különböző, ahogyan azt korábban már láttuk. Így $f$ egy csúcs-színező $6$-élsúlyozás.
+\end{proof}
 
 \section{Csúcs-színező 5-élsúlyozás}
 \begin{tét}[\citeauthor{Kalkowski2010} \cite{Kalkowski2010}]
@@ -121,33 +168,6 @@ teljesüljön. A második feltétel legfeljebb $2d$ értéket zárhat ki az $\lb
 Ilyen módon lépésről lépésre, konfliktus nélkül meghatározhatjuk a $W(v_k)$ halmazokat minden $k \leq n - 1$-re. Vegyük észre, hogy amikor az $f(v_k)$ érték először változik meg egy $v_k v_i$, $i > k$ él módosítása miatt, akkor $i = j$, vagyis nem okoznak problémát a $2$ vagy $4$ súlyú élek.
 
 Utolsó lépésként találnunk kell egy szabad értéket $v_n$-nek. Ez alkalommal nem áll rendelkezésünkre egy $v_n v_j$ segédél, de nem is kell későbbi csúcsok miatt aggódnunk. Az előzőekhez hasonlóan, ha $v_i v_n \in E$ valamely $i < n$-re, akkor $f(v_i v_n)$-t $2$-vel növelhetjük vagy csökkenthetjük úgy, hogy $f(v_i) \in W(v_i)$ maradjon. Ezek a módosítások összesen $d(v_n) +1 \geq 3$, azonos paritású lehetőséget jelentenek $f(v_n)$ értékének. Így, ha a legkisebb ilyen lehetséges $a$ értékre $a \in \lbrace 2, 3 \rbrace$ mod $4$, akkor minden $v_n$-re illeszkedő élen a kisebb értéket választva a csúcsok egy helyes színezését kapjuk. Ha $a \in \lbrace 0, 1 \rbrace$ mod $4$, és létezik olyan $v_i \in N(v_n)$ csúcs, melyre $w(v_i) \neq a$, akkor a $v_i v_n$ élen a nagyobb, minden más élen pedig a kisebb súlyt választva $f(v_n) = a + 2$, ami szintén helyes színezéshez vezet. Végezetül, amennyiben $a \in \lbrace 0, 1 \rbrace$ mod $4$ és $w(v_i) = a$ minden $v_i \in N(v_n)$-re, akkor legalább két élen a nagyobb súlyt választva kapunk helyes színezést. Ezzel a tétel állítását beláttuk.
-\end{proof}
-
-\section{Csúcs-színező 6-élsúlyozás}
-\begin{lem}
-Minden összefüggő, rendes $G$ gráfra létezik olyan $f:E(G) \rightarrow \lbrace 1, 2, 3 \rbrace$ élsúlyozás és $f':V(G) \rightarrow \lbrace 0, 1 \rbrace$ csúcs-súlyozás, melyre a csúcsok $w(v) = f'(v) + \sum\limits_{w \in N(v)} f(vw)$ értéke egy helyes színezés.
-\end{lem}
-
-\begin{lem}
-Legyen $\alpha \in \mathbb{R}$ és $\beta \in \mathbb{R} \smallsetminus \lbrace 0 \rbrace$. Ekkor minden összefüggő, rendes $G$ gráfra, és tetszőleges $T$ feszítőfájára létezik olyan $f:E(G) \rightarrow \lbrace \alpha - \beta, \alpha, \alpha + \beta \rbrace$ élsúlyozás és $f':V(G) \rightarrow \lbrace 0, \beta \rbrace$ csúcs-súlyozás, melyre a csúcsok $w(v) = f'(v) + \sum\limits_{w \in N(v)} f(vw)$ értéke egy helyes színezés. Továbbá $f$ megválasztható úgy, hogy $f(e) = \alpha$ minden $e \in E(T)$-re.
-\end{lem}
-
-\begin{proof}
-Legyen $v_1, v_2, \ldots, v_n$ a csúcsoknak egy olyan sorrendje, melyre minden $k \geq 2$-re $v_k$-ból pontosan egy $T$-beli él vezet $\lbrace v_1, v_2, \ldots, v_{k - 1} \rbrace$-be. Kezdetben minden élhez az $\alpha$ súlyt rendeljük, amelyet legfeljebb egyszer módosítunk, hogy sorban minden $v_k$ csúcs értékét véglegesítsük.
-
-Legyen $w(v_1) = \alpha d(v_1)$, és tegyük fel, hogy valamely $k \geq 2$-re már meghatároztuk az $f$ élsúlyokat az $E(G\lbrack \lbrace v_1, v_2, \ldots, v_{k - 1} \rbrace \rbrack) \smallsetminus E(T)$ halmazon és az $f'$ csúcs-súlyokat $\lbrace v_1, v_2, \ldots, v_{k - 1} \rbrace$-en úgy, hogy az első $k - 1$ csúcs $w(v_i)$ értéke már végleges.
-
-A $v_k$ csúcs esetén minden $E(v_k, \lbrace v_1, v_2, \ldots, v_{k - 1} \rbrace) \smallsetminus E(T)$-beli él súlyát módosíthatjuk $\beta$-val. Amennyiben $v_k v_i \in E(G) \smallsetminus E(T)$ és $f'(v_i) = 0$, akkor választhatunk $(f(v_k v_i) = \alpha, f'(v_i) = 0)$ és $(f(v_k v_i) = \alpha - \beta, f'(v_i) = \beta)$ között anélkül, hogy megváltoztatnánk $w(v_i)$-t. Hasonlóan, ha $v_k v_i \in E(G) \smallsetminus E(T)$ és $f'(v_i) = \beta$, akkor választhatunk $(f(v_k v_i) = \alpha, f'(v_i) = \beta)$ és $(f(v_k v_i) = \alpha + \beta, f'(v_i) = 0)$ között anélkül, hogy megváltoztatnánk $w(v_i)$-t. Végezetül megválaszthatjuk $f'(v_k)$ értékét is. Ez összesen $|E(v_k, \lbrace v_1, v_2, \ldots, v_{k - 1} \rbrace) \smallsetminus E(T)| + 2 = |E(v_k, \lbrace v_1, v_2, \ldots, v_{k - 1} \rbrace)| + 1$ különböző lehetőség $w(v_k)$ értékének, melyek közül kiválaszthatjuk azt, amely minden $N(v_k) \cap \lbrace v_1, v_2, \ldots, v_{k - 1} \rbrace$-beli csúcs értékétől különbözik.
-
-Ezt az eljárást folytatva megkaphatjuk a kívánt súlyozást.
-\end{proof}
-
-\begin{tét}[\citeauthor{Kalkowski2009} \cite{Kalkowski2009}]
-Minden $G$ rendes gráfra $\chi_e(G) \leq 6$.
-\end{tét}
-
-\begin{proof}
-
 \end{proof}
 
 \nocite{*}
