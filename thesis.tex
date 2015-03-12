@@ -68,7 +68,7 @@ operációkutatás szakirány \\[2.2cm]
 \pagenumbering{arabic}
 
 \section{Fogalmak és jelölések}
-A továbbiakban, hacsak nincs másképp jelezve, minden gráf egyszerű, véges és irányítatlan. Egy $G = (V, E)$ gráfon értelmezett $w: E \rightarrow [k] = \lbrace 1, \ldots, k \rbrace$ függvényt \textbf{$k$-élsúlyozás}nak nevezünk. Amennyiben a csúcsokhoz is rendelünk súlyokat, azaz $w: V \cup E \rightarrow [k]$, akkor \textbf{$k$-teljes-súlyozás}ról beszélünk. Egy csúcs \textbf{érték}én a rá illeszkedő élek súlyainak, és amennyiben van, a saját súlyának összegét értjük. Azt mondjuk, hogy egy súlyozás \textbf{csúcs-megkülönböztető}, ha bármely két csúcsnak különböző az értéke. Abban az esetben, ha ezt csak szomszédos csúcspárokra követeljük meg, akkor a csúcsok értékei egy színezését adják a gráfnak. Az ilyen súlyozást \textbf{csúcs-színező}nek hívjuk. Adott $G$ gráfra a legkisebb olyan $k$ számot, melyre létezik $G$-nek csúcs-színező $k$-élsúlyozása $\chi_e(G)$-vel jelöljük. Végezetül egy gráfra azt mondjuk, hogy \textbf{rendes}, ha egyetlen komponense sem izomorf $K_2$-vel.
+A továbbiakban, hacsak nincs másképp jelezve, minden gráf egyszerű, véges és irányítatlan. Egy $G = (V, E)$ gráfon értelmezett $w: E \rightarrow [k] = \lbrace 1, \ldots, k \rbrace$ függvényt \textbf{$k$-élsúlyozás}nak nevezünk. Amennyiben a csúcsokhoz is rendelünk súlyokat, azaz $w: V \cup E \rightarrow [k]$, akkor \textbf{$k$-teljes-súlyozás}ról beszélünk. Egy csúcs \textbf{érték}én vagy \textbf{szín}én a rá illeszkedő élek súlyainak, és amennyiben van, a saját súlyának összegét értjük. Az első eset egy másik elnevezése még a \textbf{súlyozott fokszám}. Azt mondjuk, hogy egy súlyozás \textbf{csúcs-megkülönböztető}, ha bármely két csúcsnak különböző az értéke. Abban az esetben, ha ezt csak szomszédos csúcspárokra követeljük meg, akkor a csúcsok értékei egy színezését adják a gráfnak. Az ilyen súlyozást \textbf{csúcs-színező}nek hívjuk. Adott $G$ gráfra a legkisebb olyan $k$ számot, melyre létezik $G$-nek csúcs-színező $k$-élsúlyozása $\chi_e(G)$-vel jelöljük. Végezetül egy gráfra azt mondjuk, hogy \textbf{rendes}, ha egyetlen komponense sem izomorf $K_2$-vel.
 
 \section{Az 1, 2, 3 - sejtés}
 Az 1, 2, 3 - sejtés vizsgálatát a gráfok irregularitásának vizsgálata motiválta. Egy gráf éleinek súlyozását irregulárisnak nevezzük, ha bármely két csúcsra a rájuk illeszkedő éleken vett összeg különböző. Egy gráf irregularitásának erősségén azt a legkisebb $k$ számot értjük, amelyre létezik irreguláris súlyozás az $\lbrace 1, \ldots, k \rbrace$ halmazból vett súlyokkal. Ennek a feladatnak egy természetesen adódó egyszerűsítése, ha csak szomszédos csúcsokra követeljük meg azt, hogy különböző legyen az értékük. 
@@ -169,6 +169,27 @@ Ilyen módon lépésről lépésre, konfliktus nélkül meghatározhatjuk a $W(v
 
 Utolsó lépésként találnunk kell egy szabad értéket $v_n$-nek. Ez alkalommal nem áll rendelkezésünkre egy $v_n v_j$ segédél, de nem is kell későbbi csúcsok miatt aggódnunk. Az előzőekhez hasonlóan, ha $v_i v_n \in E$ valamely $i < n$-re, akkor $f(v_i v_n)$-t $2$-vel növelhetjük vagy csökkenthetjük úgy, hogy $f(v_i) \in W(v_i)$ maradjon. Ezek a módosítások összesen $d(v_n) +1 \geq 3$, azonos paritású lehetőséget jelentenek $f(v_n)$ értékének. Így, ha a legkisebb ilyen lehetséges $a$ értékre $a \in \lbrace 2, 3 \rbrace$ mod $4$, akkor minden $v_n$-re illeszkedő élen a kisebb értéket választva a csúcsok egy helyes színezését kapjuk. Ha $a \in \lbrace 0, 1 \rbrace$ mod $4$, és létezik olyan $v_i \in N(v_n)$ csúcs, melyre $w(v_i) \neq a$, akkor a $v_i v_n$ élen a nagyobb, minden más élen pedig a kisebb súlyt választva $f(v_n) = a + 2$, ami szintén helyes színezéshez vezet. Végezetül, amennyiben $a \in \lbrace 0, 1 \rbrace$ mod $4$ és $w(v_i) = a$ minden $v_i \in N(v_n)$-re, akkor legalább két élen a nagyobb súlyt választva kapunk helyes színezést. Ezzel a tétel állítását beláttuk.
 \end{proof}
+
+\chapter{Élsúlyozások irányított gráfokon}
+Az eddigiekben irányítatlan gráfok élsúlyozásait vizsgáltuk, de joggal merülhet fel a kérdés, hogy vajon mit tudunk mondani az irányított esetről. Itt két lehetőségünk van egy csúcs színének meghatározására. 
+
+Az első esetben a kimenő élek összsúlyából kivonjuk bemenő élek összsúlyát. Erről a változatról \citeauthor{Bartnicki2009} \cite{Bartnicki2009} bebizonyították, hogy a súlyokat tetszőleges kételemű listákról választva is létezik csúcs-színező élsúlyozás.
+
+A második esetben egy csúcs színét csak a kimenő éleken vett súlyok összege, azaz a csúcs súlyozott kifoka határozza meg. A továbbiakban ezzel az esettel fogunk foglalkozni.
+
+\section{Csúcs-színező 3-élsúlyozás}
+Könnyen látható, hogy léteznek olyan digráfok, például a $3$ hosszú irányított kör, amelyek helyes színezéséhez nem elegendőek az $\lbrace 1, 2 \rbrace$ élsúlyok. A következő tétel azt mondja ki, hogy minden irányított gráfnak van csúcs-színező 3-élsúlyozása. Ez abból következik, hogy minden digráfnak van egy alkalmas csúcsa, amely a szomszédai számához képest sok lehetséges súlyozott kifok-értéket vehet fel. Egy ilyen csúcs létezése teljes indukció használatát teszi lehetővé, továbbá a bizonyítás polinomiális idejű algoritmust is eredményez egy csúcs-színező 3-élsúlyozás megtalálására.
+
+\begin{tét}
+Minden $D$ digráfra $\chi_e(D) \leq 3$.
+\end{tét}
+
+\begin{proof}
+A bizonyítás $D$ élszáma szerinti indukcióval történik. Az állítás nyilvánvaló $0$ vagy $1$ élű digráf esetén. Tegyük fel, hogy legfeljebb $m - 1$ élre már igazoltuk a tételt, és legyen $D = (V, A)$ egy $m \geq 2$ élű digráf.
+
+Figyeljük meg, hogy $D$-nek létezik egy olyan $v$ csúcsa, melyre $\delta(v) > 0$ és $\delta(v) > \varrho(v)$, hiszen különben $\sum\limits_{v \in V} \varrho(v) \neq \sum\limits_{v \in V} \delta(v)$ lenne. Első lépésként töröljünk minden $v$-ből kilépő élet. Ekkor az indukciós feltevés miatt a fennmaradó digráfnak létezik egy $w$ csúcs-színező 3-élsúlyozása. Tegyük vissza a kitörölt éleket, és terjesszük ki ezekre $w$-t oly módon, hogy $v$ súlyozott kifoka különbözzön mind a $\delta(v) + \varrho(v)$ szomszédjáétól. Ez megtehető, hiszen $2\delta(v) + 1$ érték közül választhatunk, nevezetesen a $\lbrace \delta(v), \delta(v) + 1, \ldots, 3\delta(v) \rbrace$ halmazból, míg a tiltott értékek száma $v$ választása miatt legfeljebb $\varrho(v) + \delta(v) < 2\delta(v) + 1$. Mivel ezen élsúlyok kizárólag a $v$ csúcs súlyozott kifokát befolyásolják, ezért az így kapott kiterjesztett súlyozás a $D$ digráf egy csúcs-színező 3-élsúlyozása.
+\end{proof}
+
 
 \nocite{*}
 \printbibliography
