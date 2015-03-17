@@ -180,7 +180,7 @@ A második esetben egy csúcs színét csak a kimenő éleken vett súlyok össz
 \section{Csúcs-színező 3-élsúlyozás}
 Könnyen látható, hogy léteznek olyan digráfok, például a $3$ hosszú irányított kör, amelyek helyes színezéséhez nem elegendőek az $\lbrace 1, 2 \rbrace$ élsúlyok. A következő tétel azt mondja ki, hogy minden irányított gráfnak van csúcs-színező 3-élsúlyozása. Ez abból következik, hogy minden digráfnak van egy alkalmas csúcsa, amely a szomszédai számához képest sok lehetséges súlyozott kifok-értéket vehet fel. Egy ilyen csúcs létezése teljes indukció használatát teszi lehetővé, továbbá a bizonyítás polinomiális idejű algoritmust is eredményez egy csúcs-színező 3-élsúlyozás megtalálására.
 
-\begin{tét}
+\begin{tét}[\citeauthor{Baudon2014} \cite{Baudon2014}]
 Minden $D$ digráfra $\chi_e(D) \leq 3$.
 \end{tét}
 
@@ -190,6 +190,48 @@ A bizonyítás $D$ élszáma szerinti indukcióval történik. Az állítás nyi
 Figyeljük meg, hogy $D$-nek létezik egy olyan $v$ csúcsa, melyre $\delta(v) > 0$ és $\delta(v) > \varrho(v)$, hiszen különben $\sum\limits_{v \in V} \varrho(v) \neq \sum\limits_{v \in V} \delta(v)$ lenne. Első lépésként töröljünk minden $v$-ből kilépő élet. Ekkor az indukciós feltevés miatt a fennmaradó digráfnak létezik egy $w$ csúcs-színező 3-élsúlyozása. Tegyük vissza a kitörölt éleket, és terjesszük ki ezekre $w$-t oly módon, hogy $v$ súlyozott kifoka különbözzön mind a $\delta(v) + \varrho(v)$ szomszédjáétól. Ez megtehető, hiszen $2\delta(v) + 1$ érték közül választhatunk, nevezetesen a $\lbrace \delta(v), \delta(v) + 1, \ldots, 3\delta(v) \rbrace$ halmazból, míg a tiltott értékek száma $v$ választása miatt legfeljebb $\varrho(v) + \delta(v) < 2\delta(v) + 1$. Mivel ezen élsúlyok kizárólag a $v$ csúcs súlyozott kifokát befolyásolják, ezért az így kapott kiterjesztett súlyozás a $D$ digráf egy csúcs-színező 3-élsúlyozása.
 \end{proof}
 
+Ebben a bizonyításban azt használtuk ki, hogy egy $d$-edfokú csúcs lehetséges súlyozott kifokainak száma kellően nagy, pontosabban legalább $2d + 1$, amennyiben az éleket az $\lbrace 1, 2, 3 \rbrace$ számokkal súlyozzuk. Most megmutatjuk, hogy ez a tulajdonság tetszőleges $\lbrace a, b, c \rbrace$ súlyok esetén fennáll, és így egy erősebb tétel is igaz.
+
+\begin{lem}
+Legyen egy $D$ digráfnak $v$ egy legalább $d$-edfokú csúcsa, valamint $a, b$ és $c$ három valós szám. Ekkor $v$ súlyozott kifoka legalább $2d + 1$ különböző értéket vehet fel $D$ egy tetszőleges élsúlyozásában, amelyben a $v$-ből kimenő élek súlyai az $\lbrace a, b, c \rbrace$ halmazból kerülnek ki.
+\end{lem}
+
+\begin{proof}
+A bizonyítás $d$ szerinti indukcióval történik. Amennyiben $d = 1$, úgy a $v$-ből kilépő él súlya $a, b$ vagy $c$ lehet. Mivel ezek különbözőek, ezért $v$ súlyozott kifokának is $3$ különböző értéke lehet.
+
+Tegyük fel, hogy $d \leq i - 1$ esetén már igazoltuk az állítást, és legyen $d = i$. Jelölje $D'$ azt a digráfot, amelyet egy $v$-ből kilépő $vu$ él elhagyásával kapunk $D$-ből. Ekkor az indukciós feltevés szerint $v$ súlyozott kifoka legalább $2(d - 1) + 1$ lehetséges értéket vehet fel $D$ egy tetszőleges élsúlyozásában, amely a $v$-ből kilépő éleket az $\lbrace a, b, c \rbrace$ számokkal súlyozza. Legyen $F'$ ezen lehetséges értékek halmaza, valamint $k$ és $n$ rendre a legkisebb, illetve legnagyobb eleme $F'$-nek, továbbá $w_K$ és $w_N$ két élsúlyozása $D'$-nek, melyekre a $v$ csúcs súlyozott kifoka rendre $K$, illetve $N$.
+
+Tegyük fel, hogy $a < b < c$. Amennyiben az állítás igaz az $\lbrace a, b, c \rbrace$ számokra, úgy igaz a $\lbrace -a, -b, -c \rbrace$ számokra is, ezért két eset lehetséges:
+
+\begin{enumerate}
+\item $0 \leq a < b < c$
+\item $a < 0 \leq b < c$
+\end{enumerate}
+
+Az első esetben terjesszük ki a $D'$ minden élsúlyozását a $D$ digráfra úgy, hogy a $vu$ élre $a$ súlyt írunk. Ekkor azt kapjuk, hogy az $F = \lbrace x + a: x \in F' \rbrace$ halmaz a $v$ csúcs lehetséges súlyozott kifokainak $2(d - 1) + 1$ elemű halmaza. A fennmaradó két lehetőséget úgy kapjuk, hogy a $w_N$ súlyozást $b$ vagy $c$ értékkel kiterjesztjük a $vu$ élre. Ekkor ugyanis $N + b$ és $N + c$ két újabb lehetséges érték, hiszen $a < b < c$ miatt ezek nincsenek $F$-ben. Tehát létezik legalább $2d + 1$ választás $v$ súlyozott kifokára.
+
+A második esetben terjesszük ki a $D'$ minden élsúlyozását a $D$ digráfra úgy, hogy a $vu$ élre $b$ súlyt írunk. Ekkor azt kapjuk, hogy az $F = \lbrace x + b: x \in F' \rbrace$ halmaz a $v$ csúcs lehetséges súlyozott kifokainak $2(d - 1) + 1$ elemű halmaza. A fennmaradó két lehetőséget úgy kapjuk, hogy a $w_N$ és $w_K$ súlyozásokat rendre $a$, illetve $c$ értékkel kiterjesztjük a $vu$ élre. Ezekből azt kapjuk, hogy $K + a$ és $N + c$ két újabb lehetséges érték, amely nem szerepel $F$-ben a súlyokra vonatkozó feltevés miatt. Ezzel az állítást beláttuk.
+\end{proof}
+
+A lemma következményeként azt kapjuk, hogy az előző tétel bizonyításában nem számít, hogy egy csúcsnál mely három súlyt írhatjuk a kimenő élekre. Ez a megfigyelés az alábbi listaszínezési tételhez vezet.
+
+\begin{tét}
+Legyen adott egy $D$ digráf minden $v$ csúcsára egy három valós számból álló $L(v)$ lista. Ekkor $D$-nek van olyan csúcs-színező élsúlyozása, amelyben minden $v$ csúcsra a kimenő élek súlyai $L(v)$-ből kerülnek ki.
+\end{tét}
+
+A probléma egyfajta kiterjesztéseként megkérdezhetjük, hogy melyik az a legkisebb $k \in \lbrace 1, 2, 3 \rbrace$, melyre minden irányított gráfnak létezik olyan irányítása, amelynek van csúcs-színező $k$-élsúlyozása. Tudjuk, hogy egy digráfnak pontosan akkor létezik csúcs-színező $1$-élsúlyozása, ha bármely két szomszédos pont kifoka különböző. A következő lemma azt mondja ki, hogy minden gráfnak létezik olyan irányítása, amelyre ez teljesül.
+
+\begin{lem}
+Minden $G$ gráfnak létezik olyan irányítása, amelyben bármely két szomszédos csúcs kifoka különböző.
+\end{lem}
+
+\begin{proof}
+A bizonyítás $G$ pontszáma szerinti indukcióval történik. Az állítás $n \leq 2$ esetén nyilvánvaló. Tegyük fel, hogy legfeljebb $i - 1$ csúcsra már igaz a lemma, és legyen $G$ egy $n = i$ pontú gráf. Jelölje $v$ a legnagyobb fokszámú csúcsot $G$-ben. Az indukciós feltevés szerint $G' = G - v$ megirányítható úgy, hogy bármely két szomszédos csúcs kifoka különböző legyen. Jelölje az így kapott digráfot $D'$. Figyeljük meg, hogy $v$ választása miatt $D'$-ben minden $v$-vel szomszédos csúcs kifoka legfeljebb $d(v) - 1$. Legyen $D$ a $G$ gráf azon irányítása, amelyet a $D'$ irányításból kapunk oly módon, hogy a $v$-re illeszkedő éleket mind kifelé irányítjuk. Mivel így $v$ kifoka a $D$ digráfban $d(v)$, és a szomszédos csúcsok kifoka nem változott, ezért a kapott irányítás továbbra is teljesíti a lemma feltételét.
+\end{proof}
+
+\begin{tét}
+Minden irányítatlan gráfnak létezik olyan irányítása, amelynek van csúcs-színező $1$-élsúlyozása.
+\end{tét}
 
 \nocite{*}
 \printbibliography
