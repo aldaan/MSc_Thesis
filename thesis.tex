@@ -93,7 +93,7 @@ Természetesen adódik az a kérdés is, hogy vajon NP-nehéz-e annak eldöntés
 
 \chapter{A fontosabb eredmények}
 
-A sejtéssel kapcsolatban a legfontosabb előrehaladást a $\chi_e(G)$-re vonatkozó konstans korlátok bevezetése és javítása jelenti. A sejtést először felvető cikkben még csak azt bizonyították, hogy véges sok valós élsúly elegendő, később viszont egész számokra vonatkozó korlátokat is adtak. A jelenleg ismert legjobb eredmény \citeauthor{Kalkowski2010} nevéhez fűződik, akik a $\chi_e(G) \leq 6$ \cite{Kalkowski2009}, kicsivel később pedig a $\chi_e(G) \leq 5$ \cite{Kalkowski2010} korlátot adták a problémára. A két bizonyítás merőben más eszközöket használ, amelyek önmagukban is említésre érdemesek, ezért a következőkben mindkettőre kitérünk.
+A sejtéssel kapcsolatban a legfontosabb előrehaladást tetszőleges $G$ gráf esetén a $\chi_e(G)$-re vonatkozó konstans korlátok bevezetése és javítása jelenti. A sejtést először felvető cikkben még csak azt bizonyították, hogy véges sok valós élsúly elegendő, később viszont egész számokra vonatkozó korlátokat is adtak. A jelenleg ismert legjobb eredmény \citeauthor{Kalkowski2010} nevéhez fűződik, akik a $\chi_e(G) \leq 6$ \cite{Kalkowski2009}, kicsivel később pedig a $\chi_e(G) \leq 5$ \cite{Kalkowski2010} korlátot adták a problémára. A két bizonyítás merőben más eszközöket használ, amelyek önmagukban is említésre érdemesek, ezért a következőkben mindkettőre kitérünk.
 
 \section{Csúcs-színező 6-élsúlyozás}
 Először vizsgáljuk a gyengébb korlátot. Az erre vonatkozó tétel bizonyítása előtt tekintsük a következő lemmát, mely az \cite{Kalkowski2009} cikk első szerzőjének egy korábbi eredménye:
@@ -170,6 +170,38 @@ Ilyen módon lépésről lépésre, konfliktus nélkül meghatározhatjuk a $W(v
 Utolsó lépésként találnunk kell egy szabad értéket $v_n$-nek. Ez alkalommal nem áll rendelkezésünkre egy $v_n v_j$ segédél, de nem is kell későbbi csúcsok miatt aggódnunk. Az előzőekhez hasonlóan, ha $v_i v_n \in E$ valamely $i < n$-re, akkor $f(v_i v_n)$-t $2$-vel növelhetjük vagy csökkenthetjük úgy, hogy $f(v_i) \in W(v_i)$ maradjon. Ezek a módosítások összesen $d(v_n) +1 \geq 3$, azonos paritású lehetőséget jelentenek $f(v_n)$ értékének. Így, ha a legkisebb ilyen lehetséges $a$ értékre $a \in \lbrace 2, 3 \rbrace$ mod $4$, akkor minden $v_n$-re illeszkedő élen a kisebb értéket választva a csúcsok egy helyes színezését kapjuk. Ha $a \in \lbrace 0, 1 \rbrace$ mod $4$, és létezik olyan $v_i \in N(v_n)$ csúcs, melyre $w(v_i) \neq a$, akkor a $v_i v_n$ élen a nagyobb, minden más élen pedig a kisebb súlyt választva $f(v_n) = a + 2$, ami szintén helyes színezéshez vezet. Végezetül, amennyiben $a \in \lbrace 0, 1 \rbrace$ mod $4$ és $w(v_i) = a$ minden $v_i \in N(v_n)$-re, akkor legalább két élen a nagyobb súlyt választva kapunk helyes színezést. Ezzel a tétel állítását beláttuk.
 \end{proof}
 
+\chapter{Speciális esetek}
+Habár az 1, 2, 3 - sejtést még nem sikerült bizonyítani, bizonyos gráfosztályokra már belátták, hogy létezik csúcs-színező $3$-élsúlyozásuk. A továbbiakban ezeket fogjuk megvizsgálni.
+
+\section{Színezés $χ(G)$ élsúllyal}
+Az első ilyen típusú eredmény a sejtést először felvető cikkből \cite{Karonski2004} származik. Ez azt mondja ki, hogy egy $k$-színezhető gráf élei megsúlyozhatóak egy $k$-adrendű Abel-csoport elemeivel csúcs-színező módon, amennyiben $k$ páratlan. Ebből rögtön következik, hogy minden $3$-színezhető gráfra igaz a sejtés. Az alábbi két tétel ezen eredmény módosítása, melyet \citeauthor{Lu2011} \cite{Lu2011} cikkében olvashatunk.
+
+\begin{tét}
+Legyen $G$ egy összefüggő nem-páros gráf és $\Gamma = \lbrace g_1, g_2, \ldots, g_k \rbrace$ egy véges Abel-csoport, ahol $k = |\Gamma|$. Legyen továbbá $s$ egy $k$-színezése a $G$ csúcsainak az $\lbrace U_1, U_2, \ldots, U_k \rbrace$  színosztályokkal, ahol $|U_i| = n_i$, $1 \leq i \leq k$. Ha létezik olyan $h \in \Gamma$, melyre $n_1 g_1 + \cdots + n_k g_k = 2h$, akkor létezik olyan élsúlyozás $\Gamma$ elemeivel, melyre az indukált csúcs-színezés $s$.
+\end{tét}
+
+\begin{proof}
+Legyen $s$ egy $k$-színezés a $g_1, g_2, \ldots, g_k$ színekkel és az $\lbrace U_1, U_2, \ldots, U_k \rbrace$ színosztályokkal, melyre $n_1 g_1 + \cdots + n_k g_k = 2h$.
+
+Tegyünk egy élre $h$ súlyt, a többire pedig $0$-t, így a csúcsszínek összege $2h$. A következőkben ezt az élsúlyozást fogjuk módosítani úgy, hogy közben ez az összeg ne változzon, amíg minden $U_i$-beli csúcs színe $g_i$ nem lesz, $1 \leq i \leq k$-ra. Tegyük fel, hogy létezik egy $u \in U_i$ csúcs, amelynek a $g \neq g_i$ színe nem megfelelő. Mivel $n_1 g_1 + \cdots + n_k g_k = 2h$, ezért szükségképpen létezik egy $u$-tól különböző $v$ csúcs, amelynek szintén rossz a színe. Válasszunk egy páros hosszú sétát $u$-ból $v$-be. Ez mindig megtehető, mivel $G$ nem-páros és $k \geq 3$. Adjuk hozzá a séta éleihez felváltva a $g_i - g$ illetve a $g - g_i$ értéket. Ez az eljárás megtartja a csúcsszínek összegét, valamint minden csúcs színét $u$ és $v$ kivételével, továbbá eggyel növeli a megfelelő színű csúcsok számát. Ennek ismételt alkalmazásával megkaphatjuk a kívánt súlyozást.
+\end{proof}
+
+Érdemes megjegyezni, hogy a fenti tételben $s$ tetszőleges színezés lehet, nem csak egy helyes színezése a csúcsoknak.
+
+\begin{tét}
+Legyen $G$ egy rendes, összefüggő páros gráf és $Z_2 = \lbrace 0, 1 \rbrace$. Legyen továbbá $s$ egy $2$-színezése a $G$ csúcsainak az $\lbrace U_0, U_1 \rbrace$ színosztályokkal, ahol $|U_i| = n_i$, $i = 0, 1$. Ha $n_1$ páros, akkor létezik olyan élsúlyozás $Z_2$ elemeivel, melyre az indukált csúcs-színezés $s$.
+\end{tét}
+
+\begin{proof}
+Kövessük az előző bizonyítás gondolatmenetét, és tegyünk egy élre $h = 1$ súlyt. Ha létezik egy $u \in U_i$ csúcs, amelynek nem megfelelő a színe, akkor $n_1$ párossága miatt szükségképpen létezik egy $u$-tól különböző $v$ csúcs, amelynek szintén rossz a színe. Mivel $G$ összefüggő, ezért létezik út $u$-ból $v$-be. Adjunk hozzá az út minden éléhez $1$-et. Ez az eljárás megtartja a csúcsszínek összegét, valamint minden csúcs színét $u$ és $v$ kivételével, továbbá eggyel növeli a megfelelő színű csúcsok számát. Ennek ismételt alkalmazásával megkaphatjuk a kívánt súlyozást.
+\end{proof}
+
+Ezzel beláttuk, hogy $3$-színezhető gráfnak van csúcs-színező $3$-élsúlyozása. Felmerül a kérdés, hogy hasonló állítás igaz-e páros gráfokra. A válasz sajnos nem, ugyanis könnyen ellenőrizhető, hogy például a $C_6$ vagy $C_{10}$ gráfoknak nincs ilyen súlyozásuk. A második tétel alapján viszont az alábbi állítást fogalmazhatjuk meg:
+
+\begin{áll}
+Legyen $G = (U, V; E)$ egy rendes, összefüggő páros gráf. Ha $|A|$ vagy $|B|$ páros, akkor $G$-nek létezik csúcs-színező $2$-élsúlyozása.
+\end{áll}
+
 \chapter{Élsúlyozások irányított gráfokon}
 Az eddigiekben irányítatlan gráfok élsúlyozásait vizsgáltuk, de joggal merülhet fel a kérdés, hogy vajon mit tudunk mondani az irányított esetről. Itt két lehetőségünk van egy csúcs színének meghatározására. 
 
@@ -228,6 +260,8 @@ Minden $G$ gráfnak létezik olyan irányítása, amelyben bármely két szomsz�
 \begin{proof}
 A bizonyítás $G$ pontszáma szerinti indukcióval történik. Az állítás $n \leq 2$ esetén nyilvánvaló. Tegyük fel, hogy legfeljebb $i - 1$ csúcsra már igaz a lemma, és legyen $G$ egy $n = i$ pontú gráf. Jelölje $v$ a legnagyobb fokszámú csúcsot $G$-ben. Az indukciós feltevés szerint $G' = G - v$ megirányítható úgy, hogy bármely két szomszédos csúcs kifoka különböző legyen. Jelölje az így kapott digráfot $D'$. Figyeljük meg, hogy $v$ választása miatt $D'$-ben minden $v$-vel szomszédos csúcs kifoka legfeljebb $d(v) - 1$. Legyen $D$ a $G$ gráf azon irányítása, amelyet a $D'$ irányításból kapunk oly módon, hogy a $v$-re illeszkedő éleket mind kifelé irányítjuk. Mivel így $v$ kifoka a $D$ digráfban $d(v)$, és a szomszédos csúcsok kifoka nem változott, ezért a kapott irányítás továbbra is teljesíti a lemma feltételét.
 \end{proof}
+
+Ezen lemma ismeretében és a korábbi megfigyelésünk alapján az alábbi tételt fogalmazhatjuk meg:
 
 \begin{tét}
 Minden irányítatlan gráfnak létezik olyan irányítása, amelynek van csúcs-színező $1$-élsúlyozása.
