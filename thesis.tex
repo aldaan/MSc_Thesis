@@ -102,7 +102,7 @@ Először vizsgáljuk a gyengébb korlátot. Az erre vonatkozó tétel bizonyít
 Minden összefüggő, rendes $G$ gráfra létezik olyan $f:E(G) \rightarrow \lbrace 1, 2, 3 \rbrace$ élsúlyozás és $f':V(G) \rightarrow \lbrace 0, 1 \rbrace$ csúcs-súlyozás, melyre a csúcsok $w(v) = f'(v) + \sum\limits_{w \in N(v)} f(vw)$ értéke egy helyes színezés.
 \end{lem}
 
-Ennek segítségével egy $\chi_e(G) \leq 10$ korlát adható az élsúlyok megháromszorozásával, majd bizonyos élek $1$-gyel történő módosításával. Jelen esetben is egy hasonló eljárást követünk majd, amelyhez szükségünk lesz a lemma egy általánosabb alakjára. Előtte azonban érdemes megjegyezni egy egyszerű következményt. A sejtés vizsgálatánál érdekes kérdés lehet, hogy mit tudunk mondani a rossz élek részgráfjáról, vagyis azon élekről, melyek végpontjai azonos értékűek. A fenti lemma erre is ad egyfajta választ, ugyanis az általa biztosított teljes súlyozásban minden csúcsra $0$-t írva olyan élsúlyozást kapunk, ahol a rossz élek egy páros gráfot alkotnak. Ez a megfigyelés segíthet abban, hogy közelebb jussunk a sejtés bizonyításához vagy cáfolatához. Visszatérve a tételünkhöz, a lemma általánosítása a következőképpen hangzik:
+Ennek segítségével egy $\chi_e(G) \leq 10$ korlát adható az élsúlyok megháromszorozásával, majd bizonyos élek $1$-gyel történő módosításával. Jelen esetben is egy hasonló eljárást követünk majd, amelyhez szükségünk lesz a lemma egy általánosabb alakjára. Előtte azonban érdemes megjegyezni egy egyszerű következményt. A sejtés vizsgálatánál érdekes kérdés lehet, hogy mit tudunk mondani a rossz élek részgráfjáról, vagyis azon élekről, melyek végpontjai azonos értékűek. A fenti lemma erre is ad egyfajta választ, ugyanis az általa biztosított teljes-súlyozásban minden csúcsra $0$-t írva olyan élsúlyozást kapunk, ahol a rossz élek egy páros gráfot alkotnak. Ez a megfigyelés segíthet abban, hogy közelebb jussunk a sejtés bizonyításához vagy cáfolatához. Visszatérve a tételünkhöz, a lemma általánosítása a következőképpen hangzik:
 
 \begin{lem}
 Legyen $\alpha \in \mathbb{R}$ és $\beta \in \mathbb{R} \smallsetminus \lbrace 0 \rbrace$. Ekkor minden összefüggő, rendes $G$ gráfra, és tetszőleges $T$ feszítőfájára létezik olyan $f:E(G) \rightarrow \lbrace \alpha - \beta, \alpha, \alpha + \beta \rbrace$ élsúlyozás és $f':V(G) \rightarrow \lbrace 0, \beta \rbrace$ csúcs-súlyozás, melyre a csúcsok $w(v) = f'(v) + \sum\limits_{w \in N(v)} f(vw)$ értéke egy helyes színezés. Továbbá $f$ megválasztható úgy, hogy $f(e) = \alpha$ minden $e \in E(T)$-re.
@@ -168,6 +168,89 @@ teljesüljön. A második feltétel legfeljebb $2d$ értéket zárhat ki az $\lb
 Ilyen módon lépésről lépésre, konfliktus nélkül meghatározhatjuk a $W(v_k)$ halmazokat minden $k \leq n - 1$-re. Vegyük észre, hogy amikor az $f(v_k)$ érték először változik meg egy $v_k v_i$, $i > k$ él módosítása miatt, akkor $i = j$, vagyis nem okoznak problémát a $2$ vagy $4$ súlyú élek.
 
 Utolsó lépésként találnunk kell egy szabad értéket $v_n$-nek. Ez alkalommal nem áll rendelkezésünkre egy $v_n v_j$ segédél, de nem is kell későbbi csúcsok miatt aggódnunk. Az előzőekhez hasonlóan, ha $v_i v_n \in E$ valamely $i < n$-re, akkor $f(v_i v_n)$-t $2$-vel növelhetjük vagy csökkenthetjük úgy, hogy $f(v_i) \in W(v_i)$ maradjon. Ezek a módosítások összesen $d(v_n) +1 \geq 3$, azonos paritású lehetőséget jelentenek $f(v_n)$ értékének. Így, ha a legkisebb ilyen lehetséges $a$ értékre $a \in \lbrace 2, 3 \rbrace$ mod $4$, akkor minden $v_n$-re illeszkedő élen a kisebb értéket választva a csúcsok egy helyes színezését kapjuk. Ha $a \in \lbrace 0, 1 \rbrace$ mod $4$, és létezik olyan $v_i \in N(v_n)$ csúcs, melyre $w(v_i) \neq a$, akkor a $v_i v_n$ élen a nagyobb, minden más élen pedig a kisebb súlyt választva $f(v_n) = a + 2$, ami szintén helyes színezéshez vezet. Végezetül, amennyiben $a \in \lbrace 0, 1 \rbrace$ mod $4$ és $w(v_i) = a$ minden $v_i \in N(v_n)$-re, akkor legalább két élen a nagyobb súlyt választva kapunk helyes színezést. Ezzel a tétel állítását beláttuk.
+\end{proof}
+
+\section{Minden gráf (2, 3)-választható}
+A következőkben egy teljes-súlyozásokra vonatkozó eredménnyel ismerkedünk meg, amely a $6$-élsúlyozási tétel bizonyításához felhasznált lemma egy listasúlyozási általánosítása. 
+
+Legyen egy $G$ gráfra $\psi: V(G) \cup E(G) \rightarrow \lbrace 1, 2, \ldots \rbrace$. Azt mondjuk, hogy $L$ egy $\psi$-lista hozzárendelés, ha minden $z \in V(G) \cup E(G)$-re $L(z)$ valós számoknak egy $\psi(z)$ elemű listája. Azt mondjuk, hogy a $G$ gráf $\psi$-választható, ha tetszőleges $\psi$-lista hozzárendelésre $G$-nek létezik olyan $\phi$ csúcs-színező teljes-súlyozása, melyre $\phi(z) \in L(z)$ minden $z \in V(G) \cup E(G)$ esetén. Amennyiben minden $v \in V)G$-re $\psi(v) = k$ és minden $e \in E(G)$-re $\psi(e) = l$, úgy a $G$ gráfot $(k, l)$-választhatónak nevezzük. Az alábbiakban azt fogjuk belátni, hogy minden gráf $(2, 3)$-választható. A bizonyításhoz algebrai eszközöket fogunk használni, valamint az Alon-féle kombinatorikus nullhelytételt.
+
+Rendeljünk minden $z \in V \cup E$-hez egy $x_z$ változót, és legyen $D$ egy tetszőleges irányítása $G$-nek. Tekintsük az alábbi polinomot:
+\begin{equation}
+P_G(\lbrace x_z: z \in V \cup E \rbrace) = \prod_{e = uv \in E(D)} \left( \left( \sum_{e \in E(u)} x_e + x_u \right) - \left( \sum_{e \in E(v)} x_e + x_v \right) \right)
+\end{equation}
+
+Legyen $x_z$ értéke $\phi(z)$, és tekintsünk erre $z$ súlyaként. Jelölje a fenti polinom értékét az $x_z = \phi(z)$ behelyettesítésnél $P_G(\phi)$. Így $\phi$ a $G$ gráf egy helyes teljes-súlyozása pontosan akkor, ha $P_G(\phi) \neq 0$.
+
+A $G$ egy indexfüggvénye egy olyan $\eta$ leképezés, amely a gráf minden $z$ éléhez és csúcsához egy $\eta(z)$ nemnegatív egész számot rendel. Egy $\eta$ indexfüggvény érvényes, ha $\sum\limits_{z \in V \cup E} \eta(z) = |E|$. Vegyük észre, hogy $|E|$ épp a $P_G$ polinom foka. Egy $\eta$ érvényes indexfüggvényre legyen $c_\eta$ a $\prod\limits_{z \in V \cup E} x_z^{\eta(z)} $ monom együtthatója $P_G$ kifejtésében. A kombinatorikus nullhelytétel ismeretében tudjuk, hogy ha $c_\eta \neq 0$, és $L(z)$ minden $z \in V \cup E$-re valós számok egy $\eta(z) + 1$ elemű listája, akkor létezik egy olyan $\phi$ hozzárendelés, hogy minden $z$-re $\phi(z) \in L(z)$ és $P_G(\phi) \neq 0$.
+
+Egy $\eta$ indexfüggvény nem-szinguláris, ha létezik egy olyan $\eta' \leq \eta$ (azaz $\eta'(z) \leq \eta(z)$ minden $z$-re) érvényes indexfüggvény, melyre $c_{\eta'} \neq 0$. A következő a problémakör fő eredménye:
+
+\begin{tét}
+Minden $G = (V, E)$ gráfnak létezik olyan nem-szinguláris $\eta$ indexfüggvénye, melyre $\eta(v) \leq 1$ $\forall v \in V$ és $\eta(e) \leq 2$ $\forall e \in E$.
+\end{tét}
+
+A fentiek alapján ebből a tételből következik, hogy minden gráf $(2, 3)$-választható. Írjuk fel a $P_G$ polinomot az alábbi alakban:
+\begin{equation}
+P_G(\lbrace x_z: z \in V \cup E \rbrace) = \prod_{e \in E(D)} \sum_{z \in V \cup E} A_G \lbrack e, z \rbrack x_z
+\end{equation}
+
+Könnyen ellenőrizhető, hogy ekkor $e = (u, v) \in E$ és $z \in V \cup E$ esetén
+\begin{equation}
+A_G \lbrack e, z \rbrack = 
+    \begin{dcases*}
+    1 & ha $z = u$, vagy $z \neq e$ egy $u$-ra illeszkedő él\\
+    -1 & ha $z = v$, vagy $z \neq e$ egy $v$-re illeszkedő él\\
+    0 & különben
+    \end{dcases*}
+\end{equation}
+
+Itt $A_G$ egy mátrix, amelynek sorait $G$ éleivel, az oszlopait pedig $G$ csúcsaival és éleivel indexeljük. Legyen $z \in V \cup E$ esetén $A_G(z)$ az $A_G$ mátrix $z$ által indexelt oszlopa. A $G$ gráf egy $\eta$ indexfüggvényére legyen $A_G(\eta)$ az a mátrix, amely minden $A_G(z)$ oszlopból $\eta(z)$ darabot tartalmaz. Tudjuk, hogy egy $\eta$ érvényes indexfüggvényre $c_{\eta} \neq 0$ akkor és csak akkor, ha $\mathrm{per}(A_G(\eta)) \neq 0$, ahol $\mathrm{per}(A)$ az $A$ négyzetes mátrix permanensét jelöli. Ez azt jelenti, hogy $\eta$ pontosan akkor nem-szinguláris, ha $\mathrm{per}(A_G(\eta)) \neq 0$.
+
+Egy $m \times m$-es $A$ mátrixra $\mathrm{per}(A) = \sum\limits_{\sigma \in S_m} A \lbrack i, \sigma(i) \rbrack$, ahol $S_m$ az $m$-edrendű szimmetrikus csoport. A definícióból következik, hogy egy mátrix permanense multi-lineáris az oszlopvektorain és a sorvektorain is. Ha $C$ az $A$ mátrix egy oszlopa, amely $C = \alpha C' + \beta C"$ alakban áll elő, továbbá az $A'$ és $A"$ mátrixok a $C$ oszlop $C'$-re illetve $C"$-re cserélésével adódnak $A$-ból, akkor $\mathrm{per}(A) = \alpha \mathrm{per}(A') + \beta \mathrm{per}(A")$.
+
+Tegyük fel, hogy $A$ egy négyzetes mátrix, amelynek oszlopai az $A_G$ oszlopainak lineáris kombinációi. Legyen $\eta_A(z)$ az az indexfüggvény, amely minden $z \in V \cup E$-hez $A$ azon oszlopainak számát rendeli, amelyek előállításában $A_G(z)$ nem-nulla együtthatóval szerepel. Vegyük észre, hogy $A_G$ oszlopvektorai nem lineárisan függetlenek. Mivel $A$ oszlopai többféleképpen is felírhatóak $A_G$ oszlopainak lineáris kombinációjaként, ezért az $A$ mátrix nem határozza meg egyértelműen a $\eta_A$ indexfüggvényt. A továbbiakban azonban minden esetben, amikor ezt a jelölést használjuk, az $A$ mátrix oszlopainak egy adott előállítására utalunk, amely a szövegkörnyezetből nyilvánvaló.
+
+A fenti tétel bizonyításához elég egy olyan $A$ négyzetes mátrixot találni, amelynek az oszlopai oly módon állnak elő, hogy minden $v$ csúcsra $\eta_A(v) \leq 1$ és minden $e$ élre $\eta_A(e) \leq 2$.
+
+Most már készen állunk a tétel bizonyítására, és rögtön egy kicsivel erősebb állítást fogunk igazolni. 
+
+\begin{tét}
+Legyen $G$ egy összefüggő gráf és $F$ egy feszítőfája. Ekkor létezik egy olyan $A$ mátrix, amelynek az oszlopai $A_G$ oszlopainak olyan lineáris kombinációi, hogy $\mathrm{per}(A) \neq 0$, $\eta_A(v) \leq 1$ $\forall v \in V$, $\eta_A(e) = 0$ $\forall e \in E(F)$ és $\eta_A \leq 2$ $\forall e \in E \smallsetminus E(F)$.
+\end{tét}
+
+\begin{proof}
+Figyeljük meg, hogy ez a tétel ekvivalens azzal az állítással, hogy $G$-nek létezik olyan $\eta$ érvényes indexfüggvénye, amelyre
+\begin{itemize}
+\item $\mathrm{per}(A_G(\eta)) \neq 0$
+\item $\eta(v) \leq 1$ minden $v \in V$-re
+\item $\eta(e) \leq 2$ minden $e \in E$-re
+\item $\eta(e) = 0$ minden $e \in E(F)$-re
+\end{itemize}
+
+Tegyük fel, hogy a tétel nem igaz, és legyen $G$ egy minimális ellenpélda. Világos, hogy $G$ összefüggő és $|V| \leq 3$.
+
+Legyen $u$ egy olyan csúcsa $G$-nek, amely levél $F$-ben. Legyen továbbá $N(u) = \lbrace u_1, u_2, \ldots, u_k \rbrace$ valamint $e_i = uu_i$, $1 \leq i \leq k$. Hagyjuk el az $u$ csúcsot $G$-ből, és jelöljük az így kapott gráfot $G'$-vel. A feltevésünk miatt $G'$-nek létezik olyan $\eta'$ érvényes indexfüggvénye, melyre $\mathrm{per}(A_{G'}(\eta')) \neq 0$, $\eta'(v) \leq 1$ minden $v \in V(G')$-re, $\eta'(e) \leq 2$ minden $e \in E(G')$-re és $\eta(e) = 0$ minden $e \in E(F - u)$-ra.
+
+Legyen $|E(G)| = m$ és $|E(G')| = m' = m - k$. Tekintsünk $\eta'$-re $G$ indexfüggvényeként, $z \in (V(G) \cup E(G)) \smallsetminus (V(G') \cup E(G')$ esetén $\eta'(z) = 0$ választással. Ekkor $A_G(\eta')$ egy $m \times m'$ méretű mátrix $A_G$ oszlopaiból. Legyen $\eta = \eta'$ azzal a különbséggel, hogy $\eta(u) = k$. Így $A_G(\eta)$ egy $m \times m$-es mátrix, amely $A_G(\eta')$-ből az $A_G(u)$ oszlop $k$ másolatának hozzávételével adódik. Ezen új oszlopoknak $k$ sora (amelyek az $u$-ra illeszkedő élekkel indexeltek) csupa $1$-esből áll, a többi elemük pedig mind $0$. Ezáltal $\mathrm{per}(A_G(\eta)) = \mathrm{per}(A_{G'}(\eta')) k!$, és így $\mathrm{per}(A_G(\eta)) \neq 0$.
+
+Legyen $M_0 = A_G(\eta)$, és minden $1 \leq i \leq k - 1$-re $M_i = M_{i - 1}$, ha $\eta'(u_i) = 0$. Amennyiben $\eta'(u_i) = 1$, akkor $M_i$ legyen az a mátrix, amelyet az $M_{i - 1}$-ből az $A_G(u_i)$ oszlop $A_G(e_i)$-re cserélésével kapunk.
+
+\begin{áll}
+Minden $1 \leq i \leq k$ esetén $\mathrm{per}(M_i) = \mathrm{per}(M_{i - 1})$.
+\end{áll}
+
+\begin{proof}
+Amennyiben $\eta'(u_i) = 0$, úgy $M_i = M_{i - 1}$, és nincs mit bizonyítanunk. Ezért tegyük fel, hogy $\eta'(u_i) = 1$. Legyen $M'_i$ az a mátrix, amelyet az $M_{i - 1}$-ből az $A_G(u_i)$ oszlop $A_G(u)$-ra cserélésével kapunk. Ebben a mátrixban az $A_G(u)$ oszlop $k + 1$-szer szerepel. Ezen oszlopok $k$ sora csupa $1$-es, minden más elemük $0$. Ezáltal $\mathrm{per}(M'_i) = 0$. Mivel $A_G(e_i) = A_G(u_i) + A_G(u)$, ezért $\mathrm{per}(M_i) = \mathrm{per}(M_{i - 1}) + \mathrm{per}(M'_i) = \mathrm{per}(M_{i - 1})$.
+\end{proof}
+
+Figyeljük meg, hogy $M_{k - 1} = A_G(\tau)$ minden olyan $\tau$ indexfüggvényére $G$-nek, amelyre
+\begin{itemize}
+\item $\tau(u_i) = 0$, $\tau(u) = k$ és $\tau(v) \leq 1$ minden más $v \in V(G)$ csúcsra
+\item $\tau(e_i) \leq 1$ minden $1 \leq i \leq k - 1$-re, $\tau(e) = 0$ minden $e \in F$-re és $\tau(e) \leq 2$ minden más $e \in E(G)$ élre
+\end{itemize}
+
+Cseréljük ki az $A_G(u)$ oszlop $k - 1$ másolatát az $A_G(e_i) - A_G(u_i)$ oszlopokra, ahol $1 \leq i \leq k - 1$. Jelölje az így kapott mátrixot $A$. Ez a mátrix megegyezik $A_G(\tau)$-val, hiszen minden $1 \leq i \leq k - 1$-re $A_G(u) = A_G(e_i) - A_G(u_i)$. Ebben az új formában azonban $\eta_A(v) \leq 1$ minden $v \in V(G)$-re, $\eta_A(e) \leq 2$ minden $e \in E(G)$-re és $\eta_A(e) = 0$ minden $e \in E(F)$-re. Mivel $\mathrm{per}(A) = \mathrm{per}(A_G(\tau)) = \mathrm{per}(A_G(\eta)) \neq 0$, ezért a tételt beláttuk.
 \end{proof}
 
 \chapter{Speciális esetek}
