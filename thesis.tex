@@ -12,7 +12,8 @@
 \usepackage{graphicx}
 \usepackage{setspace}
 \usepackage{indentfirst}
-\usepackage[backend=biber,style=numeric,sortlocale=hu,block=space,isbn=false,doi=false,url=false]{biblatex}
+\usepackage[backend=biber,style=numeric,sortlocale=hu,block=space,isbn=false,doi=false,url=false,maxbibnames=5]{biblatex}
+\usepackage[style=english]{csquotes}
 \addbibresource{bibliography.bib}
 \usepackage[bookmarks,unicode,hyperfootnotes=false,pdfborder={0 0 0 0}]{hyperref}
 \urlstyle{same}
@@ -56,7 +57,7 @@ operációkutatás szakirány \\[2.2cm]
 {\Large Bérczi Kristóf} \\[0.3cm] 
 {\Large Operációkutatási Tanszék}
 \vfill
-\includegraphics[width=0.3\textwidth]{./images/elte_cimer_ff} \\[0.5cm]
+\includegraphics[width=0.3\textwidth]{./images/elte_cimer_szines} \\[0.5cm]
 {\large Budapest, 2015}
 \end{center}
 \end{titlepage}
@@ -68,20 +69,28 @@ operációkutatás szakirány \\[2.2cm]
 \pagenumbering{arabic}
 
 \section{Fogalmak és jelölések}
-A továbbiakban, hacsak nincs másképp jelezve, minden gráf egyszerű, véges és irányítatlan. Egy $G = (V, E)$ gráfon értelmezett $w: E \rightarrow [k] = \lbrace 1, \ldots, k \rbrace$ függvényt \textbf{$k$-élsúlyozás}nak nevezünk. Amennyiben a csúcsokhoz is rendelünk súlyokat, azaz $w: V \cup E \rightarrow [k]$, akkor \textbf{$k$-teljes-súlyozás}ról beszélünk. Egy csúcs \textbf{érték}én vagy \textbf{szín}én a rá illeszkedő élek súlyainak, és amennyiben van, a saját súlyának összegét értjük. Az első eset egy másik elnevezése még a \textbf{súlyozott fokszám}. Azt mondjuk, hogy egy súlyozás \textbf{csúcs-megkülönböztető}, ha bármely két csúcsnak különböző az értéke. Abban az esetben, ha ezt csak szomszédos csúcspárokra követeljük meg, akkor a csúcsok értékei egy színezését adják a gráfnak. Az ilyen súlyozást \textbf{csúcs-színező}nek hívjuk. Adott $G$ gráfra a legkisebb olyan $k$ számot, melyre létezik $G$-nek csúcs-színező $k$-élsúlyozása $\chi_e(G)$-vel jelöljük. Végezetül egy gráfra azt mondjuk, hogy \textbf{rendes}, ha egyetlen komponense sem izomorf $K_2$-vel.
+A továbbiakban, hacsak nincs másképp jelezve, minden gráf egyszerű, véges és irányítatlan. Egy $G = (V, E)$ gráfon értelmezett $w: E \rightarrow [k] = \lbrace 1, \ldots, k \rbrace$ függvényt \textbf{$k$-élsúlyozás}nak nevezünk. Amennyiben a csúcsokhoz is rendelünk súlyokat, azaz $w: V \cup E \rightarrow [k]$, akkor \textbf{$k$-teljes-súlyozás}ról beszélünk. Egy csúcs \textbf{érték}én vagy \textbf{szín}én a rá illeszkedő élek súlyainak, és amennyiben van, a saját súlyának összegét értjük. Az első eset egy másik elnevezése még a \textbf{súlyozott fokszám}. Azt mondjuk, hogy egy súlyozás \textbf{csúcs-megkülönböztető}, ha bármely két csúcsnak különböző az értéke. Abban az esetben, ha ezt csak szomszédos csúcspárokra követeljük meg, akkor a csúcsok értékei egy színezését adják a gráfnak. Az ilyen súlyozást \textbf{csúcs-színező}nek hívjuk. Adott $G$ gráfra a legkisebb olyan $k$ számot, melyre létezik $G$-nek csúcs-színező $k$-élsúlyozása, illetve $k$-teljes-súlyozása, rendre $\chi_e(G)$-vel, illetve $\chi_t(G)$-vel jelöljük. Végezetül egy gráfra azt mondjuk, hogy \textbf{rendes}, ha egyetlen komponense sem izomorf $K_2$-vel.
 
-\section{Az 1, 2, 3 - sejtés}
-Az 1, 2, 3 - sejtés vizsgálatát a gráfok irregularitásának vizsgálata motiválta. Egy gráf éleinek súlyozását irregulárisnak nevezzük, ha bármely két csúcsra a rájuk illeszkedő éleken vett összeg különböző. Egy gráf irregularitásának erősségén azt a legkisebb $k$ számot értjük, amelyre létezik irreguláris súlyozás az $\lbrace 1, \ldots, k \rbrace$ halmazból vett súlyokkal. Ennek a feladatnak egy természetesen adódó egyszerűsítése, ha csak szomszédos csúcsokra követeljük meg azt, hogy különböző legyen az értékük. 
+\section{Csúcsok színezése súlyozásokkal}
+Az 1-2-3-sejtés vizsgálatát a gráfok irregularitásának vizsgálata motiválta. Egy gráf éleinek súlyozását irregulárisnak nevezzük, ha bármely két csúcsra a rájuk illeszkedő éleken vett összeg különböző. Egy gráf irregularitásának erősségén azt a legkisebb $k$ számot értjük, amelyre létezik irreguláris súlyozás az $\lbrace 1, \ldots, k \rbrace$ halmazból vett súlyokkal. Ennek a feladatnak egy természetesen adódó egyszerűsítése, ha csak szomszédos csúcsokra követeljük meg azt, hogy különböző legyen az értékük. 
 
 A sejtést először \citeauthor{Karonski2004} \cite{Karonski2004} fogalmazta meg 2002-ben, és a következőképpen hangzik: 
 
-\begin{sej}[Az 1, 2, 3 - sejtés]
+\begin{sej}[Az 1-2-3-sejtés]
 Minden rendes gráf élei megcímkézhetőek az 1, 2, 3 számokkal oly módon, hogy tetszőleges két szomszédos csúcsra a rájuk illeszkedő éleken lévő számok összege különböző legyen.
 \end{sej}
 
 A sejtést megfogalmazása óta sokat vizsgálták. Az eddigi legjobb korlátot \citeauthor{Kalkowski2010} \cite{Kalkowski2010} bizonyította be 2010-ben, mely szerint a helyes színezéshez 5 élsúly elegendő. Könnyen látható, hogy léteznek olyan rendes gráfok, amelyekre nem elég 2 élsúly. Azonban egy aszimptotikus eredmény szerint egy $G(p, n)$ véletlen gráf majdnem biztosan megszínezhető csak az 1, 2 élsúlyok segítségével \cite{AddarioBerry2008}. Bizonyos gráfosztályokra már sikerült igazolni a sejtést. Eszerint 3-színezhető \cite{Karonski2004}, illetve teljes gráfok \cite{Alaeiyan2012} esetén $\chi_e(G) = 3$. Az előbbi eredmény nyomán feltehető az a kérdés, hogy mely páros gráfok esetében elegendő csak az 1, 2 súlyok közül választani. \citeauthor{Lu2011} \cite{Lu2011} cikke szerint a 3-összefüggő, valamint bizonyos fokszám-megkötéseknek eleget tevő páros gráfok ilyenek.
 
-A csúcs-színező élsúlyozásoknak számos változatát vizsgálták már az elmúlt évtizedben. Az irányított esetben egy digráf éleit súlyozzuk, a csúcsok értékét pedig csak a kifelé vezető éleken vett összeg határozza meg. Ez a probléma lényegesen egyszerűbb, mint az irányítatlan változat, ugyanis itt könnyedén belátható az 1, 2, 3 - sejtéssel analóg állítás \cite{Baudon2014}.
+Hasonló sejtést fogalmazott meg teljes-súlyozásokra \citeauthor{Przybylo2010} 2008-ban:
+
+\begin{sej}[Az 1-2-sejtés]
+Minden gráf élei és csúcsai megcímkézhetőek az 1, 2 számokkal oly módon, hogy tetszőleges két szomszédos csúcsra a rájuk illeszkedő éleken és magán a csúcson lévő számok összege különböző legyen.
+\end{sej}
+
+Ebben a cikkben bebizonyították, hogy $\chi_t(G) \leq 11$, valamint $\chi_t(G) \leq (\lfloor \frac{χ(G)}{2} \rfloor + 1)$. A jelenleg ismert legjobb eredmény szerint $\chi_t(G) \leq 3$.
+
+A csúcs-színező élsúlyozásoknak számos változatát vizsgálták már az elmúlt évtizedben. Az irányított esetben egy digráf éleit súlyozzuk, a csúcsok értékét pedig csak a kifelé vezető éleken vett összeg határozza meg. Ez a probléma lényegesen egyszerűbb, mint az irányítatlan változat, ugyanis itt könnyedén belátható az 1-2-3-sejtéssel analóg állítás \cite{Baudon2014}.
 
 \begin{áll}
 Minden $D$ digráfra $\chi_e(D) = 3$.
@@ -89,10 +98,9 @@ Minden $D$ digráfra $\chi_e(D) = 3$.
 
 Más változatokban az élsúlyok összege helyett azok szorzata, halmaza, multihalmaza vagy sorozata határozza meg a csúcsok színeit. Emellett élsúlyozás helyett tekinthetünk csúcs-, illetve teljes-súlyozást is. Érdekes kérdés az is, hogy mit mondhatunk abban az esetben, ha a súlyokat nem az $\lbrace 1, \ldots, k \rbrace$ halmazból, hanem tetszőleges $k$-elemű listából választhatjuk ki. A különféle változatok eddigi eredményeiről \citeauthor{Seamone2012} \cite{Seamone2012} cikkében olvashatunk bővebben.
 
-Természetesen adódik az a kérdés is, hogy vajon NP-nehéz-e annak eldöntése, hogy egy gráf színezéséhez 2 élsúly elegendő. Irányított gráfokra a válasz igen, egyéb esetben ez egy nyitott probléma.
+Természetesen adódik az a kérdés is, hogy vajon NP-nehéz-e annak eldöntése, hogy egy gráf színezéséhez 2 élsúly elegendő-e. A $\lbrace 0, 1 \rbrace$ és az $\lbrace 1, 2 \rbrace$ halmazok esetében, valamint irányított gráfokra a válasz igen, egyéb esetben ez egy nyitott probléma.
 
-\chapter{A fontosabb eredmények}
-
+\chapter{Élsúlyozások és az 1-2-3-sejtés}
 A sejtéssel kapcsolatban a legfontosabb előrehaladást tetszőleges $G$ gráf esetén a $\chi_e(G)$-re vonatkozó konstans korlátok bevezetése és javítása jelenti. A sejtést először felvető cikkben még csak azt bizonyították, hogy véges sok valós élsúly elegendő, később viszont egész számokra vonatkozó korlátokat is adtak. A jelenleg ismert legjobb eredmény \citeauthor{Kalkowski2010} nevéhez fűződik, akik a $\chi_e(G) \leq 6$ \cite{Kalkowski2009}, kicsivel később pedig a $\chi_e(G) \leq 5$ \cite{Kalkowski2010} korlátot adták a problémára. A két bizonyítás merőben más eszközöket használ, amelyek önmagukban is említésre érdemesek, ezért a következőkben mindkettőre kitérünk.
 
 \section{Csúcs-színező 6-élsúlyozás}
@@ -104,7 +112,7 @@ Minden összefüggő, rendes $G$ gráfra létezik olyan $f:E(G) \rightarrow \lbr
 
 Ennek segítségével egy $\chi_e(G) \leq 10$ korlát adható az élsúlyok megháromszorozásával, majd bizonyos élek $1$-gyel történő módosításával. Jelen esetben is egy hasonló eljárást követünk majd, amelyhez szükségünk lesz a lemma egy általánosabb alakjára. Előtte azonban érdemes megjegyezni egy egyszerű következményt. A sejtés vizsgálatánál érdekes kérdés lehet, hogy mit tudunk mondani a rossz élek részgráfjáról, vagyis azon élekről, melyek végpontjai azonos értékűek. A fenti lemma erre is ad egyfajta választ, ugyanis az általa biztosított teljes-súlyozásban minden csúcsra $0$-t írva olyan élsúlyozást kapunk, ahol a rossz élek egy páros gráfot alkotnak. Ez a megfigyelés segíthet abban, hogy közelebb jussunk a sejtés bizonyításához vagy cáfolatához. Visszatérve a tételünkhöz, a lemma általánosítása a következőképpen hangzik:
 
-\begin{lem}
+\begin{lem} \label{lem:6treemixed}
 Legyen $\alpha \in \mathbb{R}$ és $\beta \in \mathbb{R} \smallsetminus \lbrace 0 \rbrace$. Ekkor minden összefüggő, rendes $G$ gráfra, és tetszőleges $T$ feszítőfájára létezik olyan $f:E(G) \rightarrow \lbrace \alpha - \beta, \alpha, \alpha + \beta \rbrace$ élsúlyozás és $f':V(G) \rightarrow \lbrace 0, \beta \rbrace$ csúcs-súlyozás, melyre a csúcsok $w(v) = f'(v) + \sum\limits_{w \in N(v)} f(vw)$ értéke egy helyes színezés. Továbbá $f$ megválasztható úgy, hogy $f(e) = \alpha$ minden $e \in E(T)$-re.
 \end{lem}
 
@@ -170,10 +178,68 @@ Ilyen módon lépésről lépésre, konfliktus nélkül meghatározhatjuk a $W(v
 Utolsó lépésként találnunk kell egy szabad értéket $v_n$-nek. Ez alkalommal nem áll rendelkezésünkre egy $v_n v_j$ segédél, de nem is kell későbbi csúcsok miatt aggódnunk. Az előzőekhez hasonlóan, ha $v_i v_n \in E$ valamely $i < n$-re, akkor $f(v_i v_n)$-t $2$-vel növelhetjük vagy csökkenthetjük úgy, hogy $f(v_i) \in W(v_i)$ maradjon. Ezek a módosítások összesen $d(v_n) +1 \geq 3$, azonos paritású lehetőséget jelentenek $f(v_n)$ értékének. Így, ha a legkisebb ilyen lehetséges $a$ értékre $a \in \lbrace 2, 3 \rbrace$ mod $4$, akkor minden $v_n$-re illeszkedő élen a kisebb értéket választva a csúcsok egy helyes színezését kapjuk. Ha $a \in \lbrace 0, 1 \rbrace$ mod $4$, és létezik olyan $v_i \in N(v_n)$ csúcs, melyre $w(v_i) \neq a$, akkor a $v_i v_n$ élen a nagyobb, minden más élen pedig a kisebb súlyt választva $f(v_n) = a + 2$, ami szintén helyes színezéshez vezet. Végezetül, amennyiben $a \in \lbrace 0, 1 \rbrace$ mod $4$ és $w(v_i) = a$ minden $v_i \in N(v_n)$-re, akkor legalább két élen a nagyobb súlyt választva kapunk helyes színezést. Ezzel a tétel állítását beláttuk.
 \end{proof}
 
-\section{Minden gráf (2, 3)-választható}
-A következőkben egy teljes-súlyozásokra vonatkozó eredménnyel ismerkedünk meg, amely a $6$-élsúlyozási tétel bizonyításához felhasznált lemma egy listasúlyozási általánosítása. 
+\chapter{Teljes súlyozások és az 1-2-sejtés}
 
-Legyen egy $G$ gráfra $\psi: V(G) \cup E(G) \rightarrow \lbrace 1, 2, \ldots \rbrace$. Azt mondjuk, hogy $L$ egy $\psi$-lista hozzárendelés, ha minden $z \in V(G) \cup E(G)$-re $L(z)$ valós számoknak egy $\psi(z)$ elemű listája. Azt mondjuk, hogy a $G$ gráf $\psi$-választható, ha tetszőleges $\psi$-lista hozzárendelésre $G$-nek létezik olyan $\phi$ csúcs-színező teljes-súlyozása, melyre $\phi(z) \in L(z)$ minden $z \in V(G) \cup E(G)$ esetén. Amennyiben minden $v \in V)G$-re $\psi(v) = k$ és minden $e \in E(G)$-re $\psi(e) = l$, úgy a $G$ gráfot $(k, l)$-választhatónak nevezzük. Az alábbiakban azt fogjuk belátni, hogy minden gráf $(2, 3)$-választható. A bizonyításhoz algebrai eszközöket fogunk használni, valamint az Alon-féle kombinatorikus nullhelytételt.
+\section{Csúcs-színező $(\lfloor \frac{χ(G)}{2} \rfloor + 1)$-tejes-súlyozás}
+
+\begin{áll}
+Minden $G$ páros gráfra $\chi_t(G) \leq 2$.
+\end{áll}
+
+\begin{proof}
+Rendeljük a gráf éleihez az $1, 2$ súlyokat tetszőleges módon. Ezután válasszuk meg a csúcsok súlyát úgy, hogy az egyik színosztályban minden csúcs összsúlya páros, a másik színosztályban pedig páratlan legyen.
+\end{proof}
+
+Hasonló gondolatmenettel kapjuk az alábbi, általánosabb megfigyelésünket is:
+
+\begin{áll}
+Legyen adott a $G$ gráf és minden $v \in V(G)$ csúcsra egy $t_v$ szín. Ekkor $G$-nek létezik olyan $2$-tejes-súlyozása, hogy $c(v) ≡ t_v\ (\mathrm{mod}\ 2)$ minden $v \in V(G)$-re. 
+\end{áll}
+
+A következőkben egy még általánosabb állítást fogunk igazolni, amelynek segítségével felülről tudjuk majd becsülni $\chi_t(G)$-t a $G$ kromatikus számával.
+
+\begin{lem} \label{lem:12circle}
+Legyen adott egy $C$ kör, minden $v \in V(C)$ csúcsra egy $t_v$ szín, és $p \geq 3$ egész. Ekkor $C$-nek létezik olyan $\left( \left\lfloor \dfrac{p}{2} \right\rfloor + 1 \right)$-tejes-súlyozása, hogy $c(v) ≡ t_v\ (\mathrm{mod}\ p)$ minden $v \in V(C)$-re.
+\end{lem}
+
+\begin{proof}
+Legyenek $C$ csúcsai sorban $v_1, v_2, \ldots, v_n$, ahol $n = |C|$. Feltehetjük, hogy minden $i$-re $t_{v_i} \in \lbrack 3, p + 2 \rbrack$. Legyen $V(C) = S \cup L$, ahol $v_i \in S$, ha $t_{v_i} \in \lbrack 3, \lfloor \frac{p}{2} \rfloor + 2 \rbrack$, valamint $v_i \in L$, ha $t_{v_i} \in \lbrack \lfloor \frac{p}{2} \rfloor + 3, p + 2 \rbrack$. Jelölje a $t_{v_i}$ színt $s_i$, ha $v_i \in S$, illetve $l_i$, ha $v_i \in L$, és legyen $h = \lfloor \frac{p}{2} \rfloor + 1$. A továbbiakban csak az $1, 2, \ldots, h$ súlyokat fogjuk használni. 
+
+Először is figyeljük meg, hogy ha $|L|$ páros, akkor könnyedén megkaphatjuk a kívánt súlyozást. Ehhez elég csak az $1, h$ súlyokat használni az éleken. Kezdetnek legyen $w(v_n v_1) = 1$, és ezután sorban rendeljük hozzá az $1, h$ súlyokat az élekhez oly módon, hogy a $v_i$-re illeszkedő két él súlya azonos legyen, ha $v_i \in S$, illetve különböző, ha $v_i \in L$. Így a jelenlegi összsúlyok értéke $\mathrm{mod}\ p$ az $S$-beli csúcsok esetén $1$ vagy $2$ ($p$ paritásától függően), illetve $\lfloor \frac{p}{2} \rfloor + 2$ az $L$-beli csúcsokra. Innen már könnyedén befejezhető a súlyozás a csúcsok súlyainak megválasztásával.
+
+Legyen $|L|$ páratlan, és legyen $v_2 \in L$ egy olyan csúcs, melynek szomszédai, $v_1$ és $v_3$, $S$-beliek. Ha $s_1 - 2 + s_3 - 2 \geq l_2 - h$, akkor létezik $s'_1 \in \lbrack 1, s_1 - 2 \rbrack$ és $s'_3 \in \lbrack 1, s_3 - 2 \rbrack$ úgy, hogy $s'_1 + s'_3 = l_2 - h$. Legyen $w(v_1 v_2) = s'_1$, $w(v_2) = h$ és $w(v_2 v_3) = s'_3$, így elérve, hogy $c(v_2) = l_2$ legyen. Ezután folytassuk a súlyozást a $w(v_n v_1) = w(v_3 v_4) = 1$ választással. Ez megtehető, hiszen $v_n v_1 = v_3 v_4$, amennyiben $C = C_3$. Mivel páros számú súlyozatlan csúcs maradt $L$-ben, ezért az előbbiekben leírt módszert követve a kívánt súlyozáshoz jutunk. Ha $p + s_1 - 2h + p + s_3 - 2h \leq l_2 - 1$, akkor létezik $s'_1 \in \lbrack p + s_1 - 2h, h \rbrack$ és $s'_3 \in \lbrack p + s_3 - 2h, h \rbrack$ úgy, hogy $s'_1 + s'_3 = l_2 - 1$. A fentiekhez hasonlóan legyen $w(v_1 v_2)= s'_1$, $w(v_2) = 1$ és $w(v_2 v_3) = s'_3$, amiből kapjuk, hogy $c(v_2) = l_2$. Ezután legyen $w(v_n v_1) = w(v_3 v_4) = h$, és kövessük a fentebb említett módszert, hogy eljussunk a kívánt súlyozáshoz.
+
+Végezetül, legyen továbbra is $|L|$ páratlan, és legyen $v_2$ és $v_3$ két egymást követő csúcs $L$-ben, melyekre $l_2 \leq l_3$. Ekkor $h + l_2 - l_3,\ l_3 - h - 1 \in \lbrace 1, 2, \ldots, h \rbrace$, ezért elegendő a súlyokat úgy megválasztani, hogy $w(v_1 v_2) = 1$, $w(v_2) = h + l_2 - l_3$, $w(v_2 v_3) = l_3 - h - 1$, $w(v_3) = 1$ és $w(v_3 v_4) = h$, illetve ezáltal $c(v_2) = l_2$ és $c(v_3) = l_3$ legyen. Ezúttal páratlan számú súlyozatlan csúcs marad $L$-ben, azonban a $v_1 v_2$ és $v_3 v_4$ élek súlyainak köszönhetően ismét be tudjuk fejezni a súlyozást a fentebb említett módszerrel.
+\end{proof}
+
+\begin{lem}
+Legyen adott egy $G$ gráf, egy $u \in V(G)$ kijelölt csúcs, minden $v \in V(C)$ csúcsra egy $t_v$ szín, és $p \geq 3$ egész. Ekkor $G$-nek létezik olyan $\left( \left\lfloor \dfrac{p}{2} \right\rfloor + 1 \right)$-tejes-súlyozása, hogy $c(v) ≡ t_v\ (\mathrm{mod}\ p)$ minden $v \in V(G) \smallsetminus \lbrace u \rbrace$-ra.
+\end{lem}
+
+\begin{proof}
+Kezdetben minden csúcs és él súlya legyen $1$. Ha létezik olyan $v \in V(G) \smallsetminus \lbrace u \rbrace$ csúcs, melynek színe $\mathrm{mod}\ p$ nem megfelelő, akkor válasszunk egy $v$-ből $u$-ba menő utat. A $v$ csúcs és az úton rá illeszkedő él súlyát alkalmasan megválasztva elérhetjük, hogy $c(v) ≡ t_v\ (\mathrm{mod}\ p)$ teljesüljön. Ezután haladjunk végig az úton, minden lépésben egy csúcs és a rákövetkező él súlyát módosítva úgy, hogy végül az út minden $u$-tól különböző csúcsának megfelelő legyen a színe $\mathrm{mod}\ p$. Figyeljük meg, hogy eközben az úthoz nem tartozó csúcsok összsúlya nem változik. Így eggyel csökkentettük a $V(G) \smallsetminus \lbrace u \rbrace$-beli hibás csúcsok számát, tehát az eljárást ismételve a kívánt súlyozáshoz jutunk.
+\end{proof}
+
+\begin{tét}
+Legyen adott egy $G$ összefüggő, nem fa gráf, minden $v \in V(G)$ csúcsra egy $t_v$ szín, és $p \geq 3$ egész. Ekkor $G$-nek létezik olyan $\left( \left\lfloor \dfrac{p}{2} \right\rfloor + 1 \right)$-tejes-súlyozása, hogy $c(v) ≡ t_v\ (\mathrm{mod}\ p)$ minden $v \in V(G)$-re.
+\end{tét}
+
+\begin{proof}
+Mivel $G$ nem fa, ezért tartalmaz egy $C$ kört. Legyen $u$ ennek egy tetszőleges csúcsa. Az előző lemma alapján tudunk találni olyan súlyozást, amelyben minden $v \in V(G) \smallsetminus \lbrace u \rbrace$ csúcs összsúlya megfelelő. Változtassuk meg $C$ minden élének és csúcsának a súlyát $0$-ra, és jelölje az így kapott súlyozásban a $v \in V(C)$ csúcs összsúlyát $s_v$. Innen a \ref{lem:12circle} lemmát a $t_v - s_v$ színekre alkalmazva adódik a kívánt súlyozás.
+\end{proof}
+
+\begin{köv}
+Minden $G$ gráfra $\chi_t(G) \leq \left\lfloor \dfrac{\chi(G)}{2} \right\rfloor + 1$.
+\end{köv}
+
+\section{Minden gráf (2, 3)-választható}
+A következőkben egy teljes-súlyozásokra vonatkozó eredménnyel ismerkedünk meg, amely a $6$-élsúlyozási tétel bizonyításához felhasznált \ref{lem:6treemixed} lemma egy listasúlyozási változata, amely \citeauthor{Wong2014} \cite{Wong2014} cikkében jelent meg. 
+
+Legyen egy $G$ gráfra $\psi: V(G) \cup E(G) \rightarrow \lbrace 1, 2, \ldots \rbrace$. Azt mondjuk, hogy $L$ egy $\psi$-lista hozzárendelés, ha minden $z \in V(G) \cup E(G)$-re $L(z)$ valós számoknak egy $\psi(z)$ elemű listája. Azt mondjuk, hogy a $G$ gráf $\psi$-választható, ha tetszőleges $\psi$-lista hozzárendelésre $G$-nek létezik olyan $\phi$ csúcs-színező teljes-súlyozása, melyre $\phi(z) \in L(z)$ minden $z \in V(G) \cup E(G)$ esetén. Amennyiben minden $v \in V)G$-re $\psi(v) = k$ és minden $e \in E(G)$-re $\psi(e) = l$, úgy a $G$ gráfot $(k, l)$-választhatónak nevezzük. 
+
+Az 1-2-3- illetve 1-2-sejtés erősítéseként felmerült az a feltételezés, miszerint minden gráf $(1, 3)$-, valamint $(2, 2)$-választható. \citeauthor{Wong2014} cikke előtt azonban nem volt ismert olyan $k$ és $l$ konstans, melyekre minden gráf $(k, l)$-választható lenne. Az viszont továbbra is nyitott kérdés, hogy létezik-e olyan $k$ illetve $l$ konstans, melyekre minden gráf $(1, l)$- illetve $(k, 2)$-választható.
+
+Az alábbiakban azt fogjuk belátni, hogy minden gráf $(2, 3)$-választható. A bizonyításhoz algebrai eszközöket fogunk használni, valamint az Alon-féle kombinatorikus nullhelytételt.
 
 Rendeljünk minden $z \in V \cup E$-hez egy $x_z$ változót, és legyen $D$ egy tetszőleges irányítása $G$-nek. Tekintsük az alábbi polinomot:
 \begin{equation}
@@ -184,7 +250,7 @@ Legyen $x_z$ értéke $\phi(z)$, és tekintsünk erre $z$ súlyaként. Jelölje 
 
 A $G$ egy indexfüggvénye egy olyan $\eta$ leképezés, amely a gráf minden $z$ éléhez és csúcsához egy $\eta(z)$ nemnegatív egész számot rendel. Egy $\eta$ indexfüggvény érvényes, ha $\sum\limits_{z \in V \cup E} \eta(z) = |E|$. Vegyük észre, hogy $|E|$ épp a $P_G$ polinom foka. Egy $\eta$ érvényes indexfüggvényre legyen $c_\eta$ a $\prod\limits_{z \in V \cup E} x_z^{\eta(z)} $ monom együtthatója $P_G$ kifejtésében. A kombinatorikus nullhelytétel ismeretében tudjuk, hogy ha $c_\eta \neq 0$, és $L(z)$ minden $z \in V \cup E$-re valós számok egy $\eta(z) + 1$ elemű listája, akkor létezik egy olyan $\phi$ hozzárendelés, hogy minden $z$-re $\phi(z) \in L(z)$ és $P_G(\phi) \neq 0$.
 
-Egy $\eta$ indexfüggvény nem-szinguláris, ha létezik egy olyan $\eta' \leq \eta$ (azaz $\eta'(z) \leq \eta(z)$ minden $z$-re) érvényes indexfüggvény, melyre $c_{\eta'} \neq 0$. A következő a problémakör fő eredménye:
+Egy $\eta$ indexfüggvény nem-szinguláris, ha létezik egy olyan $\eta' \leq \eta$ (azaz $\eta'(z) \leq \eta(z)$ minden $z$-re) érvényes indexfüggvény, melyre $c_{\eta'} \neq 0$. A következő tétel a problémakör fő eredménye:
 
 \begin{tét}
 Minden $G = (V, E)$ gráfnak létezik olyan nem-szinguláris $\eta$ indexfüggvénye, melyre $\eta(v) \leq 1$ $\forall v \in V$ és $\eta(e) \leq 2$ $\forall e \in E$.
@@ -216,7 +282,7 @@ A fenti tétel bizonyításához elég egy olyan $A$ négyzetes mátrixot talál
 Most már készen állunk a tétel bizonyítására, és rögtön egy kicsivel erősebb állítást fogunk igazolni. 
 
 \begin{tét}
-Legyen $G$ egy összefüggő gráf és $F$ egy feszítőfája. Ekkor létezik egy olyan $A$ mátrix, amelynek az oszlopai $A_G$ oszlopainak olyan lineáris kombinációi, hogy $\mathrm{per}(A) \neq 0$, $\eta_A(v) \leq 1$ $\forall v \in V$, $\eta_A(e) = 0$ $\forall e \in E(F)$ és $\eta_A \leq 2$ $\forall e \in E \smallsetminus E(F)$.
+Legyen $G = (V, E)$ egy összefüggő gráf és $F$ egy feszítőfája. Ekkor létezik egy olyan $A$ mátrix, amelynek az oszlopai $A_G$ oszlopainak olyan lineáris kombinációi, hogy $\mathrm{per}(A) \neq 0$, $\eta_A(v) \leq 1$ minden $v \in V$-re, $\eta_A(e) = 0$ minden $e \in E(F)$-re és $\eta_A \leq 2$ minden $e \in E \smallsetminus E(F)$-re.
 \end{tét}
 
 \begin{proof}
@@ -230,7 +296,7 @@ Figyeljük meg, hogy ez a tétel ekvivalens azzal az állítással, hogy $G$-nek
 
 Tegyük fel, hogy a tétel nem igaz, és legyen $G$ egy minimális ellenpélda. Világos, hogy $G$ összefüggő és $|V| \leq 3$.
 
-Legyen $u$ egy olyan csúcsa $G$-nek, amely levél $F$-ben. Legyen továbbá $N(u) = \lbrace u_1, u_2, \ldots, u_k \rbrace$ valamint $e_i = uu_i$, $1 \leq i \leq k$. Hagyjuk el az $u$ csúcsot $G$-ből, és jelöljük az így kapott gráfot $G'$-vel. A feltevésünk miatt $G'$-nek létezik olyan $\eta'$ érvényes indexfüggvénye, melyre $\mathrm{per}(A_{G'}(\eta')) \neq 0$, $\eta'(v) \leq 1$ minden $v \in V(G')$-re, $\eta'(e) \leq 2$ minden $e \in E(G')$-re és $\eta(e) = 0$ minden $e \in E(F - u)$-ra.
+Legyen $u$ egy olyan csúcsa a $G$ gráfnak, amely levél $F$-ben. Legyen továbbá $N(u) = \lbrace u_1, u_2, \ldots, u_k \rbrace$ valamint $e_i = uu_i,\ 1 \leq i \leq k$. Hagyjuk el az $u$ csúcsot $G$-ből, és jelöljük az így kapott gráfot $G'$-vel. A feltevésünk miatt $G'$-nek létezik olyan $\eta'$ érvényes indexfüggvénye, melyre $\mathrm{per}(A_{G'}(\eta')) \neq 0$, $\eta'(v) \leq 1$ minden $v \in V(G')$-re, $\eta'(e) \leq 2$ minden $e \in E(G')$-re és $\eta(e) = 0$ minden $e \in E(F - u)$-ra.
 
 Legyen $|E(G)| = m$ és $|E(G')| = m' = m - k$. Tekintsünk $\eta'$-re $G$ indexfüggvényeként, $z \in (V(G) \cup E(G)) \smallsetminus (V(G') \cup E(G')$ esetén $\eta'(z) = 0$ választással. Ekkor $A_G(\eta')$ egy $m \times m'$ méretű mátrix $A_G$ oszlopaiból. Legyen $\eta = \eta'$ azzal a különbséggel, hogy $\eta(u) = k$. Így $A_G(\eta)$ egy $m \times m$-es mátrix, amely $A_G(\eta')$-ből az $A_G(u)$ oszlop $k$ másolatának hozzávételével adódik. Ezen új oszlopoknak $k$ sora (amelyek az $u$-ra illeszkedő élekkel indexeltek) csupa $1$-esből áll, a többi elemük pedig mind $0$. Ezáltal $\mathrm{per}(A_G(\eta)) = \mathrm{per}(A_{G'}(\eta')) k!$, és így $\mathrm{per}(A_G(\eta)) \neq 0$.
 
@@ -244,7 +310,7 @@ Minden $1 \leq i \leq k$ esetén $\mathrm{per}(M_i) = \mathrm{per}(M_{i - 1})$.
 Amennyiben $\eta'(u_i) = 0$, úgy $M_i = M_{i - 1}$, és nincs mit bizonyítanunk. Ezért tegyük fel, hogy $\eta'(u_i) = 1$. Legyen $M'_i$ az a mátrix, amelyet az $M_{i - 1}$-ből az $A_G(u_i)$ oszlop $A_G(u)$-ra cserélésével kapunk. Ebben a mátrixban az $A_G(u)$ oszlop $k + 1$-szer szerepel. Ezen oszlopok $k$ sora csupa $1$-es, minden más elemük $0$. Ezáltal $\mathrm{per}(M'_i) = 0$. Mivel $A_G(e_i) = A_G(u_i) + A_G(u)$, ezért $\mathrm{per}(M_i) = \mathrm{per}(M_{i - 1}) + \mathrm{per}(M'_i) = \mathrm{per}(M_{i - 1})$.
 \end{proof}
 
-Figyeljük meg, hogy $M_{k - 1} = A_G(\tau)$ minden olyan $\tau$ indexfüggvényére $G$-nek, amelyre
+Figyeljük meg, hogy $M_{k - 1} = A_G(\tau)$ a $G$ gráf minden olyan $\tau$ indexfüggvényére, amelyre
 \begin{itemize}
 \item $\tau(u_i) = 0$, $\tau(u) = k$ és $\tau(v) \leq 1$ minden más $v \in V(G)$ csúcsra
 \item $\tau(e_i) \leq 1$ minden $1 \leq i \leq k - 1$-re, $\tau(e) = 0$ minden $e \in F$-re és $\tau(e) \leq 2$ minden más $e \in E(G)$ élre
@@ -253,14 +319,20 @@ Figyeljük meg, hogy $M_{k - 1} = A_G(\tau)$ minden olyan $\tau$ indexfüggvény
 Cseréljük ki az $A_G(u)$ oszlop $k - 1$ másolatát az $A_G(e_i) - A_G(u_i)$ oszlopokra, ahol $1 \leq i \leq k - 1$. Jelölje az így kapott mátrixot $A$. Ez a mátrix megegyezik $A_G(\tau)$-val, hiszen minden $1 \leq i \leq k - 1$-re $A_G(u) = A_G(e_i) - A_G(u_i)$. Ebben az új formában azonban $\eta_A(v) \leq 1$ minden $v \in V(G)$-re, $\eta_A(e) \leq 2$ minden $e \in E(G)$-re és $\eta_A(e) = 0$ minden $e \in E(F)$-re. Mivel $\mathrm{per}(A) = \mathrm{per}(A_G(\tau)) = \mathrm{per}(A_G(\eta)) \neq 0$, ezért a tételt beláttuk.
 \end{proof}
 
-\chapter{Speciális esetek}
-Habár az 1, 2, 3 - sejtést még nem sikerült bizonyítani, bizonyos gráfosztályokra már belátták, hogy létezik csúcs-színező $3$-élsúlyozásuk. A továbbiakban ezeket fogjuk megvizsgálni.
+\begin{köv}
+Minden gráf $(2, 3)$-választható.
+\end{köv}
+
+Ennél egy kicsivel több is igaz. Legyen $G$ egy összefüggő gráf, $F$ pedig egy feszítőfája. Legyen továbbá minden $v \in V(G)$-re $\psi(v) = 2$, minden $e \in E(F)$-re $\psi(e) = 1$ és minden $e \in E(G) \smallsetminus E(F)$-re $\psi(e) = 3$. Ekkor a $G$ gráf $\psi$-választható. 
+
+\chapter{Pontos eredmények speciális gráfokra}
+Habár az 1-2-3-sejtést még nem sikerült bizonyítani, bizonyos gráfosztályokra már belátták, hogy létezik csúcs-színező $3$-élsúlyozásuk. A továbbiakban ezeket fogjuk megvizsgálni.
 
 \section{Színezés $χ(G)$ élsúllyal}
 Az első ilyen típusú eredmény a sejtést először felvető cikkből \cite{Karonski2004} származik. Ez azt mondja ki, hogy egy $k$-színezhető gráf élei megsúlyozhatóak egy $k$-adrendű Abel-csoport elemeivel csúcs-színező módon, amennyiben $k$ páratlan. Ebből rögtön következik, hogy minden $3$-színezhető gráfra igaz a sejtés. Az alábbi két tétel ezen eredmény módosítása, melyet \citeauthor{Lu2011} \cite{Lu2011} cikkében olvashatunk.
 
 \begin{tét}
-Legyen $G$ egy összefüggő nem-páros gráf és $\Gamma = \lbrace g_1, g_2, \ldots, g_k \rbrace$ egy véges Abel-csoport, ahol $k = |\Gamma|$. Legyen továbbá $s$ egy $k$-színezése a $G$ csúcsainak az $\lbrace U_1, U_2, \ldots, U_k \rbrace$  színosztályokkal, ahol $|U_i| = n_i$, $1 \leq i \leq k$. Ha létezik olyan $h \in \Gamma$, melyre $n_1 g_1 + \cdots + n_k g_k = 2h$, akkor létezik olyan élsúlyozás $\Gamma$ elemeivel, melyre az indukált csúcs-színezés $s$.
+Legyen $G$ egy összefüggő nem-páros gráf és $\Gamma = \lbrace g_1, g_2, \ldots, g_k \rbrace$ egy véges Abel-csoport, ahol $k = |\Gamma|$. Legyen továbbá $s$ egy $k$-színezése a $G$ csúcsainak az $\lbrace U_1, U_2, \ldots, U_k \rbrace$  színosztályokkal, ahol $|U_i| = n_i,\ 1 \leq i \leq k$. Ha létezik olyan $h \in \Gamma$, melyre $n_1 g_1 + \cdots + n_k g_k = 2h$, akkor létezik olyan élsúlyozás $\Gamma$ elemeivel, melyre az indukált csúcs-színezés $s$.
 \end{tét}
 
 \begin{proof}
@@ -272,7 +344,7 @@ Tegyünk egy élre $h$ súlyt, a többire pedig $0$-t, így a csúcsszínek öss
 Érdemes megjegyezni, hogy a fenti tételben $s$ tetszőleges színezés lehet, nem csak egy helyes színezése a csúcsoknak.
 
 \begin{tét}
-Legyen $G$ egy rendes, összefüggő páros gráf és $Z_2 = \lbrace 0, 1 \rbrace$. Legyen továbbá $s$ egy $2$-színezése a $G$ csúcsainak az $\lbrace U_0, U_1 \rbrace$ színosztályokkal, ahol $|U_i| = n_i$, $i = 0, 1$. Ha $n_1$ páros, akkor létezik olyan élsúlyozás $Z_2$ elemeivel, melyre az indukált csúcs-színezés $s$.
+Legyen $G$ egy rendes, összefüggő páros gráf és $Z_2 = \lbrace 0, 1 \rbrace$. Legyen továbbá $s$ egy $2$-színezése a $G$ csúcsainak az $\lbrace U_0, U_1 \rbrace$ színosztályokkal, ahol $|U_i| = n_i,\ i = 0, 1$. Ha $n_1$ páros, akkor létezik olyan élsúlyozás $Z_2$ elemeivel, melyre az indukált csúcs-színezés $s$.
 \end{tét}
 
 \begin{proof}
@@ -350,7 +422,7 @@ Ezen lemma ismeretében és a korábbi megfigyelésünk alapján az alábbi tét
 Minden irányítatlan gráfnak létezik olyan irányítása, amelynek van csúcs-színező $1$-élsúlyozása.
 \end{tét}
 
-\nocite{*}
+\nocite{Dudek2011}
 \printbibliography
 
 \end{document}
