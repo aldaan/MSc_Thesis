@@ -41,6 +41,8 @@
   and              = {és},
 }
 
+\makeatletter \renewcommand{\fnum@figure}{\thefigure.~\figurename} \makeatother
+
 \begin{document}
 \titleformat{\chapter}[hang]
     {\normalfont\LARGE\bfseries}{\thechapter.}{1em}{}
@@ -69,7 +71,7 @@ operációkutatás szakirány \\[2.2cm]
 \pagenumbering{arabic}
 
 \section{Fogalmak és jelölések}
-A továbbiakban, hacsak nincs másképp jelezve, minden gráf egyszerű, véges és irányítatlan. Egy $G = (V, E)$ gráfon értelmezett $w: E \rightarrow [k] = \lbrace 1, \ldots, k \rbrace$ függvényt \textbf{$k$-élsúlyozás}nak nevezünk. Amennyiben a csúcsokhoz is rendelünk súlyokat, azaz $w: V \cup E \rightarrow [k]$, akkor \textbf{$k$-teljes-súlyozás}ról beszélünk. Egy csúcs \textbf{érték}én vagy \textbf{szín}én a rá illeszkedő élek súlyainak, és amennyiben van, a saját súlyának összegét értjük. Az első eset egy másik elnevezése még a \textbf{súlyozott fokszám}. Azt mondjuk, hogy egy súlyozás \textbf{csúcs-megkülönböztető}, ha bármely két csúcsnak különböző az értéke. Abban az esetben, ha ezt csak szomszédos csúcspárokra követeljük meg, akkor a csúcsok értékei egy színezését adják a gráfnak. Az ilyen súlyozást \textbf{csúcs-színező}nek hívjuk. Adott $G$ gráfra a legkisebb olyan $k$ számot, melyre létezik $G$-nek csúcs-színező $k$-élsúlyozása, illetve $k$-teljes-súlyozása, rendre $\chi_e(G)$-vel, illetve $\chi_t(G)$-vel jelöljük. Végezetül egy gráfra azt mondjuk, hogy \textbf{rendes}, ha egyetlen komponense sem izomorf $K_2$-vel.
+A továbbiakban, hacsak nincs másképp jelezve, minden gráf egyszerű, véges és irányítatlan. Egy $G = (V, E)$ gráfon értelmezett $w: E \rightarrow [k] = \lbrace 1, \ldots, k \rbrace$ függvényt \textbf{$k$-élsúlyozás}nak nevezünk. Amennyiben a csúcsokhoz is rendelünk súlyokat, azaz $w: V \cup E \rightarrow [k]$, akkor \textbf{$k$-teljes-súlyozás}ról beszélünk. Egy csúcs \textbf{érték}én vagy \textbf{szín}én a rá illeszkedő élek súlyainak, és amennyiben van, a saját súlyának összegét értjük. Az első eset egy másik elnevezése még a \textbf{súlyozott fokszám}. Azt mondjuk, hogy egy súlyozás \textbf{csúcs-megkülönböztető}, ha bármely két csúcsnak különböző az értéke. Abban az esetben, ha ezt csak szomszédos csúcspárokra követeljük meg, akkor a csúcsok értékei egy helyes színezését adják a gráfnak. Az ilyen súlyozást \textbf{csúcs-színező}nek, vagy \textbf{helyes}nek hívjuk. Adott $G$ gráfra a legkisebb olyan $k$ számot, melyre létezik $G$-nek csúcs-színező $k$-élsúlyozása, illetve $k$-teljes-súlyozása, rendre $\chi_e(G)$-vel, illetve $\chi_t(G)$-vel jelöljük. Végezetül egy gráfra azt mondjuk, hogy \textbf{rendes}, ha egyetlen komponense sem izomorf $K_2$-vel.
 
 \section{Csúcsok színezése súlyozásokkal}
 Az 1-2-3-sejtés vizsgálatát a gráfok irregularitásának vizsgálata motiválta. Egy gráf éleinek súlyozását irregulárisnak nevezzük, ha bármely két csúcsra a rájuk illeszkedő éleken vett összeg különböző. Egy gráf irregularitásának erősségén azt a legkisebb $k$ számot értjük, amelyre létezik irreguláris súlyozás az $\lbrace 1, \ldots, k \rbrace$ halmazból vett súlyokkal. Ennek a feladatnak egy természetesen adódó egyszerűsítése, ha csak szomszédos csúcsokra követeljük meg azt, hogy különböző legyen az értékük. 
@@ -357,6 +359,18 @@ Ezzel beláttuk, hogy $3$-színezhető gráfnak van csúcs-színező $3$-élsúl
 Legyen $G = (U, V; E)$ egy rendes, összefüggő páros gráf. Ha $|A|$ vagy $|B|$ páros, akkor $G$-nek létezik csúcs-színező $2$-élsúlyozása.
 \end{áll}
 
+\section{Teljes gráfokra $χ_t(G) = 2$}
+
+\begin{áll}
+Minden $G$ teljes gráfra $\chi_t(G) = 2$.
+\end{áll}
+
+\begin{proof}
+Teljes indukciót használva megadjuk $K_n$ egy olyan teljes súlyozását az $1, 2$ számokkal, melyben a csúcsok összsúlya $n$ egymást követő egész $n$-től $2n - 1$-ig vagy $n + 1$-től $2n$-ig. $n = 2$ esetén ez triviális.
+
+Legyen $n \geq 3$, és tegyük fel, hogy $K_{n - 1}$-re már találtunk egy ilyen súlyozást. Adjunk hozzá a gráfhoz egy új $v$ csúcsot, minden más csúccsal összekötve. Figyeljük meg, hogy a $K_{n - 1}$ csúcsainak összsúlyai egymást követő egészek az $\lbrack n - 1, 2n - 2 \rbrack$ intervallumban. Amennyiben a legnagyobb közülük $2n - 3$, úgy legyen a $v$ csúcs és minden rá illeszkedő él súlya $2$. Ezzel a $K_n$ csúcsainak összsúlya $n$ különböző egész az $\lbrack n + 1, 2n \rbrack$ intervallumból. Hasonlóan, ha a $K_{n - 1}$ legnagyobb összsúlya $2n - 2$, akkor a $v$ csúcs és minden rá illeszkedő él súlyát $1$-nek választva szintén megfelelő súlyozást kapunk.
+\end{proof}
+
 \chapter{Élsúlyozások irányított gráfokon}
 Az eddigiekben irányítatlan gráfok élsúlyozásait vizsgáltuk, de joggal merülhet fel a kérdés, hogy vajon mit tudunk mondani az irányított esetről. Itt két lehetőségünk van egy csúcs színének meghatározására. 
 
@@ -422,7 +436,60 @@ Ezen lemma ismeretében és a korábbi megfigyelésünk alapján az alábbi tét
 Minden irányítatlan gráfnak létezik olyan irányítása, amelynek van csúcs-színező $1$-élsúlyozása.
 \end{tét}
 
-\nocite{Dudek2011}
+\chapter{Élsúlyozások komplexitása}
+\citeauthor{AddarioBerry2008} \cite{AddarioBerry2008} cikkéből tudjuk, hogy majdnem minden gráfnak van csúcs-színező $2$-élsúlyozása. Most megmutatjuk, hogy annak eldöntése, hogy egy adott gráfnak van-e helyes élsúlyozása az $1, 2$ számokkal, NP-teljes. Jelölje 1-2-SÚLY azon gráfok nyelvét, melyeknek létezik csúcs-színező $2$-élsúlyozásuk.
+
+\section{Az 1-2-SÚLY NP-teljes}
+\begin{tét}[\citeauthor{Dudek2011} \cite{Dudek2011}]
+Az 1-2-SÚLY NP-teljes
+\end{tét}
+
+\begin{proof}
+Vegyük észre, hogy az 1-2-SÚLY NP-ben van, hiszen polinom időben eldönthető egy gráf egy adott $2$-élsúlyozásáról, hogy csúcs-színező-e. Tehát csak azt kell belátnunk, hogy az 1-2-SÚLY NP-nehéz. Ennek érdekében tekintsük a 3-SZÍN problémát, amely közismerten NP-teljes. A következőkben készíteni fogunk egy $f$ polinomiális redukciót, melyre $G \in \textrm{3-SZÍN}$ akkor és csak akkor, ha $f(G) \in \textrm{1-2-SÚLY}$. Előtte azonban definiálunk néhány segédszerkezetet.
+ 
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{./images/gadgets}
+\caption{}
+\label{fig:gadgets}
+\end{figure}
+
+Az első ilyen a háromszög-szerkezet. Ez egy olyan $xab$ teljes hármas, melyre külső csúcsból csak $x$-be, a szerkezet tetejébe vezethet él. Figyeljük meg, hogy egy helyes súlyozásban egy ilyen háromszög pontosan $3$-mal járul hozzá az $x$ csúcs összsúlyához. 
+
+A következő a $2$-él-szerkezet, amely egy $cdef$ teljes négyesből és egy erre illeszkedő $xc$ élből áll. Könnyen ellenőrizhető, hogy egy olyan gráf esetében, amely csak az $x$ csúccsal szomszédos, tetszőleges $w$ helyes súlyozásra $w(xc) = 2$. Az $x$ csúcsot a szerkezet végpontjának nevezzük.
+
+Ezek segítségével definiálunk egy harmadik szerkezetet, amelynek $k$-kizáró szerkezet a neve. Itt feltesszük, hogy $k \geq 8$. A szerkezetnek van egy $vxy$ fő háromszöge, ahol a $v$ csúcsot gyökérnek nevezzük. Ezenfelül, ha $k$ páratlan, akkor $x$ és $y$ is $\frac{k - 3}{2}$ diszjunkt $2$-él-szerkezet végpontjai. Amennyiben $k$ páros, úgy $x$ és $y$ is $\frac{k - 6}{2}$ diszjunkt $2$-él-szerkezet végpontjai és egy-egy háromszög-szerkezet tetejei, amelyek szintén diszjunktak. Figyeljük meg, hogy minden $w$ helyes súlyozásban $w(vx) \neq w(vy)$. Ellenkező esetben, mivel a szerkezetek $k - 3$-mal járulnak hozzá $x$ és $y$ összsúlyához, azt kapnánk, hogy $w(x) = w(xv) + w(xy) + k - 3 = w(yv) + w(yy) + k - 3 = w(y)$. Ezért tetszőleges $k$ esetén, ha $w(xy) = 1$, akkor $\lbrace w(x), w(y) \rbrace = \lbrace k - 1, k \rbrace$, illetve ha $w(xy) = 2$, akkor $\lbrace w(x), w(y) \rbrace = \lbrace k, k + 1 \rbrace$. Akárhogy is, $v$-nek van egy $k$ súlyú szomszédja, ezért $w(v) \neq k$. Ezen felül $\lbrace w(vx), w(vy) \rbrace = \lbrace 1, 2 \rbrace$, ezért egy ilyen szerkezet $3$-mal járul hozzá $v$ összsúlyához.
+
+Most már minden eszközünk megvan a redukció elkészítéséhez. Legyen $G = (V, E)$ egy $n$ pontú gráf, ahol feltehetjük, hogy $n \geq 3$. Az $f(G) = (W, F)$ gráfot a következőképpen kapjuk meg $G$-ből. Minden $v \in V$-re
+\begin{itemize}
+\item összekötjük $v$-t két új csúccsal, $s_v$-vel és $t_v$-vel
+\item összekötjük $v$-t egy új $U_v$ halmaz minden csúcsával, ahol $|U_v| = n - 1 - d(v)$
+\item felveszünk $n - 1$ új, $v$ gyökerű $k$-kizáró szerkezetet, ahol $k = 4n + 1, 4n + 2, \ldots, 5n - 1$
+\end{itemize}
+
+Világos, hogy $f(G)$ polinom időben kiszámítható.
+
+\begin{áll} \label{áll:npreduct}
+$f(G)$ bármely $w$ helyes súlyozására az $1, 2$ súlyokkal, $w(v) \in \lbrace 4n - 2, 4n - 1, 4n \rbrace$ minden $v \in V$-re.
+\end{áll}
+
+\begin{proof}
+Válasszunk egy $v \in V$ csúcsot. Mivel $w(vs_v) + w(vt_v) \in \lbrace 2, 3, 4 \rbrace$, továbbá a $v$ csúcsra $n - 1$ darab $V \cup U_v$-be menő él illeszkedik, és $n - 1$ darab $k$-kizáró szerkezetnek a gyökere, ezért
+\begin{equation*}
+w(v) \in \lbrace 2, 3, 4 \rbrace + \lbrace n - 1, \ldots, 2n - 2 \rbrace + \lbrace 3n - 3 \rbrace = \lbrace 4n - 2, \ldots, 5n - 1 \rbrace
+\end{equation*}
+Figyelembe véve, hogy minden $k \in \lbrace 4n + 1, 4n + 2, \ldots, 5n - 1 \rbrace$-re a $v$ csúcs gyökere egy $k$-kizáró szerkezetnek, azt kapjuk, hogy egy $w$ helyes súlyozásban $w(v) \in \lbrace 4n - 2, 4n - 1, 4n \rbrace$.
+\end{proof}
+
+Most megmutatjuk, hogy $G \in \textrm{3-SZÍN}$ akkor és csak akkor, ha $f(G) \in \textrm{1-2-SÚLY}$.
+
+Először tegyük fel, hogy $G \in \textrm{3-SZÍN}$. Ez azt jelenti, hogy $G$-nek van egy helyes $3$-színezése. Legyen ez $s: V \rightarrow \lbrace 4n - 2, 4n - 1, 4n \rbrace$. Definiáljunk egy $w: F \rightarrow \lbrace 1, 2 \rbrace$ súlyozást az $f(G)$ gráfon a következő módon. Minden $e \in E$-re legyen $w(e) = 1$. Minden $e = vu$ élre, ahol $v \in V$ és $u \in U_v$, legyen $w(e) = 1$. Minden $v \in V$ csúcsra $s(v) = 4n - 2$ esetén $w(vs_v) = w(vt_v) = 1$, $s(v) = 4n - 1$ esetén $w(vs_v) = 1$ és $w(vt_v) = 2$, valamint $s(v) = 4n$ esetén $w(vs_v) = w(vt_v) = 2$. A szerkezetekhez tartozó éleket az alábbi módon súlyozzuk. Egy $xab$ háromszög-szerkezetre, melynek teteje $x$, legyen $w(xa) = 2$ és $w(xb) = w(ab) = 1$. Egy $xcdef$ $2$-él-szerkezetre, melynek végpontja $x$, legyen $w(xc) = w(cd) = w(ce) = w(de) = w(df) = 2$ és $w(cf) = w(ef) = 1$. Egy $v$ gyökerű és $vxy$ fő háromszögű $k$-kizáró-szerkezet esetén legyen $w(vx) = w(xy) = 2$ és $w(vy) = 1$, minden más él súlyozása pedig a fentieknek megfelelő. Figyeljük meg, hogy $w$ egy helyes színezése $f(G)$-nek, hiszen $w(v) = s(v)$ minden $v \in V$-re.
+
+Tegyük most fel, hogy $G \notin \textrm{3-SZÍN}$. Ennélfogva minden $s: V \rightarrow \lbrace 4n - 2, 4n - 1, 4n \rbrace$-re $s$ nem egy helyes színezés. Ezt összevetve a \ref{áll:npreduct} állítással azt kapjuk, hogy $f(G)$-nek nem létezik helyes súlyozása, azaz $f(G) \notin \textrm{1-2-SÚLY}$.
+
+Ezzel a tételt beláttuk.
+\end{proof}
+
 \printbibliography
 
 \end{document}
