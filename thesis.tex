@@ -30,7 +30,7 @@
 \newtheorem{lem}[tét]{Lemma}
 \newtheorem{áll}[tét]{Állítás}
 \newtheorem{sej}[tét]{Sejtés}
-\newtheorem*{köv}{Következmény}
+\newtheorem{köv}[tét]{Következmény}
 \theoremstyle{remark}
 \newtheorem*{megj}{Megjegyzés}
 \theoremstyle{definition}
@@ -71,7 +71,7 @@ operációkutatás szakirány \\[2.2cm]
 \pagenumbering{arabic}
 
 \section{Fogalmak és jelölések}
-A továbbiakban, hacsak nincs másképp jelezve, minden gráf egyszerű, véges és irányítatlan. Egy $G = (V, E)$ gráfon értelmezett $w: E \rightarrow [k] = \lbrace 1, \ldots, k \rbrace$ függvényt \textbf{$k$-élsúlyozás}nak nevezünk. Amennyiben a csúcsokhoz is rendelünk súlyokat, azaz $w: V \cup E \rightarrow [k]$, akkor \textbf{$k$-teljes-súlyozás}ról beszélünk. Egy csúcs \textbf{érték}én vagy \textbf{szín}én a rá illeszkedő élek súlyainak, és amennyiben van, a saját súlyának összegét értjük. Az első eset egy másik elnevezése még a \textbf{súlyozott fokszám}. Azt mondjuk, hogy egy súlyozás \textbf{csúcs-megkülönböztető}, ha bármely két csúcsnak különböző az értéke. Abban az esetben, ha ezt csak szomszédos csúcspárokra követeljük meg, akkor a csúcsok értékei egy helyes színezését adják a gráfnak. Az ilyen súlyozást \textbf{csúcs-színező}nek, vagy \textbf{helyes}nek hívjuk. Adott $G$ gráfra a legkisebb olyan $k$ számot, melyre létezik $G$-nek csúcs-színező $k$-élsúlyozása, illetve $k$-teljes-súlyozása, rendre $\chi_e(G)$-vel, illetve $\chi_t(G)$-vel jelöljük. Végezetül egy gráfra azt mondjuk, hogy \textbf{rendes}, ha egyetlen komponense sem izomorf $K_2$-vel.
+A továbbiakban, hacsak nincs másképp jelezve, minden gráf egyszerű, véges és irányítatlan. Egy $G = (V, E)$ gráfon értelmezett $w: E \rightarrow [k] = \lbrace 1, \ldots, k \rbrace$ függvényt \textbf{$k$-élsúlyozás}nak nevezünk. Amennyiben a csúcsokhoz is rendelünk súlyokat, azaz $w: V \cup E \rightarrow [k]$, akkor \textbf{$k$-teljes-súlyozás}ról beszélünk. Egy csúcs \textbf{érték}én vagy \textbf{szín}én a rá illeszkedő élek súlyainak, és amennyiben van, a saját súlyának összegét értjük. Az első eset egy másik elnevezése még a \textbf{súlyozott fokszám}. Azt mondjuk, hogy egy súlyozás \textbf{csúcs-megkülönböztető}, ha bármely két csúcsnak különböző az értéke. Abban az esetben, ha ezt csak szomszédos csúcspárokra követeljük meg, akkor a csúcsok értékei egy helyes színezését adják a gráfnak. Az ilyen súlyozást \textbf{csúcs-színező}nek vagy \textbf{helyes}nek hívjuk. Adott $G$ gráfra a legkisebb olyan $k$ számot, melyre létezik $G$-nek csúcs-színező $k$-élsúlyozása, illetve $k$-teljes-súlyozása, rendre $\chi_e(G)$-vel, illetve $\chi_t(G)$-vel jelöljük. Végezetül egy gráfra azt mondjuk, hogy \textbf{rendes}, ha egyetlen komponense sem izomorf $K_2$-vel.
 
 \section{Csúcsok színezése súlyozásokkal}
 Az 1-2-3-sejtés vizsgálatát a gráfok irregularitásának vizsgálata motiválta. Egy gráf éleinek súlyozását irregulárisnak nevezzük, ha bármely két csúcsra a rájuk illeszkedő éleken vett összeg különböző. Egy gráf irregularitásának erősségén azt a legkisebb $k$ számot értjük, amelyre létezik irreguláris súlyozás az $\lbrace 1, \ldots, k \rbrace$ halmazból vett súlyokkal. Ennek a feladatnak egy természetesen adódó egyszerűsítése, ha csak szomszédos csúcsokra követeljük meg azt, hogy különböző legyen az értékük. 
@@ -82,7 +82,7 @@ A sejtést először \citeauthor{Karonski2004} \cite{Karonski2004} fogalmazta me
 Minden rendes gráf élei megcímkézhetőek az 1, 2, 3 számokkal oly módon, hogy tetszőleges két szomszédos csúcsra a rájuk illeszkedő éleken lévő számok összege különböző legyen.
 \end{sej}
 
-A sejtést megfogalmazása óta sokat vizsgálták. Az eddigi legjobb korlátot \citeauthor{Kalkowski2010} \cite{Kalkowski2010} bizonyította be 2010-ben, mely szerint a helyes színezéshez 5 élsúly elegendő. Könnyen látható, hogy léteznek olyan rendes gráfok, amelyekre nem elég 2 élsúly. Azonban egy aszimptotikus eredmény szerint egy $G(p, n)$ véletlen gráf majdnem biztosan megszínezhető csak az 1, 2 élsúlyok segítségével \cite{AddarioBerry2008}. Bizonyos gráfosztályokra már sikerült igazolni a sejtést. Eszerint 3-színezhető \cite{Karonski2004}, illetve teljes gráfok \cite{Alaeiyan2012} esetén $\chi_e(G) = 3$. Az előbbi eredmény nyomán feltehető az a kérdés, hogy mely páros gráfok esetében elegendő csak az 1, 2 súlyok közül választani. \citeauthor{Lu2011} \cite{Lu2011} cikke szerint a 3-összefüggő, valamint bizonyos fokszám-megkötéseknek eleget tevő páros gráfok ilyenek.
+A sejtést megfogalmazása óta sokat vizsgálták. Az eddigi legjobb korlátot \citeauthor{Kalkowski2010} \cite{Kalkowski2010} bizonyította be 2010-ben, mely szerint a helyes színezéshez öt élsúly elegendő. Világos, hogy $\chi_e(G) = 1$ pontosan akkor, ha a szomszédos csúcsok foka különböző. Könnyen látható az is, hogy léteznek olyan rendes gráfok, amelyekre nem elég két élsúly sem. Ilyen például a $3$ vagy $6$ hosszú kör. Így a legjobb remélhető általános korlát a $\chi_e(G) \leq 3$. Azonban egy aszimptotikus eredmény szerint egy $G(p, n)$ véletlen gráf majdnem biztosan megszínezhető csak az $1, 2$ élsúlyok segítségével \cite{AddarioBerry2008}. Bizonyos gráfosztályokra már sikerült igazolni a sejtést. Eszerint $3$-színezhető \cite{Karonski2004}, illetve teljes gráfok \cite{Alaeiyan2012} esetén $\chi_e(G) = 3$. Az előbbi eredmény nyomán feltehető az a kérdés, hogy mely páros gráfok esetében elegendő csak az $1, 2$ súlyok közül választani. \citeauthor{Lu2011} \cite{Lu2011} cikke szerint a $3$-összefüggő, valamint bizonyos fokszám-megkötéseknek eleget tevő páros gráfok ilyenek.
 
 Hasonló sejtést fogalmazott meg teljes-súlyozásokra \citeauthor{Przybylo2010} 2008-ban:
 
@@ -90,7 +90,7 @@ Hasonló sejtést fogalmazott meg teljes-súlyozásokra \citeauthor{Przybylo2010
 Minden gráf élei és csúcsai megcímkézhetőek az 1, 2 számokkal oly módon, hogy tetszőleges két szomszédos csúcsra a rájuk illeszkedő éleken és magán a csúcson lévő számok összege különböző legyen.
 \end{sej}
 
-Ebben a cikkben bebizonyították, hogy $\chi_t(G) \leq 11$, valamint $\chi_t(G) \leq (\lfloor \frac{χ(G)}{2} \rfloor + 1)$. A jelenleg ismert legjobb eredmény szerint $\chi_t(G) \leq 3$.
+Ebben a cikkben bebizonyították, hogy $\chi_t(G) \leq 11$, valamint $\chi_t(G) \leq \left( \left\lfloor \frac{χ(G)}{2} \right\rfloor + 1 \right)$. A jelenleg ismert legjobb eredmény szerint $\chi_t(G) \leq 3$.
 
 A csúcs-színező élsúlyozásoknak számos változatát vizsgálták már az elmúlt évtizedben. Az irányított esetben egy digráf éleit súlyozzuk, a csúcsok értékét pedig csak a kifelé vezető éleken vett összeg határozza meg. Ez a probléma lényegesen egyszerűbb, mint az irányítatlan változat, ugyanis itt könnyedén belátható az 1-2-3-sejtéssel analóg állítás \cite{Baudon2014}.
 
@@ -114,7 +114,7 @@ Minden összefüggő, rendes $G$ gráfra létezik olyan $f:E(G) \rightarrow \lbr
 
 Ennek segítségével egy $\chi_e(G) \leq 10$ korlát adható az élsúlyok megháromszorozásával, majd bizonyos élek $1$-gyel történő módosításával. Jelen esetben is egy hasonló eljárást követünk majd, amelyhez szükségünk lesz a lemma egy általánosabb alakjára. Előtte azonban érdemes megjegyezni egy egyszerű következményt. A sejtés vizsgálatánál érdekes kérdés lehet, hogy mit tudunk mondani a rossz élek részgráfjáról, vagyis azon élekről, melyek végpontjai azonos értékűek. A fenti lemma erre is ad egyfajta választ, ugyanis az általa biztosított teljes-súlyozásban minden csúcsra $0$-t írva olyan élsúlyozást kapunk, ahol a rossz élek egy páros gráfot alkotnak. Ez a megfigyelés segíthet abban, hogy közelebb jussunk a sejtés bizonyításához vagy cáfolatához. Visszatérve a tételünkhöz, a lemma általánosítása a következőképpen hangzik:
 
-\begin{lem} \label{lem:6treemixed}
+\begin{lem} \label{lem:edge6treemixed}
 Legyen $\alpha \in \mathbb{R}$ és $\beta \in \mathbb{R} \smallsetminus \lbrace 0 \rbrace$. Ekkor minden összefüggő, rendes $G$ gráfra, és tetszőleges $T$ feszítőfájára létezik olyan $f:E(G) \rightarrow \lbrace \alpha - \beta, \alpha, \alpha + \beta \rbrace$ élsúlyozás és $f':V(G) \rightarrow \lbrace 0, \beta \rbrace$ csúcs-súlyozás, melyre a csúcsok $w(v) = f'(v) + \sum\limits_{w \in N(v)} f(vw)$ értéke egy helyes színezés. Továbbá $f$ megválasztható úgy, hogy $f(e) = \alpha$ minden $e \in E(T)$-re.
 \end{lem}
 
@@ -145,7 +145,7 @@ Ha $s_2 = 0$, akkor készen vagyunk, hiszen $f$ jó színezést ad. Amennyiben $
 
 Ha $s_2 = 1$ és $s_1 \geq 1$, akkor vegyünk egy $T$-beli utat $u \in S_2$ és egy $v \in S_1$ között, majd felváltva csökkentsük és növeljük az élek súlyát $1$-gyel, ügyelve arra, hogy a $v$-re illeszkedő él súlyát csökkentsük. Ezzel a keresett súlyozáshoz jutunk.
 
-Ha $s_2 \geq 2$, akkor indukcióval beláthatjuk, hogy tudunk találni $\lceil \frac{s_2}{2} \rceil$ olyan $T$-beli utat, melyek végpontjai pontosan az $S_2$-beli csúcsok, és amelyek $T$ minden élét legfeljebb kétszer használják. Ilyen utakat $2 \leq s_2 \leq 3$ esetén könnyen találhatunk. Amennyiben $s_2 \geq 4$, úgy keressünk egy olyan $e \in E(T)$ élt, melyre $T-e$ mindkét komponense legalább $2$ $S_2$-beli csúcsot tartalmaz, és legalább az egyikben páros számú ilyen csúcs van. A két komponensre indukciót alkalmazva megtalálhatjuk a keresett utakat.
+Ha $s_2 \geq 2$, akkor indukcióval beláthatjuk, hogy tudunk találni $\left\lceil \frac{s_2}{2} \right\rceil$ olyan $T$-beli utat, melyek végpontjai pontosan az $S_2$-beli csúcsok, és amelyek $T$ minden élét legfeljebb kétszer használják. Ilyen utakat $2 \leq s_2 \leq 3$ esetén könnyen találhatunk. Amennyiben $s_2 \geq 4$, úgy keressünk egy olyan $e \in E(T)$ élt, melyre $T-e$ mindkét komponense legalább $2$ $S_2$-beli csúcsot tartalmaz, és legalább az egyikben páros számú ilyen csúcs van. A két komponensre indukciót alkalmazva megtalálhatjuk a keresett utakat.
 
 Felváltva csökkentsük és növeljük ezen utak mentén az élek súlyait úgy, hogy csak a végpontok súlya változzon, és módosítsuk ennek megfelelően az $f'$ értékeket ezeken a csúcsokon. Ha egy $u \in S_2$ csúcs két útnak is végpontja (például, ha $s_2$ páratlan), akkor ügyeljünk arra, hogy az $u$-ra illeszkedő mindkét élen csökkentsük a súlyt, hogy $f'(u) = 0$ adódjon. Figyeljük meg, hogy csak $E(T)$-beli éleket használunk, így nem kapunk $1$-nél kisebb vagy $6$-nál nagyobb élsúlyokat. Ezek után minden csúcsra, amely korábban $S_2$-ben volt, $f'(v) \in \lbrace -3, -1, 0 \rbrace$. Könnyen látható, hogy így az $f$ súlyozást tekintve minden $v$ csúcs értéke $w(v)$, amennyiben $w(v)$ páros. A páratlan értékű csúcsok között futó élek mind $E^*$-ban vannak, tehát a végpontjaik $w$ súlya különböző, ahogyan azt korábban már láttuk. Így $f$ egy csúcs-színező $6$-élsúlyozás.
 \end{proof}
@@ -158,7 +158,7 @@ Minden $G$ rendes gráfra $\chi_e(G) \leq 5$.
 \begin{proof}
 Feltehető, hogy $G$ összefüggő, különben komponensenként érvelhetünk. Feltehető még továbbá az is, hogy $|V| \geq 3$, és létezik olyan $v$ csúcs, melyre $d(v) \geq 2$. Legyen $v_1, v_2, \ldots, v_n$ a csúcsoknak egy olyan sorrendje, melyre $d(v_n) \geq 2$, és minden $1 \leq i \leq n-1$-re $v_i$-nek van szomszédja $\lbrace v_{i+1}, v_{i+2}, \ldots, v_n \rbrace$-ben.
 
-Kezdetben minden $e$ élhez az $f(e) = 3$ élsúlyt rendeljük, majd legfeljebb kétszer módosítjuk, miközben sorban végighaladunk a csúcsokon. Minden $i < n$-re a $v_i$ csúcshoz hozzárendelünk két színt, $W_(v_i) = \lbrace w(v_i), w(v_i) +2 \rbrace$, ahol $w(v_i) \in \lbrace 0, 1 \rbrace$ mod $4$, oly módon, hogy minden $v_j v_i \in E$ élre, ahol $1 \leq j < i$, $W(v_j) \cap W(v_i) = \emptyset$, és biztosítani fogjuk, hogy $f(v_i) = \sum\limits_{u \in N(v_i)} f(uv_i) \in W(v_i)$. Végül beállítjuk a $v_n$-re illeszkedő élek súlyát úgy, hogy $f(v_n)$ különbözzön $f(v_i)$-től minden $v_i \in N(v_n)$-re.
+Kezdetben minden $e$ élhez az $f(e) = 3$ élsúlyt rendeljük, majd legfeljebb kétszer módosítjuk, miközben sorban végighaladunk a csúcsokon. Minden $i < n$-re a $v_i$ csúcshoz hozzárendelünk két színt, $W(v_i) = \lbrace w(v_i), w(v_i) +2 \rbrace$, ahol $w(v_i) \in \lbrace 0, 1 \rbrace$ mod $4$, oly módon, hogy minden $v_j v_i \in E$ élre, ahol $1 \leq j < i$, $W(v_j) \cap W(v_i) = \emptyset$, és biztosítani fogjuk, hogy $f(v_i) = \sum\limits_{u \in N(v_i)} f(uv_i) \in W(v_i)$. Végül beállítjuk a $v_n$-re illeszkedő élek súlyát úgy, hogy $f(v_n)$ különbözzön $f(v_i)$-től minden $v_i \in N(v_n)$-re.
 
 Ezt szem előtt tartva legyen $f(v_1) = 3d(v_1)$, és válasszuk meg a $W(v_1)$ halmazt úgy, hogy $f(v_1) \in W(v_1)$, valamint $w(v_1) \in \lbrace 0, 1 \rbrace$ mod $4$ teljesüljön. Legyen $2 \leq k \leq n - 1$, és tegyük fel, hogy már minden $i < k$-ra meghatároztuk $W(v_i)$-t, valamint
 \begin{itemize}
@@ -180,9 +180,73 @@ Ilyen módon lépésről lépésre, konfliktus nélkül meghatározhatjuk a $W(v
 Utolsó lépésként találnunk kell egy szabad értéket $v_n$-nek. Ez alkalommal nem áll rendelkezésünkre egy $v_n v_j$ segédél, de nem is kell későbbi csúcsok miatt aggódnunk. Az előzőekhez hasonlóan, ha $v_i v_n \in E$ valamely $i < n$-re, akkor $f(v_i v_n)$-t $2$-vel növelhetjük vagy csökkenthetjük úgy, hogy $f(v_i) \in W(v_i)$ maradjon. Ezek a módosítások összesen $d(v_n) +1 \geq 3$, azonos paritású lehetőséget jelentenek $f(v_n)$ értékének. Így, ha a legkisebb ilyen lehetséges $a$ értékre $a \in \lbrace 2, 3 \rbrace$ mod $4$, akkor minden $v_n$-re illeszkedő élen a kisebb értéket választva a csúcsok egy helyes színezését kapjuk. Ha $a \in \lbrace 0, 1 \rbrace$ mod $4$, és létezik olyan $v_i \in N(v_n)$ csúcs, melyre $w(v_i) \neq a$, akkor a $v_i v_n$ élen a nagyobb, minden más élen pedig a kisebb súlyt választva $f(v_n) = a + 2$, ami szintén helyes színezéshez vezet. Végezetül, amennyiben $a \in \lbrace 0, 1 \rbrace$ mod $4$ és $w(v_i) = a$ minden $v_i \in N(v_n)$-re, akkor legalább két élen a nagyobb súlyt választva kapunk helyes színezést. Ezzel a tétel állítását beláttuk.
 \end{proof}
 
+\section{Csúcs-színező 3-élsúlyozás irányított gráfokra}
+Az eddigiekben irányítatlan gráfok élsúlyozásait vizsgáltuk, de joggal merülhet fel a kérdés, hogy vajon mit tudunk mondani az irányított esetről. Itt két lehetőségünk van egy csúcs színének meghatározására. 
+
+Az első esetben a kimenő élek összsúlyából kivonjuk bemenő élek összsúlyát. Erről a változatról \citeauthor{Bartnicki2009} \cite{Bartnicki2009} bebizonyították, hogy a súlyokat tetszőleges kételemű listákról választva is létezik csúcs-színező élsúlyozás.
+
+A második esetben egy csúcs színét csak a kimenő éleken vett súlyok összege, azaz a csúcs súlyozott kifoka határozza meg. A továbbiakban ezzel az esettel fogunk foglalkozni.
+
+Könnyen látható, hogy léteznek olyan digráfok, például a $3$ hosszú irányított kör, amelyek helyes színezéséhez nem elegendőek az $\lbrace 1, 2 \rbrace$ élsúlyok. A következő tétel azt mondja ki, hogy minden irányított gráfnak van csúcs-színező 3-élsúlyozása. Ez abból következik, hogy minden digráfnak van egy alkalmas csúcsa, amely a szomszédai számához képest sok lehetséges súlyozott kifok-értéket vehet fel. Egy ilyen csúcs létezése teljes indukció használatát teszi lehetővé, továbbá a bizonyítás polinomiális idejű algoritmust is eredményez egy csúcs-színező 3-élsúlyozás megtalálására.
+
+\begin{tét}[\citeauthor{Baudon2014} \cite{Baudon2014}]
+Minden $D$ digráfra $\chi_e(D) \leq 3$.
+\end{tét}
+
+\begin{proof}
+A bizonyítás $D$ élszáma szerinti indukcióval történik. Az állítás nyilvánvaló $0$ vagy $1$ élű digráf esetén. Tegyük fel, hogy legfeljebb $m - 1$ élre már igazoltuk a tételt, és legyen $D = (V, A)$ egy $m \geq 2$ élű digráf.
+
+Figyeljük meg, hogy $D$-nek létezik egy olyan $v$ csúcsa, melyre $\delta(v) > 0$ és $\delta(v) > \varrho(v)$, hiszen különben $\sum\limits_{v \in V} \varrho(v) \neq \sum\limits_{v \in V} \delta(v)$ lenne. Első lépésként töröljünk minden $v$-ből kilépő élet. Ekkor az indukciós feltevés miatt a fennmaradó digráfnak létezik egy $w$ csúcs-színező 3-élsúlyozása. Tegyük vissza a kitörölt éleket, és terjesszük ki ezekre $w$-t oly módon, hogy $v$ súlyozott kifoka különbözzön mind a $\delta(v) + \varrho(v)$ szomszédjáétól. Ez megtehető, hiszen $2\delta(v) + 1$ érték közül választhatunk, nevezetesen a $\lbrace \delta(v), \delta(v) + 1, \ldots, 3\delta(v) \rbrace$ halmazból, míg a tiltott értékek száma $v$ választása miatt legfeljebb $\varrho(v) + \delta(v) < 2\delta(v) + 1$. Mivel ezen élsúlyok kizárólag a $v$ csúcs súlyozott kifokát befolyásolják, ezért az így kapott kiterjesztett súlyozás a $D$ digráf egy csúcs-színező 3-élsúlyozása.
+\end{proof}
+
+Ebben a bizonyításban azt használtuk ki, hogy egy $d$-edfokú csúcs lehetséges súlyozott kifokainak száma kellően nagy, pontosabban legalább $2d + 1$, amennyiben az éleket az $\lbrace 1, 2, 3 \rbrace$ számokkal súlyozzuk. Most megmutatjuk, hogy ez a tulajdonság tetszőleges $\lbrace a, b, c \rbrace$ súlyok esetén fennáll, és így egy erősebb tétel is igaz.
+
+\begin{lem}
+Legyen egy $D$ digráfnak $v$ egy legalább $d$-edfokú csúcsa, valamint $a, b$ és $c$ három valós szám. Ekkor $v$ súlyozott kifoka legalább $2d + 1$ különböző értéket vehet fel $D$ egy tetszőleges élsúlyozásában, amelyben a $v$-ből kimenő élek súlyai az $\lbrace a, b, c \rbrace$ halmazból kerülnek ki.
+\end{lem}
+
+\begin{proof}
+A bizonyítás $d$ szerinti indukcióval történik. Amennyiben $d = 1$, úgy a $v$-ből kilépő él súlya $a, b$ vagy $c$ lehet. Mivel ezek különbözőek, ezért $v$ súlyozott kifokának is $3$ különböző értéke lehet.
+
+Tegyük fel, hogy $d \leq i - 1$ esetén már igazoltuk az állítást, és legyen $d = i$. Jelölje $D'$ azt a digráfot, amelyet egy $v$-ből kilépő $vu$ él elhagyásával kapunk $D$-ből. Ekkor az indukciós feltevés szerint $v$ súlyozott kifoka legalább $2(d - 1) + 1$ lehetséges értéket vehet fel $D$ egy tetszőleges élsúlyozásában, amely a $v$-ből kilépő éleket az $\lbrace a, b, c \rbrace$ számokkal súlyozza. Legyen $F'$ ezen lehetséges értékek halmaza, valamint $k$ és $n$ rendre a legkisebb, illetve legnagyobb eleme $F'$-nek, továbbá $w_K$ és $w_N$ két élsúlyozása $D'$-nek, melyekre a $v$ csúcs súlyozott kifoka rendre $K$, illetve $N$.
+
+Tegyük fel, hogy $a < b < c$. Amennyiben az állítás igaz az $\lbrace a, b, c \rbrace$ számokra, úgy igaz a $\lbrace -a, -b, -c \rbrace$ számokra is, ezért két eset lehetséges:
+
+\begin{enumerate}
+\item $0 \leq a < b < c$
+\item $a < 0 \leq b < c$
+\end{enumerate}
+
+Az első esetben terjesszük ki a $D'$ minden élsúlyozását a $D$ digráfra úgy, hogy a $vu$ élre $a$ súlyt írunk. Ekkor azt kapjuk, hogy az $F = \lbrace x + a: x \in F' \rbrace$ halmaz a $v$ csúcs lehetséges súlyozott kifokainak $2(d - 1) + 1$ elemű halmaza. A fennmaradó két lehetőséget úgy kapjuk, hogy a $w_N$ súlyozást $b$ vagy $c$ értékkel kiterjesztjük a $vu$ élre. Ekkor ugyanis $N + b$ és $N + c$ két újabb lehetséges érték, hiszen $a < b < c$ miatt ezek nincsenek $F$-ben. Tehát létezik legalább $2d + 1$ választás $v$ súlyozott kifokára.
+
+A második esetben terjesszük ki a $D'$ minden élsúlyozását a $D$ digráfra úgy, hogy a $vu$ élre $b$ súlyt írunk. Ekkor azt kapjuk, hogy az $F = \lbrace x + b: x \in F' \rbrace$ halmaz a $v$ csúcs lehetséges súlyozott kifokainak $2(d - 1) + 1$ elemű halmaza. A fennmaradó két lehetőséget úgy kapjuk, hogy a $w_N$ és $w_K$ súlyozásokat rendre $a$, illetve $c$ értékkel kiterjesztjük a $vu$ élre. Ezekből azt kapjuk, hogy $K + a$ és $N + c$ két újabb lehetséges érték, amely nem szerepel $F$-ben a súlyokra vonatkozó feltevés miatt. Ezzel az állítást beláttuk.
+\end{proof}
+
+A lemma következményeként azt kapjuk, hogy az előző tétel bizonyításában nem számít, hogy egy csúcsnál mely három súlyt írhatjuk a kimenő élekre. Ez a megfigyelés az alábbi listaszínezési tételhez vezet.
+
+\begin{tét}
+Legyen adott egy $D$ digráf minden $v$ csúcsára egy három valós számból álló $L(v)$ lista. Ekkor $D$-nek van olyan csúcs-színező élsúlyozása, amelyben minden $v$ csúcsra a kimenő élek súlyai $L(v)$-ből kerülnek ki.
+\end{tét}
+
+A probléma egyfajta kiterjesztéseként megkérdezhetjük, hogy melyik az a legkisebb $k \in \lbrace 1, 2, 3 \rbrace$, melyre minden irányított gráfnak létezik olyan irányítása, amelynek van csúcs-színező $k$-élsúlyozása. Tudjuk, hogy egy digráfnak pontosan akkor létezik csúcs-színező $1$-élsúlyozása, ha bármely két szomszédos pont kifoka különböző. A következő lemma azt mondja ki, hogy minden gráfnak létezik olyan irányítása, amelyre ez teljesül.
+
+\begin{lem}
+Minden $G$ gráfnak létezik olyan irányítása, amelyben bármely két szomszédos csúcs kifoka különböző.
+\end{lem}
+
+\begin{proof}
+A bizonyítás $G$ pontszáma szerinti indukcióval történik. Az állítás $n \leq 2$ esetén nyilvánvaló. Tegyük fel, hogy legfeljebb $i - 1$ csúcsra már igaz a lemma, és legyen $G$ egy $n = i$ pontú gráf. Jelölje $v$ a legnagyobb fokszámú csúcsot $G$-ben. Az indukciós feltevés szerint $G' = G - v$ megirányítható úgy, hogy bármely két szomszédos csúcs kifoka különböző legyen. Jelölje az így kapott digráfot $D'$. Figyeljük meg, hogy $v$ választása miatt $D'$-ben minden $v$-vel szomszédos csúcs kifoka legfeljebb $d(v) - 1$. Legyen $D$ a $G$ gráf azon irányítása, amelyet a $D'$ irányításból kapunk oly módon, hogy a $v$-re illeszkedő éleket mind kifelé irányítjuk. Mivel így $v$ kifoka a $D$ digráfban $d(v)$, és a szomszédos csúcsok kifoka nem változott, ezért a kapott irányítás továbbra is teljesíti a lemma feltételét.
+\end{proof}
+
+Ezen lemma ismeretében és a korábbi megfigyelésünk alapján az alábbi tételt fogalmazhatjuk meg:
+
+\begin{tét}
+Minden irányítatlan gráfnak létezik olyan irányítása, amelynek van csúcs-színező $1$-élsúlyozása.
+\end{tét}
+
 \chapter{Teljes súlyozások és az 1-2-sejtés}
 
-\section{Csúcs-színező $(\lfloor \frac{χ(G)}{2} \rfloor + 1)$-tejes-súlyozás}
+\section{Csúcs-színező $\left( \left\lfloor \frac{χ(G)}{2} \right\rfloor + 1 \right)$-tejes-súlyozás}
 
 \begin{áll}
 Minden $G$ páros gráfra $\chi_t(G) \leq 2$.
@@ -200,14 +264,14 @@ Legyen adott a $G$ gráf és minden $v \in V(G)$ csúcsra egy $t_v$ szín. Ekkor
 
 A következőkben egy még általánosabb állítást fogunk igazolni, amelynek segítségével felülről tudjuk majd becsülni $\chi_t(G)$-t a $G$ kromatikus számával.
 
-\begin{lem} \label{lem:12circle}
-Legyen adott egy $C$ kör, minden $v \in V(C)$ csúcsra egy $t_v$ szín, és $p \geq 3$ egész. Ekkor $C$-nek létezik olyan $\left( \left\lfloor \dfrac{p}{2} \right\rfloor + 1 \right)$-tejes-súlyozása, hogy $c(v) ≡ t_v\ (\mathrm{mod}\ p)$ minden $v \in V(C)$-re.
+\begin{lem} \label{lem:totalcircle}
+Legyen adott egy $C$ kör, minden $v \in V(C)$ csúcsra egy $t_v$ szín, és $p \geq 3$ egész. Ekkor $C$-nek létezik olyan $\left( \left\lfloor \frac{p}{2} \right\rfloor + 1 \right)$-tejes-súlyozása, hogy $c(v) ≡ t_v\ (\mathrm{mod}\ p)$ minden $v \in V(C)$-re.
 \end{lem}
 
 \begin{proof}
-Legyenek $C$ csúcsai sorban $v_1, v_2, \ldots, v_n$, ahol $n = |C|$. Feltehetjük, hogy minden $i$-re $t_{v_i} \in \lbrack 3, p + 2 \rbrack$. Legyen $V(C) = S \cup L$, ahol $v_i \in S$, ha $t_{v_i} \in \lbrack 3, \lfloor \frac{p}{2} \rfloor + 2 \rbrack$, valamint $v_i \in L$, ha $t_{v_i} \in \lbrack \lfloor \frac{p}{2} \rfloor + 3, p + 2 \rbrack$. Jelölje a $t_{v_i}$ színt $s_i$, ha $v_i \in S$, illetve $l_i$, ha $v_i \in L$, és legyen $h = \lfloor \frac{p}{2} \rfloor + 1$. A továbbiakban csak az $1, 2, \ldots, h$ súlyokat fogjuk használni. 
+Legyenek $C$ csúcsai sorban $v_1, v_2, \ldots, v_n$, ahol $n = |C|$. Feltehetjük, hogy minden $i$-re $t_{v_i} \in \lbrack 3, p + 2 \rbrack$. Legyen $V(C) = S \cup L$, ahol $v_i \in S$, ha $t_{v_i} \in \lbrack 3, \left\lfloor \frac{p}{2} \right\rfloor + 2 \rbrack$, valamint $v_i \in L$, ha $t_{v_i} \in \lbrack \left\lfloor \frac{p}{2} \right\rfloor + 3, p + 2 \rbrack$. Jelölje a $t_{v_i}$ színt $s_i$, ha $v_i \in S$, illetve $l_i$, ha $v_i \in L$, és legyen $h = \left\lfloor \frac{p}{2} \right\rfloor + 1$. A továbbiakban csak az $1, 2, \ldots, h$ súlyokat fogjuk használni. 
 
-Először is figyeljük meg, hogy ha $|L|$ páros, akkor könnyedén megkaphatjuk a kívánt súlyozást. Ehhez elég csak az $1, h$ súlyokat használni az éleken. Kezdetnek legyen $w(v_n v_1) = 1$, és ezután sorban rendeljük hozzá az $1, h$ súlyokat az élekhez oly módon, hogy a $v_i$-re illeszkedő két él súlya azonos legyen, ha $v_i \in S$, illetve különböző, ha $v_i \in L$. Így a jelenlegi összsúlyok értéke $\mathrm{mod}\ p$ az $S$-beli csúcsok esetén $1$ vagy $2$ ($p$ paritásától függően), illetve $\lfloor \frac{p}{2} \rfloor + 2$ az $L$-beli csúcsokra. Innen már könnyedén befejezhető a súlyozás a csúcsok súlyainak megválasztásával.
+Először is figyeljük meg, hogy ha $|L|$ páros, akkor könnyedén megkaphatjuk a kívánt súlyozást. Ehhez elég csak az $1, h$ súlyokat használni az éleken. Kezdetnek legyen $w(v_n v_1) = 1$, és ezután sorban rendeljük hozzá az $1, h$ súlyokat az élekhez oly módon, hogy a $v_i$-re illeszkedő két él súlya azonos legyen, ha $v_i \in S$, illetve különböző, ha $v_i \in L$. Így a jelenlegi összsúlyok értéke $\mathrm{mod}\ p$ az $S$-beli csúcsok esetén $1$ vagy $2$ ($p$ paritásától függően), illetve $\left\lfloor \frac{p}{2} \right\rfloor + 2$ az $L$-beli csúcsokra. Innen már könnyedén befejezhető a súlyozás a csúcsok súlyainak megválasztásával.
 
 Legyen $|L|$ páratlan, és legyen $v_2 \in L$ egy olyan csúcs, melynek szomszédai, $v_1$ és $v_3$, $S$-beliek. Ha $s_1 - 2 + s_3 - 2 \geq l_2 - h$, akkor létezik $s'_1 \in \lbrack 1, s_1 - 2 \rbrack$ és $s'_3 \in \lbrack 1, s_3 - 2 \rbrack$ úgy, hogy $s'_1 + s'_3 = l_2 - h$. Legyen $w(v_1 v_2) = s'_1$, $w(v_2) = h$ és $w(v_2 v_3) = s'_3$, így elérve, hogy $c(v_2) = l_2$ legyen. Ezután folytassuk a súlyozást a $w(v_n v_1) = w(v_3 v_4) = 1$ választással. Ez megtehető, hiszen $v_n v_1 = v_3 v_4$, amennyiben $C = C_3$. Mivel páros számú súlyozatlan csúcs maradt $L$-ben, ezért az előbbiekben leírt módszert követve a kívánt súlyozáshoz jutunk. Ha $p + s_1 - 2h + p + s_3 - 2h \leq l_2 - 1$, akkor létezik $s'_1 \in \lbrack p + s_1 - 2h, h \rbrack$ és $s'_3 \in \lbrack p + s_3 - 2h, h \rbrack$ úgy, hogy $s'_1 + s'_3 = l_2 - 1$. A fentiekhez hasonlóan legyen $w(v_1 v_2)= s'_1$, $w(v_2) = 1$ és $w(v_2 v_3) = s'_3$, amiből kapjuk, hogy $c(v_2) = l_2$. Ezután legyen $w(v_n v_1) = w(v_3 v_4) = h$, és kövessük a fentebb említett módszert, hogy eljussunk a kívánt súlyozáshoz.
 
@@ -215,7 +279,7 @@ Végezetül, legyen továbbra is $|L|$ páratlan, és legyen $v_2$ és $v_3$ ké
 \end{proof}
 
 \begin{lem}
-Legyen adott egy $G$ gráf, egy $u \in V(G)$ kijelölt csúcs, minden $v \in V(C)$ csúcsra egy $t_v$ szín, és $p \geq 3$ egész. Ekkor $G$-nek létezik olyan $\left( \left\lfloor \dfrac{p}{2} \right\rfloor + 1 \right)$-tejes-súlyozása, hogy $c(v) ≡ t_v\ (\mathrm{mod}\ p)$ minden $v \in V(G) \smallsetminus \lbrace u \rbrace$-ra.
+Legyen adott egy $G$ gráf, egy $u \in V(G)$ kijelölt csúcs, minden $v \in V(C)$ csúcsra egy $t_v$ szín, és $p \geq 3$ egész. Ekkor $G$-nek létezik olyan $\left( \left\lfloor \frac{p}{2} \right\rfloor + 1 \right)$-tejes-súlyozása, hogy $c(v) ≡ t_v\ (\mathrm{mod}\ p)$ minden $v \in V(G) \smallsetminus \lbrace u \rbrace$-ra.
 \end{lem}
 
 \begin{proof}
@@ -223,19 +287,40 @@ Kezdetben minden csúcs és él súlya legyen $1$. Ha létezik olyan $v \in V(G)
 \end{proof}
 
 \begin{tét}
-Legyen adott egy $G$ összefüggő, nem fa gráf, minden $v \in V(G)$ csúcsra egy $t_v$ szín, és $p \geq 3$ egész. Ekkor $G$-nek létezik olyan $\left( \left\lfloor \dfrac{p}{2} \right\rfloor + 1 \right)$-tejes-súlyozása, hogy $c(v) ≡ t_v\ (\mathrm{mod}\ p)$ minden $v \in V(G)$-re.
+Legyen adott egy $G$ összefüggő, nem fa gráf, minden $v \in V(G)$ csúcsra egy $t_v$ szín, és $p \geq 3$ egész. Ekkor $G$-nek létezik olyan $\left( \left\lfloor \frac{p}{2} \right\rfloor + 1 \right)$-tejes-súlyozása, hogy $c(v) ≡ t_v\ (\mathrm{mod}\ p)$ minden $v \in V(G)$-re.
 \end{tét}
 
 \begin{proof}
-Mivel $G$ nem fa, ezért tartalmaz egy $C$ kört. Legyen $u$ ennek egy tetszőleges csúcsa. Az előző lemma alapján tudunk találni olyan súlyozást, amelyben minden $v \in V(G) \smallsetminus \lbrace u \rbrace$ csúcs összsúlya megfelelő. Változtassuk meg $C$ minden élének és csúcsának a súlyát $0$-ra, és jelölje az így kapott súlyozásban a $v \in V(C)$ csúcs összsúlyát $s_v$. Innen a \ref{lem:12circle} lemmát a $t_v - s_v$ színekre alkalmazva adódik a kívánt súlyozás.
+Mivel $G$ nem fa, ezért tartalmaz egy $C$ kört. Legyen $u$ ennek egy tetszőleges csúcsa. Az előző lemma alapján tudunk találni olyan súlyozást, amelyben minden $v \in V(G) \smallsetminus \lbrace u \rbrace$ csúcs összsúlya megfelelő. Változtassuk meg $C$ minden élének és csúcsának a súlyát $0$-ra, és jelölje az így kapott súlyozásban a $v \in V(C)$ csúcs összsúlyát $s_v$. Innen a \ref{lem:totalcircle} lemmát a $t_v - s_v$ színekre alkalmazva adódik a kívánt súlyozás.
 \end{proof}
 
-\begin{köv}
-Minden $G$ gráfra $\chi_t(G) \leq \left\lfloor \dfrac{\chi(G)}{2} \right\rfloor + 1$.
+\begin{köv} \label{cor:totalchromatic}
+Minden $G$ gráfra $\chi_t(G) \leq \left\lfloor \frac{\chi(G)}{2} \right\rfloor + 1$.
 \end{köv}
 
+\section{Csúcs-színező 11-teljes-súlyozás}
+\citeauthor{AddarioBerry2008} \cite{AddarioBerry2008} cikkükben az alábbi tételt bizonyították:
+
+\begin{tét}
+Legyen $G=(V, E)$ egy páros gráf, ahol $V = X \cup Y$. Minden $v \in X$-re legyen $a_v^- = \left\lfloor \frac{d(v)}{2} \right\rfloor$ és legyen $a_v^+ = a_v^- + 1$. Minden $v \in Y$-ra legyen $a_v^-$ és $a_v^+$ olyan, hogy $a_v^- \leq \left\lfloor \frac{d(v)}{2} \right\rfloor \leq a_v^+$ és $a_v^+ \leq \min \left( \dfrac{d(v) + a_v^-}{2} + 1,\ 2a_v^- + 1 \right)$. Ekkor létezik $G$-nek egy olyan $H$ feszítő részgráfja, melyre $d_H(v) \in \lbrace a_v^-,\ a_v^+ \rbrace$ minden $v \in V$-re.
+\end{tét}
+
+Ezt az eredményt és a cikkben leírt konstrukciót használva belátjuk a következő tételt:
+
+\begin{tét}
+Minden $G$ gráfra $\chi_t(G) \leq 11$.
+\end{tét}
+
+\begin{proof}
+Legyen $G$ egy összefüggő gráf. A csúcsok egy tetszőleges sorrendjére legyen $F(v_i) = \lbrace v_j\ |\ v_j \in N(v_i) \textrm{ és } j > i \rbrace$ és $B(v_i) = \lbrace v_j\ |\ v_j \in N(v_i) \textrm{ és } j < i \rbrace$. Nevezzük ezeket rendre a $v_i$ csúcs előre- illetve hátra-szomszédainak. Válasszunk egy olyan sorrendet, amelyre $k = \max \lbrace j:\ |F(v_i)| > |B(v_i)|,\ i \leq j \rbrace$ maximális. Legyen $V_1$ az első $k$ csúcs halmaza, a $T$ ideiglenes halmaz pedig álljon a többi csúcsból. Figyeljük meg, hogy $k$ értéke nem csökken, akárhogyan is változtatjuk meg a $T$ csúcsainak sorrendjét. Ezen felül minden $v \in T$ csúcsra $d_T(v) \leq d_{V_1}(v)$, különben $v$-t a $(k + 1)$-edik helyre rakva jobb sorrendet kapnánk.
+
+Ezután alkalmazzuk a fenti eljárást a $G \lbrack T \rbrack$ gráfra is, egy $V_2 \subseteqq T$ halmazhoz és a $T$ csúcsainak egy új sorrendjéhez jutva. Hagyjuk el $V_2$ csúcsait $T$-ből, és ismételjük meg az eljárást még kétszer, a $V_3$ és $V_4$ halmazokat kapva. Legyen $V_5 = V(G) \smallsetminus (V_1 \cup V_2 \cup V_3 \cup V_4)$. Figyeljük meg, hogy minden $v \in V_i,\ i = 1,\ 2,\ 3,\ 4$ csúcsnak szigorúan kevesebb hátra-szomszédja van, mint előre-szomszédja. A korábbi megfigyelésünk alapján, minden $v \in V_5$ csúcsra $d_{V_2}(v) + d_{V_3}(v) + d_{V_4}(v) + d_{V_5}(v) = d_{V_2 \cup V_3 \cup V_4 \cup V_5}(v) \leq d_{V_1}(v)$. Hasonlóan kapjuk, hogy $d_{V_3}(v) + d_{V_4}(v) + d_{V_5}(v) \leq d_{V_2}(v)$, $d_{V_4}(v) + d_{V_5}(v) \leq d_{V_3}(v)$ valamint $d_{V_5}(v) \leq d_{V_4}(v)$, és így $8 d_{V_5}(v) \leq d_{V_1}(v)$ minden $v \in V_5$-re.
+
+Tekintsük a $V_5$ és $V_1$ közötti éleket.
+\end{proof}
+
 \section{Minden gráf (2, 3)-választható}
-A következőkben egy teljes-súlyozásokra vonatkozó eredménnyel ismerkedünk meg, amely a $6$-élsúlyozási tétel bizonyításához felhasznált \ref{lem:6treemixed} lemma egy listasúlyozási változata, amely \citeauthor{Wong2014} \cite{Wong2014} cikkében jelent meg. 
+A következőkben egy teljes-súlyozásokra vonatkozó eredménnyel ismerkedünk meg, amely a $6$-élsúlyozási tétel bizonyításához felhasznált \ref{lem:edge6treemixed} lemma egy listasúlyozási változata, amely \citeauthor{Wong2014} \cite{Wong2014} cikkében jelent meg. 
 
 Legyen egy $G$ gráfra $\psi: V(G) \cup E(G) \rightarrow \lbrace 1, 2, \ldots \rbrace$. Azt mondjuk, hogy $L$ egy $\psi$-lista hozzárendelés, ha minden $z \in V(G) \cup E(G)$-re $L(z)$ valós számoknak egy $\psi(z)$ elemű listája. Azt mondjuk, hogy a $G$ gráf $\psi$-választható, ha tetszőleges $\psi$-lista hozzárendelésre $G$-nek létezik olyan $\phi$ csúcs-színező teljes-súlyozása, melyre $\phi(z) \in L(z)$ minden $z \in V(G) \cup E(G)$ esetén. Amennyiben minden $v \in V)G$-re $\psi(v) = k$ és minden $e \in E(G)$-re $\psi(e) = l$, úgy a $G$ gráfot $(k, l)$-választhatónak nevezzük. 
 
@@ -371,70 +456,21 @@ Teljes indukciót használva megadjuk $K_n$ egy olyan teljes súlyozását az $1
 Legyen $n \geq 3$, és tegyük fel, hogy $K_{n - 1}$-re már találtunk egy ilyen súlyozást. Adjunk hozzá a gráfhoz egy új $v$ csúcsot, minden más csúccsal összekötve. Figyeljük meg, hogy a $K_{n - 1}$ csúcsainak összsúlyai egymást követő egészek az $\lbrack n - 1, 2n - 2 \rbrack$ intervallumban. Amennyiben a legnagyobb közülük $2n - 3$, úgy legyen a $v$ csúcs és minden rá illeszkedő él súlya $2$. Ezzel a $K_n$ csúcsainak összsúlya $n$ különböző egész az $\lbrack n + 1, 2n \rbrack$ intervallumból. Hasonlóan, ha a $K_{n - 1}$ legnagyobb összsúlya $2n - 2$, akkor a $v$ csúcs és minden rá illeszkedő él súlyát $1$-nek választva szintén megfelelő súlyozást kapunk.
 \end{proof}
 
-\chapter{Élsúlyozások irányított gráfokon}
-Az eddigiekben irányítatlan gráfok élsúlyozásait vizsgáltuk, de joggal merülhet fel a kérdés, hogy vajon mit tudunk mondani az irányított esetről. Itt két lehetőségünk van egy csúcs színének meghatározására. 
-
-Az első esetben a kimenő élek összsúlyából kivonjuk bemenő élek összsúlyát. Erről a változatról \citeauthor{Bartnicki2009} \cite{Bartnicki2009} bebizonyították, hogy a súlyokat tetszőleges kételemű listákról választva is létezik csúcs-színező élsúlyozás.
-
-A második esetben egy csúcs színét csak a kimenő éleken vett súlyok összege, azaz a csúcs súlyozott kifoka határozza meg. A továbbiakban ezzel az esettel fogunk foglalkozni.
-
-\section{Csúcs-színező 3-élsúlyozás}
-Könnyen látható, hogy léteznek olyan digráfok, például a $3$ hosszú irányított kör, amelyek helyes színezéséhez nem elegendőek az $\lbrace 1, 2 \rbrace$ élsúlyok. A következő tétel azt mondja ki, hogy minden irányított gráfnak van csúcs-színező 3-élsúlyozása. Ez abból következik, hogy minden digráfnak van egy alkalmas csúcsa, amely a szomszédai számához képest sok lehetséges súlyozott kifok-értéket vehet fel. Egy ilyen csúcs létezése teljes indukció használatát teszi lehetővé, továbbá a bizonyítás polinomiális idejű algoritmust is eredményez egy csúcs-színező 3-élsúlyozás megtalálására.
-
-\begin{tét}[\citeauthor{Baudon2014} \cite{Baudon2014}]
-Minden $D$ digráfra $\chi_e(D) \leq 3$.
-\end{tét}
-
-\begin{proof}
-A bizonyítás $D$ élszáma szerinti indukcióval történik. Az állítás nyilvánvaló $0$ vagy $1$ élű digráf esetén. Tegyük fel, hogy legfeljebb $m - 1$ élre már igazoltuk a tételt, és legyen $D = (V, A)$ egy $m \geq 2$ élű digráf.
-
-Figyeljük meg, hogy $D$-nek létezik egy olyan $v$ csúcsa, melyre $\delta(v) > 0$ és $\delta(v) > \varrho(v)$, hiszen különben $\sum\limits_{v \in V} \varrho(v) \neq \sum\limits_{v \in V} \delta(v)$ lenne. Első lépésként töröljünk minden $v$-ből kilépő élet. Ekkor az indukciós feltevés miatt a fennmaradó digráfnak létezik egy $w$ csúcs-színező 3-élsúlyozása. Tegyük vissza a kitörölt éleket, és terjesszük ki ezekre $w$-t oly módon, hogy $v$ súlyozott kifoka különbözzön mind a $\delta(v) + \varrho(v)$ szomszédjáétól. Ez megtehető, hiszen $2\delta(v) + 1$ érték közül választhatunk, nevezetesen a $\lbrace \delta(v), \delta(v) + 1, \ldots, 3\delta(v) \rbrace$ halmazból, míg a tiltott értékek száma $v$ választása miatt legfeljebb $\varrho(v) + \delta(v) < 2\delta(v) + 1$. Mivel ezen élsúlyok kizárólag a $v$ csúcs súlyozott kifokát befolyásolják, ezért az így kapott kiterjesztett súlyozás a $D$ digráf egy csúcs-színező 3-élsúlyozása.
-\end{proof}
-
-Ebben a bizonyításban azt használtuk ki, hogy egy $d$-edfokú csúcs lehetséges súlyozott kifokainak száma kellően nagy, pontosabban legalább $2d + 1$, amennyiben az éleket az $\lbrace 1, 2, 3 \rbrace$ számokkal súlyozzuk. Most megmutatjuk, hogy ez a tulajdonság tetszőleges $\lbrace a, b, c \rbrace$ súlyok esetén fennáll, és így egy erősebb tétel is igaz.
-
-\begin{lem}
-Legyen egy $D$ digráfnak $v$ egy legalább $d$-edfokú csúcsa, valamint $a, b$ és $c$ három valós szám. Ekkor $v$ súlyozott kifoka legalább $2d + 1$ különböző értéket vehet fel $D$ egy tetszőleges élsúlyozásában, amelyben a $v$-ből kimenő élek súlyai az $\lbrace a, b, c \rbrace$ halmazból kerülnek ki.
-\end{lem}
-
-\begin{proof}
-A bizonyítás $d$ szerinti indukcióval történik. Amennyiben $d = 1$, úgy a $v$-ből kilépő él súlya $a, b$ vagy $c$ lehet. Mivel ezek különbözőek, ezért $v$ súlyozott kifokának is $3$ különböző értéke lehet.
-
-Tegyük fel, hogy $d \leq i - 1$ esetén már igazoltuk az állítást, és legyen $d = i$. Jelölje $D'$ azt a digráfot, amelyet egy $v$-ből kilépő $vu$ él elhagyásával kapunk $D$-ből. Ekkor az indukciós feltevés szerint $v$ súlyozott kifoka legalább $2(d - 1) + 1$ lehetséges értéket vehet fel $D$ egy tetszőleges élsúlyozásában, amely a $v$-ből kilépő éleket az $\lbrace a, b, c \rbrace$ számokkal súlyozza. Legyen $F'$ ezen lehetséges értékek halmaza, valamint $k$ és $n$ rendre a legkisebb, illetve legnagyobb eleme $F'$-nek, továbbá $w_K$ és $w_N$ két élsúlyozása $D'$-nek, melyekre a $v$ csúcs súlyozott kifoka rendre $K$, illetve $N$.
-
-Tegyük fel, hogy $a < b < c$. Amennyiben az állítás igaz az $\lbrace a, b, c \rbrace$ számokra, úgy igaz a $\lbrace -a, -b, -c \rbrace$ számokra is, ezért két eset lehetséges:
-
-\begin{enumerate}
-\item $0 \leq a < b < c$
-\item $a < 0 \leq b < c$
-\end{enumerate}
-
-Az első esetben terjesszük ki a $D'$ minden élsúlyozását a $D$ digráfra úgy, hogy a $vu$ élre $a$ súlyt írunk. Ekkor azt kapjuk, hogy az $F = \lbrace x + a: x \in F' \rbrace$ halmaz a $v$ csúcs lehetséges súlyozott kifokainak $2(d - 1) + 1$ elemű halmaza. A fennmaradó két lehetőséget úgy kapjuk, hogy a $w_N$ súlyozást $b$ vagy $c$ értékkel kiterjesztjük a $vu$ élre. Ekkor ugyanis $N + b$ és $N + c$ két újabb lehetséges érték, hiszen $a < b < c$ miatt ezek nincsenek $F$-ben. Tehát létezik legalább $2d + 1$ választás $v$ súlyozott kifokára.
-
-A második esetben terjesszük ki a $D'$ minden élsúlyozását a $D$ digráfra úgy, hogy a $vu$ élre $b$ súlyt írunk. Ekkor azt kapjuk, hogy az $F = \lbrace x + b: x \in F' \rbrace$ halmaz a $v$ csúcs lehetséges súlyozott kifokainak $2(d - 1) + 1$ elemű halmaza. A fennmaradó két lehetőséget úgy kapjuk, hogy a $w_N$ és $w_K$ súlyozásokat rendre $a$, illetve $c$ értékkel kiterjesztjük a $vu$ élre. Ezekből azt kapjuk, hogy $K + a$ és $N + c$ két újabb lehetséges érték, amely nem szerepel $F$-ben a súlyokra vonatkozó feltevés miatt. Ezzel az állítást beláttuk.
-\end{proof}
-
-A lemma következményeként azt kapjuk, hogy az előző tétel bizonyításában nem számít, hogy egy csúcsnál mely három súlyt írhatjuk a kimenő élekre. Ez a megfigyelés az alábbi listaszínezési tételhez vezet.
+\section{4-reguláris gráfokra $χ_t(G) = 2$}
 
 \begin{tét}
-Legyen adott egy $D$ digráf minden $v$ csúcsára egy három valós számból álló $L(v)$ lista. Ekkor $D$-nek van olyan csúcs-színező élsúlyozása, amelyben minden $v$ csúcsra a kimenő élek súlyai $L(v)$-ből kerülnek ki.
+Minden $G$ $4$-reguláris gráfra $\chi_t(G) = 2$
 \end{tét}
-
-A probléma egyfajta kiterjesztéseként megkérdezhetjük, hogy melyik az a legkisebb $k \in \lbrace 1, 2, 3 \rbrace$, melyre minden irányított gráfnak létezik olyan irányítása, amelynek van csúcs-színező $k$-élsúlyozása. Tudjuk, hogy egy digráfnak pontosan akkor létezik csúcs-színező $1$-élsúlyozása, ha bármely két szomszédos pont kifoka különböző. A következő lemma azt mondja ki, hogy minden gráfnak létezik olyan irányítása, amelyre ez teljesül.
-
-\begin{lem}
-Minden $G$ gráfnak létezik olyan irányítása, amelyben bármely két szomszédos csúcs kifoka különböző.
-\end{lem}
 
 \begin{proof}
-A bizonyítás $G$ pontszáma szerinti indukcióval történik. Az állítás $n \leq 2$ esetén nyilvánvaló. Tegyük fel, hogy legfeljebb $i - 1$ csúcsra már igaz a lemma, és legyen $G$ egy $n = i$ pontú gráf. Jelölje $v$ a legnagyobb fokszámú csúcsot $G$-ben. Az indukciós feltevés szerint $G' = G - v$ megirányítható úgy, hogy bármely két szomszédos csúcs kifoka különböző legyen. Jelölje az így kapott digráfot $D'$. Figyeljük meg, hogy $v$ választása miatt $D'$-ben minden $v$-vel szomszédos csúcs kifoka legfeljebb $d(v) - 1$. Legyen $D$ a $G$ gráf azon irányítása, amelyet a $D'$ irányításból kapunk oly módon, hogy a $v$-re illeszkedő éleket mind kifelé irányítjuk. Mivel így $v$ kifoka a $D$ digráfban $d(v)$, és a szomszédos csúcsok kifoka nem változott, ezért a kapott irányítás továbbra is teljesíti a lemma feltételét.
+Legyen $G$ egy összefüggő, $4$-reguláris gráf. Amennyiben $G = K_5$ vagy $\chi(G) \leq 3$, úgy az előző tétel, illetve a \ref{cor:totalchromatic} következmény alapján készen vagyunk. Így Brooks tétele miatt feltehetjük, hogy $\chi(G) = 4$. Válasszuk meg úgy az $A, B, C, D$ színosztályokat, hogy $A$ a lehető legnagyobb legyen, ezen belül $B$ is a lehető legnagyobb legyen, ezen belül $C$ is a lehető legnagyobb legyen, végül ezen belül $D$ is a lehető legnagyobb legyen. Ennek következtében minden $B \cup C \cup D$-beli csúcsnak van legalább egy szomszédja $A$-ban, minden $C \cup D$-beli csúcsnak van legalább egy szomszédja $B$-ben, és minden $D$-beli csúcsnak van legalább egy szomszédja $C$-ben. Legyen $D = D_1 \cup D_2$, ahol $v \in D_i$, ha $v$-nek pontosan $i$ szomszédja van $A$-ban. Jelölje továbbá $X, Y \in V(G)$ esetén $E(X, Y)$ az $X$ és $Y$ között húzódó éleket. Definiáljunk egy $w$ súlyozást a következő módon.
+
+Legyen az $E(A, B \cup C \cup D)$-beli élek súlya $2$, az $E(D, B \cup C)$-belieké $1$, az $A \cup D_2$-beli csúcsoké $2$, a $D_1$-belieké pedig $1$. Így a $G[B \cup C]$ részgráf súlyozatlan marad, míg $v \in A$ esetén $c(v) = 10$, $v \in D_1$ esetén $c(v) = 6$ és $v \in D_2$ esetén $c(v) = 8$. Minden $xy \in E(B, C)$ élre, ahol $y \in C$, tegyünk $2$ súlyt, ha az $y$ csúcsnak van szomszédja $D_1$-ben, különben pedig $1$-et. Ezután válasszuk meg minden $B$-beli csúcs súlyát úgy, hogy az összsúlyuk páratlan legyen. Mivel mindegyikre illeszkedik legalább egy $E(B, A)$-beli él $2$ súllyal, ezért $c(u) \in \lbrace 7, 9 \rbrace$ minden $u \in B$-re. Ezzel az $A \cup B \cup D$-beli szomszédos csúcsok már eltérő összsúlyúak.
+
+Figyeljük meg, hogy egy tetszőleges $v \in C$ csúcsra legalább egy ($E(C, A)$-beli) él illeszkedik $2$ élsúllyal, és legalább egy, amelynek a súlya $1$. Tekintsük a $v$-re illeszkedő négy élt. Ha közülük háromnak $1$ a súlya, azaz $N(v) \cap D_1 = \emptyset$, akkor legyen $w(v) = 1$, és így $c(v) = 6$. Amennyiben legalább kettőnek $2$ a súlya, és $N(v) \cap D_2 = \emptyset$, úgy válasszuk meg $w(v)$-t oly módon, hogy $c(v) = 8$ teljesüljön. Végül, ha legalább kettőnek $2$ a súlya, és létezik egy $y \in N(v) \cap D_2$ csúcs, akkor a konstrukció miatt $w(y) = 2$, $w(yv) = 1$ és $v$-nek pontosan egy szomszédja van $B$-ben, az $x$ csúcs. Sőt, pontosan két $v$-re illeszkedő él súlya $1$. Ha $c(x) = 9$, akkor legyen $w(v) = 1$, és így $c(v) = 7$. Különben, ha $c(x) = 7$, akkor legyen $w(y) = 1$, $w(yv) = 2$ és $w(v) = 2$. Így $y$ összsúlya változatlan marad, míg $c(v) = 9$.
+
+Minden $C$-beli csúcsot a fentieknek megfelelően súlyozva csúcs-színező súlyozást kapunk.
 \end{proof}
-
-Ezen lemma ismeretében és a korábbi megfigyelésünk alapján az alábbi tételt fogalmazhatjuk meg:
-
-\begin{tét}
-Minden irányítatlan gráfnak létezik olyan irányítása, amelynek van csúcs-színező $1$-élsúlyozása.
-\end{tét}
 
 \chapter{Élsúlyozások komplexitása}
 \citeauthor{AddarioBerry2008} \cite{AddarioBerry2008} cikkéből tudjuk, hogy majdnem minden gráfnak van csúcs-színező $2$-élsúlyozása. Most megmutatjuk, hogy annak eldöntése, hogy egy adott gráfnak van-e helyes élsúlyozása az $1, 2$ számokkal, NP-teljes. Jelölje 1-2-SÚLY azon gráfok nyelvét, melyeknek létezik csúcs-színező $2$-élsúlyozásuk.
@@ -485,7 +521,7 @@ Most megmutatjuk, hogy $G \in \textrm{3-SZÍN}$ akkor és csak akkor, ha $f(G) \
 
 Először tegyük fel, hogy $G \in \textrm{3-SZÍN}$. Ez azt jelenti, hogy $G$-nek van egy helyes $3$-színezése. Legyen ez $s: V \rightarrow \lbrace 4n - 2, 4n - 1, 4n \rbrace$. Definiáljunk egy $w: F \rightarrow \lbrace 1, 2 \rbrace$ súlyozást az $f(G)$ gráfon a következő módon. Minden $e \in E$-re legyen $w(e) = 1$. Minden $e = vu$ élre, ahol $v \in V$ és $u \in U_v$, legyen $w(e) = 1$. Minden $v \in V$ csúcsra $s(v) = 4n - 2$ esetén $w(vs_v) = w(vt_v) = 1$, $s(v) = 4n - 1$ esetén $w(vs_v) = 1$ és $w(vt_v) = 2$, valamint $s(v) = 4n$ esetén $w(vs_v) = w(vt_v) = 2$. A szerkezetekhez tartozó éleket az alábbi módon súlyozzuk. Egy $xab$ háromszög-szerkezetre, melynek teteje $x$, legyen $w(xa) = 2$ és $w(xb) = w(ab) = 1$. Egy $xcdef$ $2$-él-szerkezetre, melynek végpontja $x$, legyen $w(xc) = w(cd) = w(ce) = w(de) = w(df) = 2$ és $w(cf) = w(ef) = 1$. Egy $v$ gyökerű és $vxy$ fő háromszögű $k$-kizáró-szerkezet esetén legyen $w(vx) = w(xy) = 2$ és $w(vy) = 1$, minden más él súlyozása pedig a fentieknek megfelelő. Figyeljük meg, hogy $w$ egy helyes színezése $f(G)$-nek, hiszen $w(v) = s(v)$ minden $v \in V$-re.
 
-Tegyük most fel, hogy $G \notin \textrm{3-SZÍN}$. Ennélfogva minden $s: V \rightarrow \lbrace 4n - 2, 4n - 1, 4n \rbrace$-re $s$ nem egy helyes színezés. Ezt összevetve a \ref{áll:npreduct} állítással azt kapjuk, hogy $f(G)$-nek nem létezik helyes súlyozása, azaz $f(G) \notin \textrm{1-2-SÚLY}$.
+Tegyük most fel, hogy $G \notin \textrm{3-SZÍN}$. Ennélfogva minden $s: V \rightarrow \lbrace 4n - 2, 4n - 1, 4n \rbrace$-re $s$ nem egy helyes színezés. Ezt összevetve az \ref{áll:npreduct} állítással azt kapjuk, hogy $f(G)$-nek nem létezik helyes súlyozása, azaz $f(G) \notin \textrm{1-2-SÚLY}$.
 
 Ezzel a tételt beláttuk.
 \end{proof}
