@@ -18,6 +18,7 @@
 \usepackage[bookmarks,unicode,hyperfootnotes=false,pdfborder={0 0 0 0}]{hyperref}
 \urlstyle{same}
 \usepackage{titlesec}
+\usepackage[justification=centering]{caption}
 
 \hypersetup{pdfauthor={Vadas Norbert},pdftitle={Élszínezések}}
 
@@ -102,8 +103,18 @@ Más változatokban az élsúlyok összege helyett azok szorzata, halmaza, multi
 
 Természetesen adódik az a kérdés is, hogy vajon NP-nehéz-e annak eldöntése, hogy egy gráf színezéséhez 2 élsúly elegendő-e. A $\lbrace 0, 1 \rbrace$ és az $\lbrace 1, 2 \rbrace$ halmazok esetében, valamint irányított gráfokra a válasz igen, egyéb esetben ez egy nyitott probléma.
 
+\section{A dolgozat felépítése}
+
+A következő fejezetben először az élsúlyozásokkal fogunk foglalkozni. Megvizsgáljuk az 1-2-3-sejtésre vonatkozó legfrissebb eredményeket, melyek szerint minden rendes gráfnak létezik csúcs-színező $6$- illetve $5$-élsúlyozása. Ezután kitérünk arra az esetre, amelyben irányított gráfokat súlyozunk. Bebizonyítjuk, hogy minden digráfnak létezik csúcs-színező $3$-élsúlyozása, valamint azt, hogy minden gráfnak van olyan irányítása, amelynek létezik csúcs-színező $1$-élsúlyozása.
+
+Ezt követően a harmadik fejezetben megismerkedünk a teljes-súlyozásokkal és az 1-2-sejtéssel. Belátjuk, hogy minden gráfnak létezik csúcs-színező $\left( \left\lfloor \frac{χ(G)}{2} \right\rfloor + 1 \right)$- illetve $11$-teljes-súlyozása. Továbbá megnézünk egy olyan eredményt is, amely a fent említett két sejtés listaszínezés általánosításainak egyfajta közös felső korlátjának tekinthető.
+
+A negyedik fejezetben speciális gráfosztályokat mutatunk be, amelyekre bizonyítani tudjuk a fenti sejtések egyikét. Emellett egy olyan állítást is belátunk, mely szerint a legtöbb gráfnak létezik csúcs-színező $2$-élsúlyozása.
+
+Végül az utolsó fejezetben az élsúlyozások komplexitását vizsgáljuk meg. Megmutatjuk, hogy annak eldöntése, hogy egy gráfnak létezik-e csúcs-színező élsúlyozása a $0,\ 1$ valamint az $1,\ 2$ számokkal, NP-teljes.
+
 \chapter{Élsúlyozások és az 1-2-3-sejtés}
-A sejtéssel kapcsolatban a legfontosabb előrehaladást tetszőleges $G$ gráf esetén a $\chi_e(G)$-re vonatkozó konstans korlátok bevezetése és javítása jelenti. A sejtést először felvető cikkben még csak azt bizonyították, hogy véges sok valós élsúly elegendő, később viszont egész számokra vonatkozó korlátokat is adtak. A jelenleg ismert legjobb eredmény \citeauthor{Kalkowski2010} nevéhez fűződik, akik a $\chi_e(G) \leq 6$ \cite{Kalkowski2009}, kicsivel később pedig a $\chi_e(G) \leq 5$ \cite{Kalkowski2010} korlátot adták a problémára. A két bizonyítás merőben más eszközöket használ, amelyek önmagukban is említésre érdemesek, ezért a következőkben mindkettőre kitérünk.
+A sejtéssel kapcsolatban a legfontosabb előrehaladást tetszőleges $G$ gráf esetén a $\chi_e(G)$-re vonatkozó konstans korlátok bevezetése és javítása jelenti. A sejtést először felvető cikkben még csak azt bizonyították, hogy véges sok valós élsúly elegendő, később viszont egész számokra vonatkozó korlátokat is adtak. A jelenleg ismert legjobb eredmény \citeauthor{Kalkowski2010} nevéhez fűződik, akik a $\chi_e(G) \leq 6$ \cite{Kalkowski2009}, kicsivel később pedig a $\chi_e(G) \leq 5$ \cite{Kalkowski2010} korlátot adták a problémára. A két bizonyítás merőben más eszközöket használ, amelyek önmagukban is említésre érdemesek, ezért a következőkben mindkettőre kitérünk. Ezek után megvizsgáljuk a probléma irányított gráfokra vonatkozó változatát is, amelyről \citeauthor{Baudon2014} \cite{Baudon2014} bebizonyították, hogy tetszőleges $D$ digráfra $\chi_e(D) \leq 3$.
 
 \section{Csúcs-színező 6-élsúlyozás}
 Először vizsgáljuk a gyengébb korlátot. Az erre vonatkozó tétel bizonyítása előtt tekintsük a következő lemmát, mely az \cite{Kalkowski2009} cikk első szerzőjének egy korábbi eredménye:
@@ -112,10 +123,10 @@ Először vizsgáljuk a gyengébb korlátot. Az erre vonatkozó tétel bizonyít
 Minden összefüggő, rendes $G$ gráfra létezik olyan $f:E(G) \rightarrow \lbrace 1, 2, 3 \rbrace$ élsúlyozás és $f':V(G) \rightarrow \lbrace 0, 1 \rbrace$ csúcs-súlyozás, melyre a csúcsok $w(v) = f'(v) + \sum\limits_{w \in N(v)} f(vw)$ értéke egy helyes színezés.
 \end{lem}
 
-Ennek segítségével egy $\chi_e(G) \leq 10$ korlát adható az élsúlyok megháromszorozásával, majd bizonyos élek $1$-gyel történő módosításával. Jelen esetben is egy hasonló eljárást követünk majd, amelyhez szükségünk lesz a lemma egy általánosabb alakjára. Előtte azonban érdemes megjegyezni egy egyszerű következményt. A sejtés vizsgálatánál érdekes kérdés lehet, hogy mit tudunk mondani a rossz élek részgráfjáról, vagyis azon élekről, melyek végpontjai azonos értékűek. A fenti lemma erre is ad egyfajta választ, ugyanis az általa biztosított teljes-súlyozásban minden csúcsra $0$-t írva olyan élsúlyozást kapunk, ahol a rossz élek egy páros gráfot alkotnak. Ez a megfigyelés segíthet abban, hogy közelebb jussunk a sejtés bizonyításához vagy cáfolatához. Visszatérve a tételünkhöz, a lemma általánosítása a következőképpen hangzik:
+Ennek segítségével egy $\chi_e(G) \leq 10$ korlát adható az élsúlyok megháromszorozásával, majd bizonyos élek $1$-gyel történő módosításával. Jelen esetben is egy hasonló eljárást követünk majd, amelyhez szükségünk lesz a lemma egy általánosabb alakjára. Előtte azonban érdemes megjegyezni egy egyszerű következményt. A sejtés vizsgálatánál érdekes kérdés lehet, hogy mit tudunk mondani a rossz élek részgráfjáról, vagyis azon élekről, melyek végpontjai azonos értékűek. A fenti lemma erre is ad egyfajta választ, ugyanis az általa biztosított teljes-súlyozásban minden csúcsra $0$-t írva olyan élsúlyozást kapunk, ahol a rossz élek egy páros gráfot alkotnak. Ez a megfigyelés segíthet abban, hogy közelebb jussunk a sejtés bizonyításához vagy cáfolatához. Visszatérve a tételünkhöz, a fenti lemma általánosítása a következőképpen hangzik:
 
 \begin{lem} \label{lem:edge6treemixed}
-Legyen $\alpha \in \mathbb{R}$ és $\beta \in \mathbb{R} \smallsetminus \lbrace 0 \rbrace$. Ekkor minden összefüggő, rendes $G$ gráfra, és tetszőleges $T$ feszítőfájára létezik olyan $f:E(G) \rightarrow \lbrace \alpha - \beta, \alpha, \alpha + \beta \rbrace$ élsúlyozás és $f':V(G) \rightarrow \lbrace 0, \beta \rbrace$ csúcs-súlyozás, melyre a csúcsok $w(v) = f'(v) + \sum\limits_{w \in N(v)} f(vw)$ értéke egy helyes színezés. Továbbá $f$ megválasztható úgy, hogy $f(e) = \alpha$ minden $e \in E(T)$-re.
+Legyen $\alpha \in \mathbb{R}$ és $\beta \in \mathbb{R} \smallsetminus \lbrace 0 \rbrace$. Ekkor minden összefüggő, rendes $G$ gráfra és tetszőleges $T$ feszítőfájára létezik olyan $f:E(G) \rightarrow \lbrace \alpha - \beta, \alpha, \alpha + \beta \rbrace$ élsúlyozás és $f':V(G) \rightarrow \lbrace 0, \beta \rbrace$ csúcs-súlyozás, melyre a csúcsok $w(v) = f'(v) + \sum\limits_{w \in N(v)} f(vw)$ értéke egy helyes színezés. Továbbá $f$ megválasztható úgy, hogy $f(e) = \alpha$ minden $e \in E(T)$-re.
 \end{lem}
 
 \begin{proof}
@@ -151,6 +162,8 @@ Felváltva csökkentsük és növeljük ezen utak mentén az élek súlyait úgy
 \end{proof}
 
 \section{Csúcs-színező 5-élsúlyozás}
+A gyengébb korlát után most vizsgáljuk meg az eddig ismert legjobb eredményt a sejtéssel kapcsolatban. 
+
 \begin{tét}[\citeauthor{Kalkowski2010} \cite{Kalkowski2010}]
 Minden $G$ rendes gráfra $\chi_e(G) \leq 5$.
 \end{tét}
@@ -167,7 +180,7 @@ Ezt szem előtt tartva legyen $f(v_1) = 3d(v_1)$, és válasszuk meg a $W(v_1)$ 
 \item ha $f(v_i v_k) \neq 3$ valamely élre $i < k$ esetén, akkor vagy $f(v_i v_k) = 2$ és $f(v_i) = w(v_i)$, vagy $f(v_i v_k) = 4$ és $f(v_i) = w(v_i) + 2$.
 \end{itemize}
 
-Ha $v_i v_k \in E$ valamely $i < k$-ra, akkor $f(v_i v_k)$-t $2$-vel növelhetjük vagy csökkenthetjük úgy, hogy $f(v_i) \in W(v_i)$ maradjon. Amennyiben $v_k$-nak $d$ ilyen szomszédja van, úgy ez $d + 1$ lehetséges értéket jelent $f(v_k)$ számára, melyek mind azonos paritásúak. Ezen felül megengedjük még, hogy az $f(v_k v_j)$ súlyt $1$-gyel módosítsuk, ahol $j > k$ a legkisebb index, melyre $v_k v_j \in E$. Ezáltal $f(v_k)$ egy $\lbrack a, a + 2d + 2 \rbrack$ intervallum minden értékét felveheti. Úgy szeretnénk módosítani a súlyokat és meghatározni $w(v_k)$-t, hogy
+Ha $v_i v_k \in E$ valamely $i < k$-ra, akkor $f(v_i v_k)$-t $2$-vel növelhetjük vagy csökkenthetjük úgy, hogy $f(v_i) \in W(v_i)$ maradjon. Amennyiben $v_k$-nak $d$ ilyen szomszédja van, úgy ez $d + 1$ lehetséges értéket jelent $f(v_k)$ számára, melyek mind azonos paritásúak. Ezen felül megengedjük még, hogy az $f(v_k v_j)$ súlyt $1$-gyel módosítsuk, ahol $j > k$ a legkisebb index, melyre $v_k v_j \in E$. Ezáltal $f(v_k)$ egy $\lbrack a, a + 2d + 2 \rbrack$ intervallum minden egész értékét felveheti. Úgy szeretnénk módosítani a súlyokat és meghatározni $w(v_k)$-t, hogy
 \begin{enumerate}
 \item $f(v_i) \in W(v_i)$, ahol $1 \leq i \leq k$
 \item $v_i v_k \in E$ esetén $w(v_i) \neq w(v_k)$, ahol $i < k$
@@ -183,7 +196,7 @@ Utolsó lépésként találnunk kell egy szabad értéket $v_n$-nek. Ez alkalomm
 \section{Csúcs-színező 3-élsúlyozás irányított gráfokra}
 Az eddigiekben irányítatlan gráfok élsúlyozásait vizsgáltuk, de joggal merülhet fel a kérdés, hogy vajon mit tudunk mondani az irányított esetről. Itt két lehetőségünk van egy csúcs színének meghatározására. 
 
-Az első esetben a kimenő élek összsúlyából kivonjuk bemenő élek összsúlyát. Erről a változatról \citeauthor{Bartnicki2009} \cite{Bartnicki2009} bebizonyították, hogy a súlyokat tetszőleges kételemű listákról választva is létezik csúcs-színező élsúlyozás.
+Az első esetben a kimenő élek összsúlyából kivonjuk a bemenő élek összsúlyát. Erről a változatról \citeauthor{Bartnicki2009} \cite{Bartnicki2009} bebizonyították, hogy a súlyokat tetszőleges kételemű listákról választva is létezik csúcs-színező élsúlyozás.
 
 A második esetben egy csúcs színét csak a kimenő éleken vett súlyok összege, azaz a csúcs súlyozott kifoka határozza meg. A továbbiakban ezzel az esettel fogunk foglalkozni.
 
@@ -244,28 +257,30 @@ Ezen lemma ismeretében és a korábbi megfigyelésünk alapján az alábbi tét
 Minden irányítatlan gráfnak létezik olyan irányítása, amelynek van csúcs-színező $1$-élsúlyozása.
 \end{tét}
 
-\chapter{Teljes súlyozások és az 1-2-sejtés}
+\chapter{Teljes-súlyozások és az 1-2-sejtés}
+A sejtést felvető cikkükben \citeauthor{Przybylo2010} a $\chi_t(G) \leq \left\lfloor \frac{\chi(G)}{2} \right\rfloor + 1$, valamint a $\chi_t(G) \leq 11$ korlátot bizonyították. Mostani tudásunkkal azonban ez utóbbinál pontosabb korlátokat is tudunk mondani. Először is figyeljük meg, hogy ha egy gráfnak létezik csúcs-színező $k$-élsúlyozása, akkor létezik csúcs-színező $k$-teljes-súlyozása is, hiszen a csúcsok súlyát azonosan $1$-nek választva jó súlyozást kapunk. Ebből, és a korábbi megfigyeléseinkből következik, hogy minden $G$ gráfra $\chi_t(G) \leq 5$. A jelenleg ismert legjobb eredmény szerint $\chi_t(G) \leq 3$, amely következik például a \ref{lem:edge6treemixed} lemmából. Az alábbiakban \citeauthor{Przybylo2010} két korlátjának bizonyításával ismerkedünk meg, majd pedig egy olyan eredményt vizsgálunk meg, amely az általunk vizsgát két sejtés listaszínezési változataival kapcsolatos.
 
-\section{Csúcs-színező $\left( \left\lfloor \frac{χ(G)}{2} \right\rfloor + 1 \right)$-tejes-súlyozás}
+\section{Csúcs-színező $\left( \left\lfloor \frac{χ(G)}{2} \right\rfloor + 1 \right)$-teljes-súlyozás}
+Először nézzük a kromatikus számmal kapcsolatos eredményt. Ahogyan az élsúlyozások esetében is, úgy a teljes-súlyozásoknál is természetesen adódik az efféle korlátok vizsgálata. A továbbiakban feltesszük, hogy minden gráf összefüggő, különben komponensenként érvelhetünk. Jelölje $c(v)$ a $v$ csúcs összsúlyát. Meglepően könnyen bizonyíthatjuk az alábbi állítást:
 
 \begin{áll}
 Minden $G$ páros gráfra $\chi_t(G) \leq 2$.
 \end{áll}
 
 \begin{proof}
-Rendeljük a gráf éleihez az $1, 2$ súlyokat tetszőleges módon. Ezután válasszuk meg a csúcsok súlyát úgy, hogy az egyik színosztályban minden csúcs összsúlya páros, a másik színosztályban pedig páratlan legyen.
+Rendeljük a gráf éleihez az $1,\ 2$ súlyokat tetszőleges módon. Ezután válasszuk meg a csúcsok súlyát úgy, hogy az egyik színosztályban minden csúcs összsúlya páros, a másik színosztályban pedig páratlan legyen.
 \end{proof}
 
 Hasonló gondolatmenettel kapjuk az alábbi, általánosabb megfigyelésünket is:
 
 \begin{áll}
-Legyen adott a $G$ gráf és minden $v \in V(G)$ csúcsra egy $t_v$ szín. Ekkor $G$-nek létezik olyan $2$-tejes-súlyozása, hogy $c(v) ≡ t_v\ (\mathrm{mod}\ 2)$ minden $v \in V(G)$-re. 
+Legyen adott a $G$ gráf és minden $v \in V(G)$ csúcsra egy $t_v$ szín. Ekkor $G$-nek létezik olyan $2$-teljes-súlyozása, hogy $c(v) ≡ t_v\ (\mathrm{mod}\ 2)$ minden $v \in V(G)$-re. 
 \end{áll}
 
-A következőkben egy még általánosabb állítást fogunk igazolni, amelynek segítségével felülről tudjuk majd becsülni $\chi_t(G)$-t a $G$ kromatikus számával.
+A következőkben egy még általánosabb állítást fogunk igazolni, amelynek segítségével felülről tudjuk majd becsülni $\chi_t(G)$-t a $G$ gráf kromatikus számával.
 
 \begin{lem} \label{lem:totalcircle}
-Legyen adott egy $C$ kör, minden $v \in V(C)$ csúcsra egy $t_v$ szín, és $p \geq 3$ egész. Ekkor $C$-nek létezik olyan $\left( \left\lfloor \frac{p}{2} \right\rfloor + 1 \right)$-tejes-súlyozása, hogy $c(v) ≡ t_v\ (\mathrm{mod}\ p)$ minden $v \in V(C)$-re.
+Legyen adott egy $C$ kör, minden $v \in V(C)$ csúcsra egy $t_v$ szín, és $p \geq 3$ egész. Ekkor $C$-nek létezik olyan $\left( \left\lfloor \frac{p}{2} \right\rfloor + 1 \right)$-teljes-súlyozása, hogy $c(v) ≡ t_v\ (\mathrm{mod}\ p)$ minden $v \in V(C)$-re.
 \end{lem}
 
 \begin{proof}
@@ -279,15 +294,15 @@ Végezetül, legyen továbbra is $|L|$ páratlan, és legyen $v_2$ és $v_3$ ké
 \end{proof}
 
 \begin{lem}
-Legyen adott egy $G$ gráf, egy $u \in V(G)$ kijelölt csúcs, minden $v \in V(C)$ csúcsra egy $t_v$ szín, és $p \geq 3$ egész. Ekkor $G$-nek létezik olyan $\left( \left\lfloor \frac{p}{2} \right\rfloor + 1 \right)$-tejes-súlyozása, hogy $c(v) ≡ t_v\ (\mathrm{mod}\ p)$ minden $v \in V(G) \smallsetminus \lbrace u \rbrace$-ra.
+Legyen adott egy $G$ gráf, egy $u \in V(G)$ kijelölt csúcs, minden $v \in V(C)$ csúcsra egy $t_v$ szín, és $p \geq 3$ egész. Ekkor $G$-nek létezik olyan $\left( \left\lfloor \frac{p}{2} \right\rfloor + 1 \right)$-teljes-súlyozása, hogy $c(v) ≡ t_v\ (\mathrm{mod}\ p)$ minden $v \in V(G) \smallsetminus \lbrace u \rbrace$-ra.
 \end{lem}
 
 \begin{proof}
 Kezdetben minden csúcs és él súlya legyen $1$. Ha létezik olyan $v \in V(G) \smallsetminus \lbrace u \rbrace$ csúcs, melynek színe $\mathrm{mod}\ p$ nem megfelelő, akkor válasszunk egy $v$-ből $u$-ba menő utat. A $v$ csúcs és az úton rá illeszkedő él súlyát alkalmasan megválasztva elérhetjük, hogy $c(v) ≡ t_v\ (\mathrm{mod}\ p)$ teljesüljön. Ezután haladjunk végig az úton, minden lépésben egy csúcs és a rákövetkező él súlyát módosítva úgy, hogy végül az út minden $u$-tól különböző csúcsának megfelelő legyen a színe $\mathrm{mod}\ p$. Figyeljük meg, hogy eközben az úthoz nem tartozó csúcsok összsúlya nem változik. Így eggyel csökkentettük a $V(G) \smallsetminus \lbrace u \rbrace$-beli hibás csúcsok számát, tehát az eljárást ismételve a kívánt súlyozáshoz jutunk.
 \end{proof}
 
-\begin{tét}
-Legyen adott egy $G$ összefüggő, nem fa gráf, minden $v \in V(G)$ csúcsra egy $t_v$ szín, és $p \geq 3$ egész. Ekkor $G$-nek létezik olyan $\left( \left\lfloor \frac{p}{2} \right\rfloor + 1 \right)$-tejes-súlyozása, hogy $c(v) ≡ t_v\ (\mathrm{mod}\ p)$ minden $v \in V(G)$-re.
+\begin{tét}[\citeauthor{Przybylo2010} \cite{Przybylo2010}]
+Legyen adott egy $G$ összefüggő, nem fa gráf, minden $v \in V(G)$ csúcsra egy $t_v$ szín, és $p \geq 3$ egész. Ekkor $G$-nek létezik olyan $\left( \left\lfloor \frac{p}{2} \right\rfloor + 1 \right)$-teljes-súlyozása, hogy $c(v) ≡ t_v\ (\mathrm{mod}\ p)$ minden $v \in V(G)$-re.
 \end{tét}
 
 \begin{proof}
@@ -298,6 +313,8 @@ Mivel $G$ nem fa, ezért tartalmaz egy $C$ kört. Legyen $u$ ennek egy tetszőle
 Minden $G$ gráfra $\chi_t(G) \leq \left\lfloor \frac{\chi(G)}{2} \right\rfloor + 1$.
 \end{köv}
 
+Ebből azt is megkaptuk, hogy $3$-színezhető gráfokra igaz az 1-2-sejtés.
+
 \section{Csúcs-színező 11-teljes-súlyozás}
 \citeauthor{AddarioBerry2008} \cite{AddarioBerry2008} cikkükben az alábbi tételt bizonyították:
 
@@ -307,14 +324,14 @@ Legyen $G=(V, E)$ egy páros gráf, ahol $V = X \cup Y$. Minden $v \in X$-re leg
 
 Ezt az eredményt és a cikkben leírt konstrukciót használva belátjuk a következő tételt:
 
-\begin{tét}
+\begin{tét}[\citeauthor{Przybylo2010} \cite{Przybylo2010}]
 Minden $G$ gráfra $\chi_t(G) \leq 11$.
 \end{tét}
 
 \begin{proof}
 Legyen $G$ egy összefüggő gráf. A csúcsok egy tetszőleges sorrendjére legyen $F(v_i) = \lbrace v_j\ |\ v_j \in N(v_i) \textrm{ és } j > i \rbrace$ és $B(v_i) = \lbrace v_j\ |\ v_j \in N(v_i) \textrm{ és } j < i \rbrace$. Nevezzük ezeket rendre a $v_i$ csúcs előre- illetve hátra-szomszédainak. Válasszunk egy olyan sorrendet, amelyre $k = \max \lbrace j:\ |F(v_i)| > |B(v_i)|,\ i \leq j \rbrace$ maximális. Legyen $V_1$ az első $k$ csúcs halmaza, a $T$ ideiglenes halmaz pedig álljon a többi csúcsból. Figyeljük meg, hogy $k$ értéke nem csökken, akárhogyan is változtatjuk meg a $T$ csúcsainak sorrendjét. Ezen felül minden $v \in T$ csúcsra $d_T(v) \leq d_{V_1}(v)$, különben $v$-t a $(k + 1)$-edik helyre rakva jobb sorrendet kapnánk.
 
-Ezután alkalmazzuk a fenti eljárást a $G \lbrack T \rbrack$ gráfra is, egy $V_2 \subseteqq T$ halmazhoz és a $T$ csúcsainak egy új sorrendjéhez jutva. Hagyjuk el $V_2$ csúcsait $T$-ből, és ismételjük meg az eljárást még kétszer, a $V_3$ és $V_4$ halmazokat kapva. Legyen $V_5 = V(G) \smallsetminus (V_1 \cup V_2 \cup V_3 \cup V_4)$. Figyeljük meg, hogy minden $v \in V_i,\ i = 1,\ 2,\ 3,\ 4$ csúcsnak szigorúan kevesebb hátra-szomszédja van, mint előre-szomszédja. A korábbi megfigyelésünk alapján, minden $v \in V_5$ csúcsra $d_{V_2}(v) + d_{V_3}(v) + d_{V_4}(v) + d_{V_5}(v) = d_{V_2 \cup V_3 \cup V_4 \cup V_5}(v) \leq d_{V_1}(v)$. Hasonlóan kapjuk, hogy $d_{V_3}(v) + d_{V_4}(v) + d_{V_5}(v) \leq d_{V_2}(v)$, $d_{V_4}(v) + d_{V_5}(v) \leq d_{V_3}(v)$ valamint $d_{V_5}(v) \leq d_{V_4}(v)$, és így $8 d_{V_5}(v) \leq d_{V_1}(v)$ minden $v \in V_5$-re.
+Ezután alkalmazzuk a fenti eljárást a $G \lbrack T \rbrack$ gráfra is, egy $V_2 \subseteq T$ halmazhoz és a $T$ csúcsainak egy új sorrendjéhez jutva. Hagyjuk el $V_2$ csúcsait $T$-ből, és ismételjük meg az eljárást még kétszer, a $V_3$ és $V_4$ halmazokat kapva. Legyen $V_5 = V(G) \smallsetminus (V_1 \cup V_2 \cup V_3 \cup V_4)$. Figyeljük meg, hogy minden $v \in V_i,\ i = 1,\ 2,\ 3,\ 4$ csúcsnak szigorúan kevesebb hátra-szomszédja van, mint előre-szomszédja. A korábbi megfigyelésünk alapján, minden $v \in V_5$ csúcsra $d_{V_2}(v) + d_{V_3}(v) + d_{V_4}(v) + d_{V_5}(v) = d_{V_2 \cup V_3 \cup V_4 \cup V_5}(v) \leq d_{V_1}(v)$. Hasonlóan kapjuk, hogy $d_{V_3}(v) + d_{V_4}(v) + d_{V_5}(v) \leq d_{V_2}(v)$, $d_{V_4}(v) + d_{V_5}(v) \leq d_{V_3}(v)$ valamint $d_{V_5}(v) \leq d_{V_4}(v)$, és így $8 d_{V_5}(v) \leq d_{V_1}(v)$ minden $v \in V_5$-re.
 
 Tekintsük a $V_5$ és $V_1$ közötti éleket. Mivel minden $v \in V_5$ csúcsból legalább $8d_{V_5}(v)$ él megy $V_1$-be, ezért ki tudunk választani ezekből egy olyan részgráfot, amelyben minden $v \in V_5$ csúcsból pontosan $8d_{V_5}(v)$ él megy $V_1$-be. Jelölje $B$ az így kapott páros gráfot.
 
@@ -435,10 +452,10 @@ Minden gráf $(2, 3)$-választható.
 Ennél egy kicsivel több is igaz. Legyen $G$ egy összefüggő gráf, $F$ pedig egy feszítőfája. Legyen továbbá minden $v \in V(G)$-re $\psi(v) = 2$, minden $e \in E(F)$-re $\psi(e) = 1$ és minden $e \in E(G) \smallsetminus E(F)$-re $\psi(e) = 3$. Ekkor a $G$ gráf $\psi$-választható. 
 
 \chapter{Pontos eredmények speciális gráfokra}
-Habár az 1-2-3-sejtést még nem sikerült bizonyítani, bizonyos gráfosztályokra már belátták, hogy létezik csúcs-színező $3$-élsúlyozásuk. A továbbiakban ezeket fogjuk megvizsgálni.
+Habár egyik általunk vizsgált sejtést sem sikerült még bizonyítani, bizonyos gráfosztályokra már belátták, hogy létezik csúcs-színező $3$-élsúlyozásuk, illetve $2$-teljes súlyozásuk. A továbbiakban ezeket fogjuk megvizsgálni.
 
-\section{Színezés $χ(G)$ élsúllyal}
-Az első ilyen típusú eredmény a sejtést először felvető cikkből \cite{Karonski2004} származik. Ez azt mondja ki, hogy egy $k$-színezhető gráf élei megsúlyozhatóak egy $k$-adrendű Abel-csoport elemeivel csúcs-színező módon, amennyiben $k$ páratlan. Ebből rögtön következik, hogy minden $3$-színezhető gráfra igaz a sejtés. Az alábbi két tétel ezen eredmény módosítása, melyet \citeauthor{Lu2011} \cite{Lu2011} cikkében olvashatunk.
+\section{Csúcs-színező $χ(G)$-élsúlyozás}
+Az első ilyen típusú eredmény az 1-2-3-sejtést először felvető cikkből \cite{Karonski2004} származik. Ez azt mondja ki, hogy egy $k$-színezhető gráf élei megsúlyozhatóak egy $k$-adrendű Abel-csoport elemeivel csúcs-színező módon, amennyiben $k$ páratlan. Ebből rögtön következik, hogy minden $3$-színezhető gráfra igaz az 1-2-3-sejtés. Az alábbi két tétel ezen eredmény módosítása, melyet \citeauthor{Lu2011} \cite{Lu2011} cikkében olvashatunk.
 
 \begin{tét}
 Legyen $G$ egy összefüggő nem-páros gráf és $\Gamma = \lbrace g_1, g_2, \ldots, g_k \rbrace$ egy véges Abel-csoport, ahol $k = |\Gamma|$. Legyen továbbá $s$ egy $k$-színezése a $G$ csúcsainak az $\lbrace U_1, U_2, \ldots, U_k \rbrace$  színosztályokkal, ahol $|U_i| = n_i,\ 1 \leq i \leq k$. Ha létezik olyan $h \in \Gamma$, melyre $n_1 g_1 + \cdots + n_k g_k = 2h$, akkor létezik olyan élsúlyozás $\Gamma$ elemeivel, melyre az indukált csúcs-színezés $s$.
@@ -467,18 +484,20 @@ Legyen $G = (U, V; E)$ egy rendes, összefüggő páros gráf. Ha $|A|$ vagy $|B
 \end{áll}
 
 \section{Teljes gráfokra $χ_t(G) = 2$}
+Most megmutatjuk, hogy teljes gráfoknak létezik csúcs-színező $2$-teljes-súlyozásuk.
 
 \begin{áll}
 Minden $G$ teljes gráfra $\chi_t(G) = 2$.
 \end{áll}
 
 \begin{proof}
-Teljes indukciót használva megadjuk $K_n$ egy olyan teljes-súlyozását az $1, 2$ számokkal, melyben a csúcsok összsúlya $n$ egymást követő egész $n$-től $2n - 1$-ig vagy $n + 1$-től $2n$-ig. $n = 2$ esetén ez triviális.
+Teljes indukciót használva megadjuk $K_n$ egy olyan teljes-súlyozását az $1,\ 2$ számokkal, melyben a csúcsok összsúlya $n$ egymást követő egész $n$-től $2n - 1$-ig vagy $n + 1$-től $2n$-ig. $n = 2$ esetén ez triviális.
 
 Legyen $n \geq 3$, és tegyük fel, hogy $K_{n - 1}$-re már találtunk egy ilyen súlyozást. Adjunk hozzá a gráfhoz egy új $v$ csúcsot, minden más csúccsal összekötve. Figyeljük meg, hogy a $K_{n - 1}$ csúcsainak összsúlyai egymást követő egészek az $\lbrack n - 1, 2n - 2 \rbrack$ intervallumban. Amennyiben a legnagyobb közülük $2n - 3$, úgy legyen a $v$ csúcs és minden rá illeszkedő él súlya $2$. Ezzel a $K_n$ csúcsainak összsúlya $n$ különböző egész az $\lbrack n + 1, 2n \rbrack$ intervallumból. Hasonlóan, ha a $K_{n - 1}$ legnagyobb összsúlya $2n - 2$, akkor a $v$ csúcs és minden rá illeszkedő él súlyát $1$-nek választva szintén megfelelő súlyozást kapunk.
 \end{proof}
 
 \section{4-reguláris gráfokra $χ_t(G) = 2$}
+A korábbi eredményeink segítségével $4$-reguláris gráfokra is be tudjuk bizonyítani az 1-2-sejtést.
 
 \begin{tét}
 Minden $G$ $4$-reguláris gráfra $\chi_t(G) = 2$
@@ -495,10 +514,13 @@ Minden $C$-beli csúcsot a fentieknek megfelelően súlyozva csúcs-színező s�
 \end{proof}
 
 \section{Majdnem minden gráfra $χ_e(G) = 2$}
+Tekintsük az alábbi tételt, melyet megtalálunk \citeauthor{AddarioBerry2008} \cite{AddarioBerry2008} cikkében:
 
 \begin{tét} \label{thm:degreeconstgeneric}
 Legyen adott egy $G = (V, E)$ gráf, és minden $v \in V$ csúcsra $a_v^-,\ a_v^+$ egészek, melyekre $a_v^- \leq \left\lfloor \frac{d(v)}{2} \right\rfloor \leq a_v^+ < d(v)$ és $a_v^+ \leq \min \left(\frac{d(v) + a_v^-}{2},\ 2a_v^- + 3 \right)$. Ekkor létezik $G$-nek egy olyan $H$ feszítő részgráfja, melyre $d_H(v) \in \lbrace a_v^-,\ a_v^- + 1,\ a_v^+,\ a_v^+ + 1 \rbrace$ minden $v \in V$-re.
 \end{tét}
+
+Ennek segítségével a következő tételhez jutunk, amely azt mondja ki, hogy a legtöbb gráfnak létezik csúcs-színező $2$-élsúlyozása.
 
 \begin{tét} [\citeauthor{AddarioBerry2008} \cite{AddarioBerry2008}]
 Legyen $G$ egy véletlen gráf $G_{n,p}$ eloszlással, ahol $p \in (0, 1)$ konstans. Ekkor $G$-nek aszimptotikusan majdnem biztosan létezik csúcs-színező $2$-élsúlyozása. Valójában $G$-nek létezik olyan csúcs-színező $2$-élsúlyozása, hogy két szomszédos csúcs összsúlya különböző $\mathrm{mod}\ 2\chi(G)$.
@@ -516,28 +538,28 @@ Legyen $\lbrace V_1, \ldots, V_{\chi(G)} \rbrace$ egy stabil halmazokból álló
 \end{proof}
 
 \chapter{Élsúlyozások komplexitása}
-\citeauthor{AddarioBerry2008} \cite{AddarioBerry2008} cikkéből tudjuk, hogy majdnem minden gráfnak van csúcs-színező $2$-élsúlyozása. Most megmutatjuk, hogy annak eldöntése, hogy egy adott gráfnak van-e helyes élsúlyozása az $1, 2$ számokkal, NP-teljes. Jelölje 1-2-SÚLY azon gráfok nyelvét, melyeknek létezik csúcs-színező $2$-élsúlyozásuk.
+\citeauthor{AddarioBerry2008} \cite{AddarioBerry2008} cikkéből tudjuk, hogy majdnem minden gráfnak van csúcs-színező $2$-élsúlyozása. Most megmutatjuk, hogy annak eldöntése, hogy egy adott gráfnak van-e helyes élsúlyozása az $1,\ 2$ számokkal, NP-teljes. Jelölje 1-2-SÚLY azon gráfok nyelvét, melyeknek létezik csúcs-színező $2$-élsúlyozásuk.
 
 \section{Az 1-2-SÚLY NP-teljes}
 \begin{tét}[\citeauthor{Dudek2011} \cite{Dudek2011}]
-Az 1-2-SÚLY NP-teljes
+Az 1-2-SÚLY NP-teljes.
 \end{tét}
 
 \begin{proof}
 Vegyük észre, hogy az 1-2-SÚLY NP-ben van, hiszen polinom időben eldönthető egy gráf egy adott $2$-élsúlyozásáról, hogy csúcs-színező-e. Tehát csak azt kell belátnunk, hogy az 1-2-SÚLY NP-nehéz. Ennek érdekében tekintsük a 3-SZÍN problémát, amely közismerten NP-teljes. A következőkben készíteni fogunk egy $f$ polinomiális redukciót, melyre $G \in \textrm{3-SZÍN}$ akkor és csak akkor, ha $f(G) \in \textrm{1-2-SÚLY}$. Előtte azonban definiálunk néhány segédszerkezetet.
  
-\begin{figure}
+\begin{figure}[!h]
 \centering
-\includegraphics[width=\linewidth]{./images/gadgets}
-\caption{}
-\label{fig:gadgets}
+\includegraphics[width=\linewidth]{./images/gadgets12}
+\caption{$k$-kizáró szerkezetek (a) páros, (b) illetve páratlan $k$ esetén, (c) ezek szimbolikus ábrázolása, (d) az $f(G)$ gráf konstrukciója}
+\label{fig:gadgets12}
 \end{figure}
 
 Az első ilyen a háromszög-szerkezet. Ez egy olyan $xab$ teljes hármas, melyre külső csúcsból csak $x$-be, a szerkezet tetejébe vezethet él. Figyeljük meg, hogy egy helyes súlyozásban egy ilyen háromszög pontosan $3$-mal járul hozzá az $x$ csúcs összsúlyához. 
 
 A következő a $2$-él-szerkezet, amely egy $cdef$ teljes négyesből és egy erre illeszkedő $xc$ élből áll. Könnyen ellenőrizhető, hogy egy olyan gráf esetében, amely csak az $x$ csúccsal szomszédos, tetszőleges $w$ helyes súlyozásra $w(xc) = 2$. Az $x$ csúcsot a szerkezet végpontjának nevezzük.
 
-Ezek segítségével definiálunk egy harmadik szerkezetet, amelynek $k$-kizáró szerkezet a neve. Itt feltesszük, hogy $k \geq 8$. A szerkezetnek van egy $vxy$ fő háromszöge, ahol a $v$ csúcsot gyökérnek nevezzük. Ezenfelül, ha $k$ páratlan, akkor $x$ és $y$ is $\frac{k - 3}{2}$ diszjunkt $2$-él-szerkezet végpontjai. Amennyiben $k$ páros, úgy $x$ és $y$ is $\frac{k - 6}{2}$ diszjunkt $2$-él-szerkezet végpontjai és egy-egy háromszög-szerkezet tetejei, amelyek szintén diszjunktak. Figyeljük meg, hogy minden $w$ helyes súlyozásban $w(vx) \neq w(vy)$. Ellenkező esetben, mivel a szerkezetek $k - 3$-mal járulnak hozzá $x$ és $y$ összsúlyához, azt kapnánk, hogy $w(x) = w(xv) + w(xy) + k - 3 = w(yv) + w(yy) + k - 3 = w(y)$. Ezért tetszőleges $k$ esetén, ha $w(xy) = 1$, akkor $\lbrace w(x), w(y) \rbrace = \lbrace k - 1, k \rbrace$, illetve ha $w(xy) = 2$, akkor $\lbrace w(x), w(y) \rbrace = \lbrace k, k + 1 \rbrace$. Akárhogy is, $v$-nek van egy $k$ súlyú szomszédja, ezért $w(v) \neq k$. Ezen felül $\lbrace w(vx), w(vy) \rbrace = \lbrace 1, 2 \rbrace$, ezért egy ilyen szerkezet $3$-mal járul hozzá $v$ összsúlyához.
+Ezek segítségével definiálunk egy harmadik szerkezetet, amelynek $k$-kizáró szerkezet a neve. Itt feltesszük, hogy $k \geq 8$. A szerkezetnek van egy $vxy$ fő háromszöge, ahol a $v$ csúcsot gyökérnek nevezzük. Ezenfelül, ha $k$ páratlan, akkor $x$ és $y$ is $\frac{k - 3}{2}$ diszjunkt $2$-él-szerkezet végpontjai. Amennyiben $k$ páros, úgy $x$ és $y$ is $\frac{k - 6}{2}$ diszjunkt $2$-él-szerkezet végpontjai és egy-egy háromszög-szerkezet tetejei, amelyek szintén diszjunktak. Figyeljük meg, hogy minden $w$ helyes súlyozásban $w(vx) \neq w(vy)$. Ellenkező esetben, mivel a szerkezetek $k - 3$-mal járulnak hozzá $x$ és $y$ összsúlyához, azt kapnánk, hogy $w(x) = w(xv) + w(xy) + k - 3 = w(yv) + w(yx) + k - 3 = w(y)$. Ezért tetszőleges $k$ esetén, ha $w(xy) = 1$, akkor $\lbrace w(x), w(y) \rbrace = \lbrace k - 1, k \rbrace$, illetve ha $w(xy) = 2$, akkor $\lbrace w(x), w(y) \rbrace = \lbrace k, k + 1 \rbrace$. Akárhogy is, $v$-nek van egy $k$ súlyú szomszédja, ezért $w(v) \neq k$. Ezen felül $\lbrace w(vx), w(vy) \rbrace = \lbrace 1, 2 \rbrace$, ezért egy ilyen szerkezet $3$-mal járul hozzá $v$ összsúlyához.
 
 Most már minden eszközünk megvan a redukció elkészítéséhez. Legyen $G = (V, E)$ egy $n$ pontú gráf, ahol feltehetjük, hogy $n \geq 3$. Az $f(G) = (W, F)$ gráfot a következőképpen kapjuk meg $G$-ből. Minden $v \in V$-re
 \begin{itemize}
@@ -548,8 +570,8 @@ Most már minden eszközünk megvan a redukció elkészítéséhez. Legyen $G = 
 
 Világos, hogy $f(G)$ polinom időben kiszámítható.
 
-\begin{áll} \label{pro:npreduct}
-$f(G)$ bármely $w$ helyes súlyozására az $1, 2$ súlyokkal, $w(v) \in \lbrace 4n - 2, 4n - 1, 4n \rbrace$ minden $v \in V$-re.
+\begin{áll} \label{pro:npreduct12}
+$f(G)$ bármely $w$ helyes súlyozására az $1,\ 2$ súlyokkal, $w(v) \in \lbrace 4n - 2, 4n - 1, 4n \rbrace$ minden $v \in V$-re.
 \end{áll}
 
 \begin{proof}
@@ -564,7 +586,57 @@ Most megmutatjuk, hogy $G \in \textrm{3-SZÍN}$ akkor és csak akkor, ha $f(G) \
 
 Először tegyük fel, hogy $G \in \textrm{3-SZÍN}$. Ez azt jelenti, hogy $G$-nek van egy helyes $3$-színezése. Legyen ez $s: V \rightarrow \lbrace 4n - 2, 4n - 1, 4n \rbrace$. Definiáljunk egy $w: F \rightarrow \lbrace 1, 2 \rbrace$ súlyozást az $f(G)$ gráfon a következő módon. Minden $e \in E$-re legyen $w(e) = 1$. Minden $e = vu$ élre, ahol $v \in V$ és $u \in U_v$, legyen $w(e) = 1$. Minden $v \in V$ csúcsra $s(v) = 4n - 2$ esetén $w(vs_v) = w(vt_v) = 1$, $s(v) = 4n - 1$ esetén $w(vs_v) = 1$ és $w(vt_v) = 2$, valamint $s(v) = 4n$ esetén $w(vs_v) = w(vt_v) = 2$. A szerkezetekhez tartozó éleket az alábbi módon súlyozzuk. Egy $xab$ háromszög-szerkezetre, melynek teteje $x$, legyen $w(xa) = 2$ és $w(xb) = w(ab) = 1$. Egy $xcdef$ $2$-él-szerkezetre, melynek végpontja $x$, legyen $w(xc) = w(cd) = w(ce) = w(de) = w(df) = 2$ és $w(cf) = w(ef) = 1$. Egy $v$ gyökerű és $vxy$ fő háromszögű $k$-kizáró-szerkezet esetén legyen $w(vx) = w(xy) = 2$ és $w(vy) = 1$, minden más él súlyozása pedig a fentieknek megfelelő. Figyeljük meg, hogy $w$ egy helyes színezése $f(G)$-nek, hiszen $w(v) = s(v)$ minden $v \in V$-re.
 
-Tegyük most fel, hogy $G \notin \textrm{3-SZÍN}$. Ennélfogva minden $s: V \rightarrow \lbrace 4n - 2, 4n - 1, 4n \rbrace$-re $s$ nem egy helyes színezés. Ezt összevetve az \ref{pro:npreduct} állítással azt kapjuk, hogy $f(G)$-nek nem létezik helyes súlyozása, azaz $f(G) \notin \textrm{1-2-SÚLY}$.
+Tegyük most fel, hogy $G \notin \textrm{3-SZÍN}$. Ennélfogva minden $s: V \rightarrow \lbrace 4n - 2, 4n - 1, 4n \rbrace$-re $s$ nem egy helyes színezés. Ezt összevetve az \ref{pro:npreduct12} állítással azt kapjuk, hogy $f(G)$-nek nem létezik helyes súlyozása, azaz $f(G) \notin \textrm{1-2-SÚLY}$.
+
+Ezzel a tételt beláttuk.
+\end{proof}
+
+\section{A 0-1-SÚLY NP-teljes}
+Az előbbiekhez hasonlóan most megmutatjuk, hogy annak eldöntése is NP-teljes, hogy egy gráfnak létezik-e csúcs-színező élsúlyozása a $0,\ 1$ számokkal. Jelölje 0-1-SÚLY azon gráfok nyelvét, melyeknek létezik ilyen súlyozásuk.
+
+\begin{tét}[\citeauthor{Dudek2011} \cite{Dudek2011}]
+A 0-1-SÚLY NP-teljes.
+\end{tét}
+
+\begin{proof}
+Vegyük észre, hogy a 0-1-SÚLY NP-ben van, hiszen polinomiális időben eldönthető egy gráf éleinek a $0,\ 1$ számokkal való súlyozásáról, hogy csúcs-színező-e. A továbbiakban azt mutatjuk meg, hogy a 0-1-SÚLY NP-nehéz, a 3-SZÍN probléma segítségével. Ennek érdekében készíteni fogunk egy $f$ polinomiális redukciót, melyre $G \in \textrm{3-SZÍN}$ akkor és csak akkor, ha $f(G) \in \textrm{0-1-SÚLY}$. Ehhez az előzőekhez hasonlóan szükségünk lesz két segédszerkezetre.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=\linewidth]{./images/gadgets01}
+\caption{(a) $k$-kizáró szerkezet és (b) szimbolikus ábrázolása, (c) az $f(G)$ gráf konstrukciója}
+\label{fig:gadgets01}
+\end{figure}
+
+Az első a korábban már definiált $xab$ háromszög-szerkezet. Figyeljük meg, hogy egy helyes súlyozásban egy ilyen háromszög pontosan $1$-gyel járul hozzá az $x$ csúcs összsúlyához. 
+
+A második a $k$-kizáró-szerkezet, amely felépítését tekintve eltér a korábban definiálttól, a szerepe viszont azonos. A szerkezet egy $vxy$ fő háromszögből áll, ahol $v$ a gyökér, $x$ és $y$ pedig $k - 1$ diszjunkt háromszög-szerkezet teteje. Vegyük észre, hogy egy $w$ helyes súlyozásra $w(vx) \neq w(vy)$. Ellenkező esetben, mivel a szerkezetek $k - 1$-gyel járulnak hozzá $x$ és $y$ összsúlyához, azt kapnánk, hogy $w(x) = w(xv) + w(xy) + k - 1 = w(yv) + w(yx) + k - 1 = w(y)$. Ezért tetszőleges $k$ esetén, ha $w(xy) = 0$, akkor $\lbrace w(x), w(y) \rbrace = \lbrace k - 1, k \rbrace$, illetve ha $w(xy) = 1$, akkor $\lbrace w(x), w(y) \rbrace = \lbrace k, k + 1 \rbrace$. Akárhogy is, $v$-nek van egy $k$ súlyú szomszédja, ezért $w(v) \neq k$. Ezen felül $\lbrace w(vx), w(vy) \rbrace = \lbrace 0, 1 \rbrace$, ezért egy ilyen szerkezet $1$-gyel járul hozzá $v$ összsúlyához.
+
+Most már minden eszközünk megvan a redukció elkészítéséhez. Legyen $G = (V, E)$ egy $n$ pontú gráf, ahol feltehetjük, hogy $n \geq 3$. Az $f(G) = (W, F)$ gráfot a következőképpen kapjuk meg $G$-ből. Minden $v \in V$-re
+\begin{itemize}
+\item összekötjük $v$-t két új csúccsal, $s_v$-vel és $t_v$-vel
+\item felveszünk $n - 1$ új, $v$ gyökerű $k$-kizáró szerkezetet, ahol $k = n + 2, n + 3, \ldots, 2n$
+\end{itemize}
+
+Világos, hogy $f(G)$ polinom időben kiszámítható.
+
+\begin{áll} \label{pro:npreduct01}
+$f(G)$ bármely $w$ helyes súlyozására a $0,\ 1$ súlyokkal, $w(v) \in \lbrace n - 1, n, n + 1 \rbrace$ minden $v \in V$-re.
+\end{áll}
+
+\begin{proof}
+Válasszunk egy $v \in V$ csúcsot. Mivel $w(vs_v) + w(vt_v) \in \lbrace 0, 1, 2 \rbrace$, továbbá a $v$ csúcsra $d(v) \leq n - 1$ darab $V$-be menő él illeszkedik, és $n - 1$ darab $k$-kizáró szerkezetnek a gyökere, ezért
+\begin{equation*}
+w(v) \in \lbrace 0, 1, 2 \rbrace + \lbrace 0, \ldots, d(v) \rbrace + \lbrace n - 1 \rbrace \subseteq \lbrace n - 1, \ldots, 2n \rbrace
+\end{equation*}
+Figyelembe véve, hogy minden $k \in \lbrace n + 2, n + 3, \ldots, 2n \rbrace$-re a $v$ csúcs gyökere egy $k$-kizáró szerkezetnek, azt kapjuk, hogy egy $w$ helyes súlyozásban $w(v) \in \lbrace n - 1, n, n + 1 \rbrace$.
+\end{proof}
+
+Most megmutatjuk, hogy $G \in \textrm{3-SZÍN}$ akkor és csak akkor, ha $f(G) \in \textrm{0-1-SÚLY}$.
+
+Először tegyük fel, hogy $G \in \textrm{3-SZÍN}$. Ez azt jelenti, hogy $G$-nek van egy helyes $3$-színezése. Legyen ez $s: V \rightarrow \lbrace n - 1, n, n + 1 \rbrace$. Definiáljunk egy $w: F \rightarrow \lbrace 0, 1 \rbrace$ súlyozást az $f(G)$ gráfon a következő módon. Minden $e \in E$-re legyen $w(e) = 0$. Minden $v \in V$-re $s(v) = n - 1$ esetén $w(vs_v) = w(vt_v) = 0$, $s(v) = n$ esetén $w(vs_v) = 1$ és $w(vt_v) = 0$, valamint $s(v) = n + 1$ esetén $w(vs_v) = w(vt_v) = 1$. A szerkezetekhez tartozó éleket az alábbi módon súlyozzuk. Egy $xab$ háromszög-szerkezetre, melynek teteje $x$, legyen $w(xa) = 1$ és $w(xb) = w(ab) = 0$. Egy $v$ gyökerű és $vxy$ fő háromszögű $k$-kizáró-szerkezet esetén legyen $w(vx) = w(xy) = 1$ és $w(vy) = 0$, minden más él súlyozása pedig a fentieknek megfelelő. Figyeljük meg, hogy $w$ egy helyes színezése $f(G)$-nek, hiszen $w(v) = s(v)$ minden $v \in V$-re.
+
+Tegyük most fel, hogy $G \notin \textrm{3-SZÍN}$. Ennélfogva minden $s: V \rightarrow \lbrace n - 1, n, n + 1 \rbrace$-re $s$ nem egy helyes színezés. Ezt összevetve az \ref{pro:npreduct01} állítással azt kapjuk, hogy $f(G)$-nek nem létezik helyes súlyozása, azaz $f(G) \notin \textrm{0-1-SÚLY}$.
 
 Ezzel a tételt beláttuk.
 \end{proof}
